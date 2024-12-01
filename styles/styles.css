@@ -25,6 +25,8 @@ body{
     body{
         height: 100vh;
     }
+
+    /* *Loading effects for Main Menu */
     .loadingpage{
         background-color: #e26a05;
         height: 100%;
@@ -56,6 +58,9 @@ body{
         to {opacity: 0;}
     }
 
+    /* End of Loading Page */
+
+    /* Start of Main Order Page */
     .orderpage{
         position: fixed;
         top: 0;
@@ -63,7 +68,10 @@ body{
         z-index: 0;
         background-color: #fff4e2;
         height: 100%;
+       
     }
+
+
 
     .orderpage > header {
         display: flex;
@@ -72,17 +80,29 @@ body{
         padding: 1rem 0;
         color: #fff;
         background-color: #e26a05;
+        text-align: center;
     }
 
     .orderpage > header > div{
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-content: center;
+        
     }
 
-    .orderpage > header img{
+    .orderpage img{
+        align-items: center;
+        justify-content: center;
         width: 10%;
-        height: auto;
+        height:auto;
+        text-align: center;
+        display:inline-block;
+        object-position: center; 
+        object-fit: contain;
+        max-width: 100%;
+      
+        /* object-fit: cover;
+        object-position: bottom; */
     }
 
     .orderpage nav{
