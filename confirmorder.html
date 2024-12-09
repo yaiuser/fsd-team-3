@@ -46,15 +46,22 @@
 
         </section>
         <aside>
-            <div class="d-block text-center my-2" id="showCheckout">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"/></svg>
+            <div class="d-block text-center my-2" id="showConfirmOrder">
             </div>
-            <div id="subTotalCheckout" class="d-none p-0 m-0">
+            <div id="subTotalCofirmOrder" class="d-block p-0 m-0">
                 <div class="d-flex mx-3">
                     <h4>Total:</h4>
                     <h4>$xx.xx</h4>
                 </div>
-                <button id="btnCheckout" class="d-block my-3 mx-auto">Checkout</button>
+                <div class="d-flex mx-3">
+                    <h4>GST:</h4>
+                    <h4>$xx.xx</h4>
+                </div>
+                <div class="d-flex mx-3">
+                    <h4>Service Charge (10%):</h4>
+                    <h4>$xx.xx</h4>
+                </div>
+                <button id="btnConfirmOrder" class="d-block my-3 mx-auto">Confirm Order</button>
             </div>
 
         </aside>
@@ -66,7 +73,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
-    <script src="script/checkout.js"></script>
+    <script src="script/confirmorder.js"></script>
 
 </body>
 </html>

@@ -4,7 +4,7 @@
 * {
     padding: 0;
     margin: 0;
-    /* outline: 1px dotted black; */
+    outline: 1px dotted black;
 }
 
 html{
@@ -68,10 +68,7 @@ body{
         z-index: 0;
         background-color: #fff4e2;
         height: 100%;
-       
     }
-
-
 
     .orderpage > header {
         display: flex;
@@ -87,7 +84,6 @@ body{
         display: flex;
         flex-direction: column;
         align-content: center;
-        
     }
 
     .orderpage img{
@@ -109,11 +105,15 @@ body{
         padding: 1rem 0;
     }
 
+    ul{
+        padding: 0;
+    }
+
     nav ul{
         display: flex;
         flex-direction: row;
         list-style: none;
-        justify-content: space-around;
+        justify-content: space-evenly;
         font-family: 'DM Sans';
         font-weight: 600;
     }
@@ -124,7 +124,6 @@ body{
         bottom: 0;
         width: 100%;
         border-radius: 1rem 1rem 0 0;
-        padding-bottom: 1rem;
         z-index: 1;
     }
 
@@ -132,20 +131,13 @@ body{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 1rem;
     }
+
     aside svg{
-        width: 5%;
+        width: 1.5rem;
         position: relative;
-        bottom: 1rem;
     }
-
-    aside .button-con{
-        display: flex;
-        justify-content: center;
-        padding: 0
-    }
-
+    
     aside button{
         border: 0;
         border-radius: 0.5rem;
