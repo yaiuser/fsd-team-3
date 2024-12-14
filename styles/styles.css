@@ -1,3 +1,5 @@
+
+
 @import url("https://fonts.cdnfonts.com/css/gagalin");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Merriweather:ital,wght@1,300&display=swap");
 
@@ -26,6 +28,63 @@ body {
   body {
     height: 100vh;
   }
+
+  /* Start of Customer Login Page */
+
+   /* *Loading effects for Main Menu */
+   .loadingpage{
+    background-color: #e26a05;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+/*     animation-duration: 3s; */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+/*     animation-name: loading; */
+    color: #fff;
+}
+
+.loadingpage h2{
+    margin-bottom: 0.5rem;
+    font-family: 'Gagalin', Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+}
+
+.loadingpage h1, .loadingpage p, .loadingpage button, .loadingpage input{
+    font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+}
+
+.loadingpage > img{
+    max-width: 50%;
+}
+
+.loadingpage .btn-outline-secondary{
+    background-color: #fff4e2;
+    font-weight: 500;
+    color: #e26a05;
+}
+
+.loadingpage p{
+    font-size: 0.8rem;
+}
+.loadingpage a{
+    color: #477caa;
+}
+
+.loadingpage button, .loadingpage input{
+    border-radius: 2rem;
+    border: 0.5px solid #e26a05;
+}
+
+.loadingpage button:hover, .loadingpage a:hover{
+    color: #000;
+}
+
+/* End of Customer Loading Page */
 
   /* Start of Main Order Page */
 
@@ -301,59 +360,6 @@ body {
     top: -1rem;
     right: 0;
   }
-
-  /* *Loading page CSS */
-  .loadingpage{
-    background-color: #e26a05;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 2;
-    color: #fff;
-}
-
-.loadingpage h2{
-    margin-bottom: 0.5rem;
-    font-family: 'Gagalin', Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-}
-
-.loadingpage h1, .loadingpage p, .loadingpage button, .loadingpage input{
-    font-family: 'DM Sans', Arial, Helvetica, sans-serif;
-}
-
-.loadingpage > img{
-    max-width: 50%;
-}
-
-.loadingpage .btn-outline-secondary{
-    background-color: #fff4e2;
-    font-weight: 500;
-    color: #e26a05;
-}
-
-.loadingpage p{
-    font-size: 0.8rem;
-}
-.loadingpage a{
-    color: #477caa;
-}
-
-.loadingpage button, .loadingpage input{
-    border-radius: 2rem;
-    border: 0.5px solid #e26a05;
-}
-
-.loadingpage button:hover, .loadingpage a:hover{
-    color: #000;
-}
-
-/* End of Loading Page */
 
 
 }
