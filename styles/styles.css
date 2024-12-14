@@ -1,161 +1,367 @@
-@import url('https://fonts.cdnfonts.com/css/gagalin');
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Merriweather:ital,wght@1,300&display=swap');
 
+
+@import url("https://fonts.cdnfonts.com/css/gagalin");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Merriweather:ital,wght@1,300&display=swap");
+
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 * {
-    padding: 0;
-    margin: 0;
-    /* outline: 1px dotted black; */
+  padding: 0;
+  margin: 0;
+  /* outline: 1px dotted black; */
 }
 
-html{
-    font-size: 16px; /* 1 rem used on the page == 16 px */
-    box-sizing: border-box;
+html {
+  font-size: 16px; /* 1 rem used on the page == 16 px */
+  box-sizing: border-box;
 }
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
+body {
+  font-family: "DM Sans", Arial, Helvetica, sans-serif;
 }
 
 /** Start of Mobile Section **/
 /** *********************** **/
 
 /* if the width of screen is 640px and below (aka 40rem x 16px) */
-@media screen and (max-width: 40rem ) {
+@media screen and (max-width: 40rem) {
+  body {
+    height: 100vh;
+  }
 
-    body{
-        height: 100vh;
-    }
+  /* Start of Customer Login Page */
 
-    /* *Loading effects for Main Menu */
-    .loadingpage{
-        background-color: #e26a05;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        animation-duration: 3s;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        z-index: 2;
-        animation-name: loading;
-        color: #fff;
-    }
+   /* *Loading effects for Main Menu */
+   .loadingpage{
+    background-color: #e26a05;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+/*     animation-duration: 3s; */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+/*     animation-name: loading; */
+    color: #fff;
+}
 
-    .loadingpage h2{
-        margin-bottom: 1rem;
-        font-family: 'Gagalin', Arial, Helvetica, sans-serif;
-        font-size: 2rem;
-    }
+.loadingpage h2{
+    margin-bottom: 0.5rem;
+    font-family: 'Gagalin', Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+}
 
-    .loadingpage > img{
-        max-width: 50%;
-    }
+.loadingpage h1, .loadingpage p, .loadingpage button, .loadingpage input{
+    font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+}
 
-    @keyframes loading{
-        from {opacity: 1;}
-        to {opacity: 0;}
-    }
+.loadingpage > img{
+    max-width: 50%;
+}
 
-    /* End of Loading Page */
+.loadingpage .btn-outline-secondary{
+    background-color: #fff4e2;
+    font-weight: 500;
+    color: #e26a05;
+}
 
-    /* Start of Main Order Page */
-    .orderpage{
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 0;
-        background-color: #fff4e2;
-        height: 100%;
-       
-    }
+.loadingpage p{
+    font-size: 0.8rem;
+}
+.loadingpage a{
+    color: #477caa;
+}
+
+.loadingpage button, .loadingpage input{
+    border-radius: 2rem;
+    border: 0.5px solid #e26a05;
+}
+
+.loadingpage button:hover, .loadingpage a:hover{
+    color: #000;
+}
+
+/* End of Customer Loading Page */
+
+  /* Start of Main Order Page */
+
+  .orderpage p {
+    margin-top: 0;
+    margin-bottom: 0.1875rem;
+    font-size: small;
+  }
+
+  .orderpage h1 {
+    font-family: 'Gagalin', Arial, Helvetica, sans-serif;
+    margin-bottom: 0.1875rem;
+    
+  }
+  .orderpage {
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: #fff4e2;
+    height: 100%;
+  }
+
+  .orderpage > header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.3rem 0;
+    color: #fff;
+    background-color: #e26a05;
+    text-align: center;
+  }
+
+  .orderpage > header > div {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .orderpage img {
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+    object-position: center;
+    object-fit: contain;
+    max-width: 100%;
+  }
+  /* Tab Navigation Bar */
+
+  .tab-nav-bar {
+    justify-content: center;
+    align-items: center;
+    padding: 0.1875rem 0;
+  }
+
+  .tab-menu {
+    display: flex;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    white-space: nowrap;
+    user-select: none; /* Disable text selection */
+    border-bottom: 2px solid #e26a05;
+    scroll-behavior: smooth;
+  }
+
+  .tab-menu.dragging {
+    scroll-behavior: unset;
+    transition: max-width 1s ease-in-out;
+  }
+  /* Remove the scroll bar for the nav tab */
+  .tab-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: fit-content;
+  }
+
+  .tab-btn {
+    display: inline-block;
+    position: relative;
+    list-style: none;
+    font-family: "DM Sans";
+    font-weight: 600;
+    transition: 0.3s ease;
+    text-align: center;
+    padding: 1rem 1.5rem 0rem 0rem; /* Add vertical padding to increase height */
+  }
+
+  .tab-btn.active {
+    transition: all 0.2s ease-in-out;
+    color: #e26a05;
+    text-align: center;
+    position: relative; /* Needed for absolute positioning of ::after */
+  }
+
+  .menu_design active {
+    background-color: #fa3e3e;
+    border-radius: 2px;
+    color: white;
+    padding: 0.2rem 0.4rem;
+    font-size: 15rem;
+
+    position: absolute; /* Position the badge within the relatively positioned button */
+    top: 0;
+    right: 0;
+  }
+
+  /* end of nav bar */
+
+  /* * Start of Tabs & Content Cards */
+  .tab-content {
+    margin: 0rem 1rem 0rem 1rem;
+    content-visibility: hidden; /* Hide content when tab is not active */
+
+  }
+  .title h1 {
+    font-family: 'Gagalin', Arial, Helvetica, sans-serif;
+    font-size: xx-large;
+    color: #5a2806;
+    padding-bottom: 0.5rem; /* Add some space between the card */
+  }
+
+/* The content card itself */
+
+.tab-content.active{
+    content-visibility: visible;
+    transition:  1s ease-out;
+}
+
+.item-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Gap between the different cards */
+}
+
+.food-card {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  
+}
+
+.food-card-img {
+    width: 100px;  /* Image size (small square) */
+    height: 100px;
+    overflow: hidden;
+    flex-shrink: 0; /* Prevent resizing */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 1rem; /* Space between image and content */
+    border-radius: 20%;
+}
+
+.food-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Ensures the image covers the square */
+}
+
+.food-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    flex-grow: 1; /* Content grows to take remaining space */
+}
+
+.food-card-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #5a2806;
+    font-weight: bold;
+    
+}
+
+.food-card-content .price {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+    color: #5a2806;
+}
+
+.card-button {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end; 
+    padding: 0rem 1rem 0rem 0rem;
+}
+
+/* Adjust button design */
+.btn-add{
+    background-color: #e96010;
+    border-radius: 0.5rem;
+    font-size: large;
+    color: white;
+    padding: 0rem 0.4rem;
+    border: none;
+}
+/* * End of Card Styling */
+
+  aside {
+    background-color: #ff9800;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-radius: 1rem 1rem 0 0;
+    z-index: 1;
+  }
+
+  aside div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  aside svg {
+    width: 1.5rem;
+    position: relative;
+  }
+
+  aside button {
+    border: 0;
+    border-radius: 0.5rem;
+    width: 80%;
+    height: 2rem;
+    font-size: 1rem;
+    font-family: "DM Sans";
+    color: #e26a05;
+    font-weight: 600;
+    position: relative;
+  }
 
 
+  /* * Style for the view total button. */
+  .dragButton {
+    width: 10%;
+    height: .625rem;
+    background-color: #e96010;
+    margin: .3125rem auto;
+    cursor: pointer; 
+    border-radius: 5px; 
+  }
 
-    .orderpage > header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 1rem 0;
-        color: #fff;
-        background-color: #e26a05;
-        text-align: center;
-    }
+  /* Initially hidden footer content */
+  .orderFooter {
+    opacity: 0;
+    transition: opacity 4s ease-in-out;
+    padding: 0;
+  }
 
-    .orderpage > header > div{
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        
-    }
+  .d-none {
+    display: none;
+  }
 
-    .orderpage img{
-        align-items: center;
-        justify-content: center;
-        width: 10%;
-        height:auto;
-        text-align: center;
-        display:inline-block;
-        object-position: center; 
-        object-fit: contain;
-        max-width: 100%;
-      
-        /* object-fit: cover;
-        object-position: bottom; */
-    }
+  /* Show the amount of items added to the cart */
+  .order_badge {
+    background-color: #e96010;
+    border-radius: 2px;
+    color: white;
+    padding: 0.2rem 0.4rem;
+    font-size: 1rem;
 
-    .orderpage nav{
-        padding: 1rem 0;
-    }
+    position: absolute; /* Position the badge within the relatively positioned button */
+    top: -1rem;
+    right: 0;
+  }
 
-    nav ul{
-        display: flex;
-        flex-direction: row;
-        list-style: none;
-        justify-content: space-around;
-        font-family: 'DM Sans';
-        font-weight: 600;
-    }
 
-    aside{
-        background-color: #ff9800;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        border-radius: 1rem 1rem 0 0;
-        padding-bottom: 1rem;
-        z-index: 1;
-    }
-
-    aside div{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1rem;
-    }
-    aside svg{
-        width: 5%;
-        position: relative;
-        bottom: 1rem;
-    }
-
-    aside .button-con{
-        display: flex;
-        justify-content: center;
-        padding: 0
-    }
-
-    aside button{
-        border: 0;
-        border-radius: 0.5rem;
-        width:80%;
-        height: 1.5rem;
-        font-size: 1rem;
-        font-family: 'DM Sans';
-        color: #e26a05;
-        font-weight: 600;
-    }
 }
 
 /* *********************** */
