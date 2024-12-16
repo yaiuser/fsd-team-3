@@ -1,0 +1,34 @@
+/* universal settings */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* outline: 1px dashed #000000; */
+}
+
+html {
+	font-size: 16px; 						/* 1 rem used on the page == 16px  */
+	font-family: "Poppins", sans-serif;
+}
+
+/* skeleton page */
+
+.profile{
+	color: black;
+	text-decoration: none;
+}
+
+.sidebar-btn:hover {
+	background-color: #f0f3f7;
+}
+
+/* add dish page */
+.login-btn {
+	background-color: #f1823b;
+	color: #fff;
+}
+.login-btn:hover {
+	background-color: hsl(23, 87%, 65%);
+}
