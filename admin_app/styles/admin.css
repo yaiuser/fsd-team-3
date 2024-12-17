@@ -10,8 +10,32 @@
 
 html {
 	font-size: 16px; 						/* 1 rem used on the page == 16px  */
-	font-family: "Poppins", sans-serif;
+	font-family: Arial, sans-serif;
 }
+body{
+	background-color: #fdf3eb;
+}
+
+/* loginver2 page */
+
+.login-btn {
+	background-color: #f1823b;
+	color: #fff;
+}
+.login-btn:hover {
+	background-color: hsl(23, 87%, 65%);
+}
+
+.register-link {
+	text-decoration: none;
+	color: #f1823b;
+}
+
+.register-link:hover {
+	text-decoration: none;
+	color: hsl(23, 87%, 69%);
+}
+
 
 /* skeleton page */
 
@@ -25,10 +49,11 @@ html {
 }
 
 /* add dish page */
-.login-btn {
+.upload-btn {
 	background-color: #f1823b;
 	color: #fff;
 }
-.login-btn:hover {
+.upload-btn:hover {
 	background-color: hsl(23, 87%, 65%);
 }
+
