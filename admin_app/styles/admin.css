@@ -57,3 +57,7 @@ body{
 	background-color: hsl(23, 87%, 65%);
 }
 
+#productDesc{
+	height: 12.5rem;
+}
+

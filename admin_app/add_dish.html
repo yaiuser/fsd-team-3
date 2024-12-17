@@ -179,26 +179,101 @@
 				<!-- End column for sidebar -->
 
 				<!-- Start column for content area  -->
-				<div class="col-9 pt-4 pe-4">
+				<div class="col-9 pe-3">
 					<div class="h-100 border rounded-4 p-4">
 						<h2>Add Dish</h2>
 						<img
-						class=""
+						class="img-fluid w-100 h-25"
 						src="images/placeholder.png" 
 						alt="placeholder">
+						
 						<button
-									data-mdb-button-init
-									data-mdb-ripple-init
-									class="login-btn btn btn-lg w-20 align-items-end"
+									class="upload-btn btn btn-sm w-25 h-auto float-end mt-2"
 									type="button"
-									onclick="window.location.href='index.html';"
+									onclick="window.location.href='#'";
 								>
 									Upload Image
-								</button>
+						</button>
 						
-					</div>
+						<hr class="my-5">
+						
+						<!-- Add Dish Form -->
+						<form class="">
+							<div class="row g-3">
+
+							  <div class="col-sm-6">
+								<label for="productName" class="form-label">Product Name</label>
+								<input type="text" class="form-control" id="productName" placeholder="" value="" required="">
+							  </div>
+				  
+							  <div class="col-sm-6">
+								<label for="productCat" class="form-label">Product Category</label>
+								<select class="form-select" id="productCat" required="">
+								  <option value="">Choose...</option>
+								  <option>Burger</option>
+								  <option>Pasta</option>
+								  <option>Appetizer</option>
+								  <option>Dessert</option>
+								  <option>Drink</option>
+								</select>
+							  </div>
+
+							  <div class="col-sm-6">
+								<label for="costPrice" class="form-label">Cost Price</label>
+								<input type="text" class="form-control" id="costPrice" placeholder="" value="" required="">
+							  </div>
+
+							  <div class="col-sm-6">
+								<label for="sellingPrice" class="form-label">Selling Price</label>
+								<input type="text" class="form-control" id="sellingPrice" placeholder="" value="" required="">
+							  </div>
+				  
+							  <div class="col-sm-6">
+								<label for="quantity" class="form-label">Quantity</label>
+								<select class="form-select" id="quantity" required="">
+								  <option value="">Choose...</option>
+								  <option>0-10</option>
+								  <option>10-20</option>
+								  <option>20-30</option>
+								  <option>30-40</option>
+								  <option>40-50</option>
+								</select>
+							  </div>
+
+							  <div class="col-sm-6">
+								<label for="status" class="form-label">Status</label>
+								<select class="form-select" id="status" required="">
+								  <option value="">Choose...</option>
+								  <option>Available</option>
+								  <option>In Review</option>
+								  <option>Sold Out</option>
+								</select>
+							  </div>
+				  
+							  <div class="col-12 mt-4">
+								<label for="productDesc">Product Description</label>
+								<textarea class="form-control" placeholder="Add a product description" id="productDesc"></textarea>
+							  </div>
+							
+							<button
+									class="upload-btn btn btn-sm w-25 ms-2 mt-2"
+									type="button"
+									onclick="window.location.href='#'";
+								>
+									Save
+						</button>
+						<button
+									class="btn btn-sm btn-secondary text-black w-25 ms-2 mt-2"
+									type="button"
+									onclick="window.location.href='#'";
+								>
+									Cancel
+						</button>
+						</form>
+					
 				</div>
 				<!-- End column for content area -->
+			   </div>
 			</div>
 		</main>
 
