@@ -202,6 +202,10 @@ body {
   /* end of nav bar */
 
   /* * Start of Tabs & Content Cards */
+
+  section {
+    background-color: #fff4e2;
+  }
   .tab-content {
     margin: 0rem 1rem 0rem 1rem;
     content-visibility: hidden; /* Hide content when tab is not active */
