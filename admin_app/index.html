@@ -9,6 +9,19 @@
 
         <!-- Import fonts awesome stylesheet -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style> /* F */
+    .logo-img {
+        height: 50px; /* Adjust the logo size */
+        width: auto;
+    }
+    .logo-img {
+        width: 80px; /* Adjust the width as needed */
+        height: auto; /* Maintain aspect ratio */
+        padding: 10px; /* Add padding to the top */
+        filter: brightness(0) saturate(100%) invert(50%) sepia(100%) hue-rotate(-20deg) saturate(500%) brightness(100%);
+    }    
+</style> 
     
 
 </head>
@@ -19,9 +32,10 @@
                         <!-- Company Logo -->
                         <div class="col-3">
                                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6 text-black" href="">
-                                <img class="bi pe-none me-2" width="80px" height="auto" src="images/granola-logo.png" alt="Company Logo">
+                                <img class="logo-img" src="images/granola-logo.png" alt="Company Logo" >
                                 <span class="fs-4 fw-semibold">Granola Cafe</span>
                                 </a>
+                                <!-- "bi pe-none me-2" width="80px" height="auto" -->
                         </div>
                         
                         <!-- Admin Profile -->

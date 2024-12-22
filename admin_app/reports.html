@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .container {
+          display: flex; 
+        }
+    
+        .sidebar {
+          width: 40%; 
+          background-color: #f0f0f0; 
+          padding: 20px; 
+        }
+    
+        .content {
+          flex: 1; 
+          padding: 20px; 
+        }
+    </style>
+
+<head>
+  <title>Reports</title>
+</head>
+<body>
+  <h2>Monthly Reports</h2>
+  <!-- <p>Report List</p> -->
+
+  <!-- Main Content -->
+  <div class="col-md-10 p-4">
+    <div class="row">
+        <!-- Quick Stats Cards -->
+        <div class="col-md-3 mb-4">
+            <div class="card dashboard-card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total Up-to-Date Orders</h5>
+                    <p class="card-text display-6" id="userCount">1,234</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card dashboard-card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total Sales Revenue</h5>
+                    <p class="card-text display-6" id="revenueCount">$45,678</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card dashboard-card bg-warning text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Monthly Up-to-Date Orders</h5>
+                    <p class="card-text display-6" id="salesCount">789</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card dashboard-card bg-danger text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Order Errors</h5>
+                    <p class="card-text display-6" id="errorCount">12</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts and Tables Section -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Recent Activity
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activityTable">
+                            <tr>
+                                <td>User Login</td>
+                                <td>10:30 AM</td>
+                                <td><span class="badge bg-success">Success</span></td>
+                            </tr>
+                            <tr>
+                                <td>Data Update</td>
+                                <td>9:45 AM</td>
+                                <td><span class="badge bg-primary">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Monthly Sales Up-To-Date
+                </div>
+                <div class="card-body">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chart.js for simple charting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    
+    <script>
+        // Dynamic data update example
+        function updateDashboard() {
+            // Simulate data updates
+            document.getElementById('userCount').textContent = Math.floor(Math.random() * 5000);
+            document.getElementById('revenueCount').textContent = '$' + Math.floor(Math.random() * 100000);
+            document.getElementById('salesCount').textContent = Math.floor(Math.random() * 1000);
+            document.getElementById('errorCount').textContent = Math.floor(Math.random() * 50);
+        }
+
+        // Chart.js example
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October','November', 'December'],
+                datasets: [{
+                    label: 'Performance',
+                    data: [1, 15, 12, 12, 11, 15],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            }
+        });
+
+        // Update dashboard every 5 seconds
+        setInterval(updateDashboard, 5000);
+    </script>
+
+
+  <!-- <button onclick="parent.loadReports()">Back to Dashboard</button>  -->
+  <a href="G_cafe.html" class="btn btn-outline-primary">Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granola Cafe Orders List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .status {
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .preparing {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .served {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .new {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+        .cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .type-tag {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            background-color: #e9ecef;
+            color: #495057;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-view {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-edit {
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fa-solid fa-clipboard-list"></i> Granola Cafe Order Lists</h1>
+        <a href="G_cafe.html" class="btn btn-outline-primary">Back to Dashboard</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Table/Type</th>
+                    <th>Items</th>
+                    <th>Time</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#ORD-001</td>
+                    <td>Table 5 <span class="type-tag">Dine-in</span></td>
+                    <td>2x Cappuccino, 1x Chicken Sandwich, 1x Caesar Salad</td>
+                    <td>11:30 AM</td>
+                    <td>$32.50</td>
+                    <td><span class="status new">New Order</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-002</td>
+                    <td><span class="type-tag">Takeaway</span></td>
+                    <td>1x Latte, 2x Blueberry Muffin</td>
+                    <td>11:25 AM</td>
+                    <td>$13.50</td>
+                    <td><span class="status preparing">Preparing</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-003</td>
+                    <td>Table 3 <span class="type-tag">Dine-in</span></td>
+                    <td>2x Breakfast Special, 1x Orange Juice, 1x Coffee</td>
+                    <td>11:15 AM</td>
+                    <td>$42.95</td>
+                    <td><span class="status served">Served</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-004</td>
+                    <td><span class="type-tag">Delivery</span></td>
+                    <td>1x Club Sandwich, 1x Greek Salad, 1x Iced Tea</td>
+                    <td>11:10 AM</td>
+                    <td>$28.99</td>
+                    <td><span class="status preparing">Preparing</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-005</td>
+                    <td>Table 7 <span class="type-tag">Dine-in</span></td>
+                    <td>3x Pancake Stack, 2x Coffee, 1x Fresh Juice</td>
+                    <td>11:05 AM</td>
+                    <td>$45.50</td>
+                    <td><span class="status served">Served</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-006</td>
+                    <td><span class="type-tag">Takeaway</span></td>
+                    <td>2x Espresso, 1x Croissant</td>
+                    <td>11:00 AM</td>
+                    <td>$12.50</td>
+                    <td><span class="status cancelled">Cancelled</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-007</td>
+                    <td>Table 2 <span class="type-tag">Dine-in</span></td>
+                    <td>1x Veggie Wrap, 1x Smoothie, 1x Cake Slice</td>
+                    <td>10:55 AM</td>
+                    <td>$24.99</td>
+                    <td><span class="status served">Served</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-008</td>
+                    <td><span class="type-tag">Delivery</span></td>
+                    <td>2x Chicken Pasta, 1x Garlic Bread, 2x Coke</td>
+                    <td>10:50 AM</td>
+                    <td>$39.99</td>
+                    <td><span class="status preparing">Preparing</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-009</td>
+                    <td>Table 4 <span class="type-tag">Dine-in</span></td>
+                    <td>4x Weekend Brunch Special</td>
+                    <td>10:45 AM</td>
+                    <td>$89.99</td>
+                    <td><span class="status served">Served</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-010</td>
+                    <td><span class="type-tag">Takeaway</span></td>
+                    <td>3x Coffee, 3x Breakfast Sandwich</td>
+                    <td>10:40 AM</td>
+                    <td>$35.50</td>
+                    <td><span class="status served">Served</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-011</td>
+                    <td>Table 1 <span class="type-tag">Dine-in</span></td>
+                    <td>2x Eggs Benedict, 2x Coffee</td>
+                    <td>10:35 AM</td>
+                    <td>$38.99</td>
+                    <td><span class="status served">Served</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-012</td>
+                    <td><span class="type-tag">Delivery</span></td>
+                    <td>1x Family Breakfast Bundle</td>
+                    <td>10:30 AM</td>
+                    <td>$59.99</td>
+                    <td><span class="status cancelled">Cancelled</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-013</td>
+                    <td>Table 6 <span class="type-tag">Dine-in</span></td>
+                    <td>2x Avocado Toast, 2x Latte, 1x Fruit Bowl</td>
+                    <td>10:25 AM</td>
+                    <td>$42.50</td>
+                    <td><span class="status served">Served</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-014</td>
+                    <td><span class="type-tag">Takeaway</span></td>
+                    <td>4x Coffee, 4x Bagel</td>
+                    <td>10:20 AM</td>
+                    <td>$32.00</td>
+                    <td><span class="status served">Served</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#ORD-015</td>
+                    <td>Table 8 <span class="type-tag">Dine-in</span></td>
+                    <td>3x French Toast, 3x Coffee, 1x Fruit Platter</td>
+                    <td>10:15 AM</td>
+                    <td>$52.99</td>
+                    <td><span class="status served">Served</span></td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn btn-view"><i class="fa-solid fa-eye"></i> View</button>
+                            <button class="btn btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

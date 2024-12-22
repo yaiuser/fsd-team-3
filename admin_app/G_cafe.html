@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Previous head content remains same -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Granola Cafe Responsive Dashboard</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Previous styles remain same */
+
+        /*Logo and Branding*/
+        .brand-section {
+        padding: 10px 10px;
+        border-bottom: 5px solid rgba(255,255,255,1);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .granola-logo {
+            width: 139px;  /* Adjust size as needed */
+            height: 139px;
+            border-radius: 8px;  /* Optional: if want slightly rounded corners */
+        }
+
+        .brand-section h4 {
+            font-size: 1.7rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            height: flex;
+            background-color: #c2442b;
+            padding-top: 20px;
+        }
+        
+        .sidebar-icon {
+            color: white;
+            padding: 10px;
+            margin: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-icon:hover {
+            background-color: #0f3434;
+            border-radius: 5px;
+        }
+
+        .sidebar-icon i {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .sidebar-icon span {
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Rest of the styles */
+        .stats-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+        }
+
+        .stats-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .chart-container {
+            background-color: rgba(235, 225, 225, 0.413);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: 320px;
+            position: relative;
+        }
+
+        .orders-table {
+            background-color: rgb(242, 239, 239);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .profile-section {
+            text-align: right;
+            padding: 10px;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 16px;
+        }
+
+        .status-completed {
+            background-color: #DFF0D8;
+            color: #3C763D;
+        }
+
+        .status-preparing {
+            background-color: #FCF8E3;
+            color: #8A6D3B;
+        }
+
+        /* Sub-menu - it will auto hide, will only appear when hover above it*/
+        .submenu {
+            display: none;
+            width: 100%;
+            margin-top: 8px;  /* Space between Orders and submenu */
+            background-color: #0773f8cf;
+        }
+
+        div:hover > .submenu {
+            display: block;
+        }
+
+        .submenu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 1px 5px 5px;
+            text-decoration: none;
+            background-color: grey;
+            color: white;
+        }
+
+        .submenu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .submenu-item i {
+            margin-right: 10px;
+        }
+
+    </style>
+
+</head>
+<body class="bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-2 sidebar">
+                <!-- Updated Logo and Brand Section -->
+                <div class="brand-section mb-4 text-center">
+                    <div class="logo-container mb-2">
+                        <!-- SVG with an image - font awesome-->
+                        <img src="images/granola-logo.png" alt="granola Logo" class="granola-logo">
+                    </div>
+                        <h4 class="text-white mb-4">Granola Cafe</h4>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="sidebar-icon">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Dashboard</span>
+                        </div>
+                        <div class="sidebar-icon">
+                            <i class="fa-solid fa-list"></i>
+                            <span>Orders &nbsp &#x25BC</span>
+                            <div class="submenu">
+                                <a href="order_lists.html" class="submenu-item">
+                                    <i class="fa-solid fa-clipboard-list"></i>
+                                    <span>View Orders</span>
+                                </a>
+                                <a href="kitchen_orders.html" class="submenu-item">
+                                    <i class="fa-solid fa-clipboard-list"></i>
+                                    <span>View Kitchen Display</span>
+                                </a>
+                            </div>
+                        </div>
+                    <div class="sidebar-icon">
+                        <i class="fas fa-utensils"></i>
+
+                        
+                        <span>Dishes &nbsp &#x25BC</span>
+                        <div class="submenu">
+                            <!-- for collaboration, change # to ur filename.html -->
+                            <a href="#" class="submenu-item">                       
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                <span>Dishes List</span>
+                            </a>
+                            <!-- for collaboration, change # to ur filename.html -->
+                            <a href="#" class="submenu-item">                       
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                <span>Add Dish</span>
+                            </a>
+                        </div>
+
+
+                    </div>
+                    <div class="sidebar-icon">
+                        <i class="fas fa-users"></i>
+                        <span>Members &nbsp &#x25BC</span>
+                        <div class="submenu">
+                            <a href="voucher.html" class="submenu-item">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                <span>Voucher</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sidebar-icon">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Reports &nbsp &#x25BC</span>
+                        <div class="submenu">
+                            <a href="reports.html" class="submenu-item">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                <span>Monthly</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sidebar-icon">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Payments &nbsp &#x25BC</span>
+                        <div class="submenu">
+                            <a href="receipt.html" class="submenu-item">
+                                <i class="fa-solid fa-clipboard-list"></i>
+                                <span>Receipt</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sidebar-icon" onclick="handleSignOut()">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <span>Signout</span>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Main Content - adjusted width -->
+            <div class="col-10">
+                <!-- Rest of the content remains the same -->
+                <!-- Header -->
+                <div class="row my-4">
+                    <div class="col-6">
+                        <h4>Tagline: 'Always Service with a Smile &#128512'</h4> <!-- still thinking what to put in -->
+                    </div>
+                    <div class="col-6 profile-section">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span class="me-2">Administrator &nbsp &nbsp </span>
+                        <span class="text-muted">Today : 20 Dec 2024</span>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <div class="text-muted">Today's Sales</div>
+                                    <div class="stats-value">$1,460.00</div>
+                                </div>
+                                <i class="fas fa-dollar-sign fa-2x text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <div class="text-muted">Orders Today</div>
+                                    <div class="stats-value">86</div>
+                                </div>
+                                <i class="fas fa-receipt fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <div class="text-muted">Avg Order Value</div>
+                                    <div class="stats-value">$15.40</div>
+                                </div>
+                                <i class="fas fa-chart-line fa-2x text-info"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stats-card">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <div class="text-muted">Processing Time</div>
+                                    <div class="stats-value">25 min</div>
+                                </div>
+                                <i class="fas fa-clock fa-2x text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <div class="chart-container">
+                            <h5>Daily Performance - Hourly Sales</h5>
+                            <canvas id="singleLineChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="chart-container text-center">
+                            <h5>Popular Categories</h5>
+                            <canvas id="simplePieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="orders-table">
+                            <h5>Recent Orders</h5>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order #</th>
+                                        <th>Time</th>
+                                        <th>Items</th>
+                                        <th>Total (w/gst)</th>
+                                        <th>Table</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#1234</td>
+                                        <td>10:45 AM</td>
+                                        <td>Amazing Chicken Burger, Hot Latte</td>
+                                        <td>$15.99</td>
+                                        <td>Table 4</td>
+                                        <td><span class="status-badge status-completed">Completed</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1235</td>
+                                        <td>10:52 AM</td>
+                                        <td>Double Stack Burger, Coke</td>
+                                        <td>$18.98</td>
+                                        <td>Table 7</td>
+                                        <td><span class="status-badge status-preparing">Preparing</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1236</td>
+                                        <td>10:48 AM</td>
+                                        <td>Pizza, Dasani Mineral Water</td>
+                                        <td>$15.99</td>
+                                        <td>Table 4</td>
+                                        <td><span class="status-badge status-completed">Preparing</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1237</td>
+                                        <td>10:45 AM</td>
+                                        <td>Amazing Chicken Burger, Hot Latte</td>
+                                        <td>$15.99</td>
+                                        <td>Table 1</td>
+                                        <td><span class="status-badge status-completed">Completed</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1238</td>
+                                        <td>10:52 AM</td>
+                                        <td>Double Stack Burger, Coke</td>
+                                        <td>$18.98</td>
+                                        <td>Table 2</td>
+                                        <td><span class="status-badge status-preparing">Preparing</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Details</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>#1239</td>
+                                        <td>10:48 AM</td>
+                                        <td>Pizza, Dasani Mineral Water</td>
+                                        <td>$15.99</td>
+                                        <td>Table 3</td>
+                                        <td><span class="status-badge status-completed">Preparing</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">Details</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts remain the same -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script>
+        window.onload = function() {
+            // Charts code remains the same
+            const singleLineCtx = document.getElementById('singleLineChart');
+            if (singleLineCtx) {
+                new Chart(singleLineCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', "7PM"],
+                        datasets: [{
+                            label: 'Sales ($)',
+                            data: [0, 50, 120, 150, 180, 240, 220, 300, 380],
+                            borderColor: '#4e73df',
+                            borderWidth: 2,
+                            pointRadius: 3,
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+
+            const pieCtx = document.getElementById('simplePieChart');
+            if (pieCtx) {
+                new Chart(pieCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Drinks', 'Foods', 'Desserts', 'Sides'],
+                        datasets: [{
+                            data: [45, 30, 15, 10],
+                            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+        };
+
+    /* to handle sign out from dashboard back to admin login page by using onclick, might need this for later on*/
+    function kitchenOrderView() {
+        // Clear any stored session data
+        localStorage.clear();
+        sessionStorage.clear();
+        // Redirect to login page
+        window.location.href = 'kitchen.html';
+        }
+
+    /* to handle sign out from dashboard back to admin login page by using onclick*/
+    function handleSignOut() {
+    // Clear any stored session data
+    localStorage.clear();
+    sessionStorage.clear();
+    // Redirect to login page
+    window.location.href = 'login.html';
+    }
+
+    </script>
+</body>
+</html>

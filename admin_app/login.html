@@ -17,7 +17,7 @@
             height: 100vh;
         }
         .login-form {
-            width: 40%;
+            width: 30%;
             background-color: #fff;
             padding: 30px;
             display: flex;
@@ -32,19 +32,16 @@
             margin-bottom: 20px;
         }
         .logo-img {
-            height: 50px; /* Adjust the logo size */
-            width: auto;
-        }
-        .logo-img {
-            width: 100px; /* Adjust the width as needed */
+            object-fit: contain;/* Adjust the logo size */
+            width: 80px; /* Adjust the width as needed */
             height: auto; /* Maintain aspect ratio */
-            padding-top: 20px; /* Add padding to the top */
+            padding-top: 10px; /* Add padding to the top */
             filter: brightness(0) saturate(100%) invert(50%) sepia(100%) hue-rotate(-20deg) saturate(500%) brightness(100%);
         }
-
         .login-form h1 {
             font-size: 1.8rem;
             margin: 0;
+            text-align: left;
             color: #FF6F00;
             margin-left: 10px; /* Add space between the logo and text */
         }
@@ -65,7 +62,8 @@
             background-color: #e65c00;
         }
         .image-section {
-            width: 60%;
+            width: 70%;
+            min-height: 300px;
             background-image: url('./images/food_img.png'); /* Ensure this is the correct path */
             background-size: cover;
             background-position: center;
@@ -93,6 +91,7 @@
                 <h1>Granola Cafe</h1>
             </div>
             <p class="text-center">Enter your credentials to access Granola Cafe.</p>
+            <h1 class="text-center">Login</h1>
             <form id="loginForm">
                 <div class="mb-3">
                     <label for="email">Email</label>
@@ -119,7 +118,7 @@
 
             // Replace the following with your login logic
             if (email === "admin@granolacafe.com" && password === "password123") {
-                alert("Login successful!");
+                window.location.href = "G_cafe.html";
             } else {
                 alert("Invalid credentials. Please try again.");
             }
