@@ -182,6 +182,9 @@
 				<div class="col-9 pt-4 pe-4">
 					<div class="h-100 border rounded-4 p-4">
 						<h1>Dishes</h1>
+						<div id="dish-container" class="container mt-4">
+							<!-- To append dishes here -->
+						</div>
 						<div class="table-responsive">
 							<table class="table table-striped table-sm">
 							  <thead>
@@ -203,7 +206,16 @@
 								  <td>$10</td>
 								  <td>20</td>
 								  <td>Available</td>
-								  <td>Details/Edit/Delete</td>
+								  <td>
+									<button
+									class="btn btn-sm btn-secondary text-white w-50"
+									type="button"
+									onclick="window.location.href='#'";
+									>
+									More
+									</button>
+								  </td>
+								  
 								</tr>
 								<tr>
 									<td>02</td>
@@ -212,7 +224,15 @@
 									<td>$10</td>
 									<td>20</td>
 									<td>Available</td>
-									<td>Details/Edit/Delete</td>
+									<td>
+										<button
+										class="btn btn-sm btn-secondary text-white w-50"
+										type="button"
+										onclick="window.location.href='#'";
+										>
+										More
+										</button>
+									  </td>
 								</tr>
 								<tr>
 									<td>03</td>
@@ -293,10 +313,12 @@
 					
 					</div>
 				</div>
+				
 				<!-- End column for content area -->
 			</div>
 		</main>
 
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="script/dishes.js"></script>
 	</body>
 </html>

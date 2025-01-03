@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Add Dish Page</title>
+		<title>Dishes Page</title>
 
 		<!-- Import Bootstrap -->
 		<link
@@ -24,6 +24,7 @@
 		<link rel="stylesheet" href="styles/admin.css" />
 	</head>
 	<body>
+		
 		<!-- Start container for navbar -->
 		<header
 			class="container-fluid sticky-top bg-white flex-md-nowrap p-0 shadow"
@@ -61,7 +62,7 @@
 					<!-- Dropdown menu -->
 					<ul class="dropdown-menu text-small shadow">
 						<li><a class="dropdown-item" href="#">Orders</a></li>
-						<li><a class="dropdown-item" href="dishes.html">Dishes</a></li>
+						<li><a class="dropdown-item" href="#">Dishes</a></li>
 						<li><a class="dropdown-item" href="#">Users</a></li>
 						<li><hr class="dropdown-divider" /></li>
 						<li><a class="dropdown-item" href="#">Sign out</a></li>
@@ -140,7 +141,7 @@
 										</li>
 										<li>
 											<a
-												href="#"
+												href="add_dish.html"
 												class="link-body-emphasis d-inline-flex text-decoration-none"
 												>Add Dish</a
 											>
@@ -179,104 +180,163 @@
 				<!-- End column for sidebar -->
 
 				<!-- Start column for content area  -->
-				<div class="col-9 pe-3">
+				<div class="col-9 pt-4 pe-4">
 					<div class="h-100 border rounded-4 p-4">
-						<h2>Add Dish</h2>
-						<img
-						class="img-fluid w-100 h-25"
-						src="images/placeholder.png" 
-						alt="placeholder">
-						
-						<button
-									class="upload-btn btn btn-sm w-25 h-auto float-end mt-2"
+						<h1>Dishes</h1>
+						<div class="table-responsive">
+							<table class="table table-striped table-sm">
+							  <thead>
+								<tr>
+								  <th>ID No.</th>
+								  <th>Dish Name</th>
+								  <th>Category</th>
+								  <th>Price</th>
+								  <th>Quantity</th>
+								  <th>Status</th>
+								  <th>Action</th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr>
+								  <td>01</td>
+								  <td>Beef Burger</td>
+								  <td>Burger</td>
+								  <td>$10</td>
+								  <td>20</td>
+								  <td>Available</td>
+								  <td>
+									<button
+									class="btn btn-sm btn-secondary text-white w-50"
 									type="button"
 									onclick="window.location.href='#'";
-								>
-									Upload Image
-						</button>
-						
-						<hr class="my-5">
-						
-						<!-- Add Dish Form -->
-						<form class="">
-							<div class="row g-3">
-
-							  <div class="col-sm-6">
-								<label for="productName" class="form-label">Product Name</label>
-								<input type="text" class="form-control" id="productName" placeholder="" value="" required="">
-							  </div>
-				  
-							  <div class="col-sm-6">
-								<label for="productCat" class="form-label">Product Category</label>
-								<select class="form-select" id="productCat" required="">
-								  <option value="">Choose...</option>
-								  <option>Burger</option>
-								  <option>Pasta</option>
-								  <option>Appetizer</option>
-								  <option>Dessert</option>
-								  <option>Drink</option>
-								</select>
-							  </div>
-
-							  <div class="col-sm-6">
-								<label for="costPrice" class="form-label">Cost Price</label>
-								<input type="text" class="form-control" id="costPrice" placeholder="" value="" required="">
-							  </div>
-
-							  <div class="col-sm-6">
-								<label for="sellingPrice" class="form-label">Selling Price</label>
-								<input type="text" class="form-control" id="sellingPrice" placeholder="" value="" required="">
-							  </div>
-				  
-							  <div class="col-sm-6">
-								<label for="quantity" class="form-label">Quantity</label>
-								<select class="form-select" id="quantity" required="">
-								  <option value="">Choose...</option>
-								  <option>0-10</option>
-								  <option>10-20</option>
-								  <option>20-30</option>
-								  <option>30-40</option>
-								  <option>40-50</option>
-								</select>
-							  </div>
-
-							  <div class="col-sm-6">
-								<label for="status" class="form-label">Status</label>
-								<select class="form-select" id="status" required="">
-								  <option value="">Choose...</option>
-								  <option>Available</option>
-								  <option>In Review</option>
-								  <option>Sold Out</option>
-								</select>
-							  </div>
-				  
-							  <div class="col-12 mt-4">
-								<label for="productDesc">Product Description</label>
-								<textarea class="form-control" placeholder="Add a product description" id="productDesc"></textarea>
-							  </div>
-							
-							<button
-									class="upload-btn btn btn-sm w-25 ms-2 mt-2"
-									type="button"
-									onclick="window.location.href='#'";
-								>
-									Save
-						</button>
-						<button
-									class="btn btn-sm btn-secondary text-white w-25 ms-2 mt-2"
-									type="button"
-									onclick="window.location.href='#'";
-								>
-									Cancel
-						</button>
-						</form>
+									>
+									More
+									</button>
+								  </td>
+								</tr>
+								<tr>
+									<td>02</td>
+									<td>Chicken Burger</td>
+									<td>Burger</td>
+									<td>$10</td>
+									<td>20</td>
+									<td>Available</td>
+									<td>
+										<button
+										class="btn btn-sm btn-secondary text-white w-50"
+										type="button"
+										onclick="window.location.href='#'";
+										>
+										More
+										</button>
+									  </td>
+								</tr>
+								<tr>
+									<td>03</td>
+									<td>Vegetarian Burger</td>
+									<td>Burger</td>
+									<td>$10</td>
+									<td>20</td>
+									<td>In Review</td>
+									<td>Details/Edit/Delete</td>
+								</tr>
+								<tr>
+									<td>04</td>
+									<td>Aglio Olio</td>
+									<td>Pasta</td>
+									<td>$10</td>
+									<td>0</td>
+									<td>Sold Out</td>
+									<td>Details/Edit/Delete</td>
+								  </tr>
+								  <tr>
+									<td>05</td>
+									<td>Pesto</td>
+									<td>Pasta</td>
+									<td>$10</td>
+									<td>0</td>
+									<td>Sold Out</td>
+									<td>Details/Edit/Delete</td>
+								  </tr>
+								  <tr>
+									<td>06</td>
+									<td>Salad</td>
+									<td>Appetizer</td>
+									<td>$10</td>
+									<td>10</td>
+									<td>Available</td>
+									<td>Details/Edit/Delete</td>
+								  </tr>
+								  <tr>
+									<td>07</td>
+									<td>Truffle Fries</td>
+									<td>Dessert</td>
+									<td>$8</td>
+									<td>0</td>
+									<td>Sold Out</td>
+									<td>Details/Edit/Delete</td>
+								  </tr>
+								  <tr>
+									<td>08</td>
+									<td>Tiramisu</td>
+									<td>Dessert</td>
+									<td>$6</td>
+									<td>30</td>
+									<td>Available</td>
+									<td>Details/Edit/Delete</td>
+								  </tr>
+								  <tr>
+									<td>09</td>
+									<td>Latte</td>
+									<td>Drink</td>
+									<td>$4</td>
+									<td>30</td>
+									<td>Available</td>
+									<td>Details/Edit/Delete</td>
+								  </tr>
+								  <tr>
+									<td>10</td>
+									<td>Iced Tea</td>
+									<td>Drink</td>
+									<td>$3</td>
+									<td>30</td>
+									<td>Available</td>
+									<td>Details/Edit/Delete</td>
+								  </tr>
+								
+							  </tbody>
+							</table>
+						  </div>
 					
+					</div>
 				</div>
 				<!-- End column for content area -->
-			   </div>
 			</div>
 		</main>
-
+        <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalSheet">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content rounded-4 shadow">
+                <div class="modal-header border-bottom-0">
+                  <h1 class="modal-title fs-5">Beef Burger</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-0">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est aliquid quo iure? Eligendi odio error fugiat, voluptatem ullam deleniti autem. Eius facere inventore quaerat officia illo molestiae odit hic in porro saepe voluptatibus ullam eligendi natus perferendis earum, ipsam placeat dignissimos vero minus magni. Enim adipisci quaerat reiciendis quia aut.</p>
+                </div>
+                <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+                  <button type="button" class="upload-btn btn btn-lg">Edit</button>
+                  <button type="button" class="upload-btn btn btn-lg">Delete</button>
+                  <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+  <!-- Vertically centered scrollable modal -->
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    ...
+  </div>
+        
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	</body>
 </html>
