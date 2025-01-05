@@ -39,7 +39,7 @@
         <nav class="tab-nav-bar">
             <div class="tab-navigation">
             <ul class="tab-menu">
-                <li class ="tab-btn active">Mains</li>
+                <li class ="tab-btn active">Burgers</li>
                 <li class ="tab-btn">Pasta</li>
                 <li class ="tab-btn">Pizza</li>
                 <li class ="tab-btn">Sides</li>
@@ -59,7 +59,7 @@
                     <h1>Burgers</h1>
                 </div>
                 <div class="item-cards row">
-                    <div class="col-sm-12 col-md-6 col-lg-4"> 
+                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv">
                         <div class="food-card">
                             <div class="food-card-img">
                                 <img src="/img/Mains/Cheeseburger.jpg" alt="Burger">
@@ -74,8 +74,10 @@
                             </div>
                         </div>
                     </div>
+
+                 
                     <!-- 2nd Card  -->
-                    <div class="col-sm-12 col-md-6 col-lg-4"> 
+                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv" > 
                         <div class="food-card">
                             <div class="food-card-img">
                                 <img src="/img/Mains/Chicken Burger.jpg" alt="Burger">
@@ -90,9 +92,45 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                 
+                    <!-- 2nd Card  -->
+                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv" > 
+                        <div class="food-card">
+                            <div class="food-card-img">
+                                <img src="/img/Mains/Chicken Burger.jpg" alt="Burger">
+                            </div>
+                            <div class="food-card-content">
+                                <h3 class = "food-title">Amazin' Chicken Burger</h3>
+                                <p class="food-desc">Chicken burger with the juicies meat in town.</p>
+                                <p class="price">$15.99</p>
+                                <div class="card-button">
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 
+                    <!-- 2nd Card  -->
+                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv" > 
+                        <div class="food-card">
+                            <div class="food-card-img">
+                                <img src="/img/Mains/Chicken Burger.jpg" alt="Burger">
+                            </div>
+                            <div class="food-card-content">
+                                <h3 class = "food-title">Amazin' Chicken Burger</h3>
+                                <p class="food-desc">Chicken burger with the juicies meat in town.</p>
+                                <p class="price">$15.99</p>
+                                <div class="card-button">
+                                    <button class="btn-add">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+
+                  
+                </div>
+                </div>
              <!-- Tab content to swap between in the nav bar -->
              <!-- Pasta's tab -->
              <div class="tab-content">
@@ -100,7 +138,7 @@
                     <h1>PASTA</h1>
                 </div>
                 <div class="item-cards row">
-                    <div class="col-sm-12 col-md-6 col-lg-4"> 
+                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv"> 
                         <div class="food-card">
                             <div class="food-card-img">
                                 <img src="/img/Pasta/pasta 1.jpg" alt="Pasta1">
@@ -116,7 +154,7 @@
                         </div>
                     </div>
                     <!-- 2nd Card  -->
-                    <div class="col-sm-12 col-md-6 col-lg-4"> 
+                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv"> 
                         <div class="food-card">
                             <div class="food-card-img">
                                 <img src="/img/Pasta/Pasta 3.jpg" alt="Pasta2">
@@ -131,9 +169,33 @@
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
 
+             <!-- Modal Structure Template-->
+             <div class="modal fade modal-sm" id="food-item-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modal-title"></h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <img id="modal-img"/>
+                      <h2 id="modal-title"></h3>
+                      <p id="modal-desc"></p>
+                      <p id="modal-price"></p>
+                      <div class="mb-3">
+                        <label for="Additional-Requests" class="form-label">Additional Requests</label>
+                        <textarea class="form-control" id="Additional-requests-text" rows="3"></textarea>
+                      </div>
+                      <input class="btn btn-warning btn-add" type="submit" value="Add to Cart">
+                    </div>
+                  </div>
+                </div>
+              </div>
                 
         </section>
            
@@ -175,7 +237,9 @@
    <script 
    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+   
 </script>
+
 
 <script src="/script/checkout.js"></script>
 <script src="/script/main.js"></script>
