@@ -88,17 +88,17 @@ body {
 
   /* Start of Main Order Page */
 
-  .orderpage p {
+  .orderpage p, .filter-header p {
     margin-top: 0;
     margin-bottom: 0.1875rem;
     font-size: small;
   }
 
-  .orderpage h1 {
+  .orderpage h1, .filter-header h1 {
     font-family: 'Gagalin', Arial, Helvetica, sans-serif;
     margin-bottom: 0.1875rem;
-    
   }
+
   .orderpage {
     /* position: fixed; */
     top: 0;
@@ -124,16 +124,14 @@ body {
     align-content: center;
   }
 
-  .orderpage img {
-    align-items: center;
-    justify-content: center;
+  .orderpage > header > a {
     width: 10%;
-    height: auto;
-    text-align: center;
-    display: inline-block;
-    object-position: center;
-    object-fit: contain;
+    margin: auto 0;
+  }
+
+  .orderpage > header > a > img {
     max-width: 100%;
+    height: auto;
   }
   /* Tab Navigation Bar */
 
@@ -193,7 +191,6 @@ body {
     color: white;
     padding: 0.2rem 0.4rem;
     font-size: 15rem;
-
     position: absolute; /* Position the badge within the relatively positioned button */
     top: 0;
     right: 0;
@@ -206,6 +203,7 @@ body {
   section {
     background-color: #fff4e2;
   }
+
   .tab-content {
     margin: 0rem 1rem 0rem 1rem;
     content-visibility: hidden; /* Hide content when tab is not active */
@@ -365,6 +363,69 @@ body {
     right: 0;
   }
 
+  .filter-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0.3rem 0;
+    color: #fff;
+    background-color: #e26a05;
+    text-align: center;
+  }
+
+  .filter-header > a {
+    width: 10%;
+    margin: auto 0;
+  }
+
+  .filter-header > a > img {
+    height: auto;
+    max-width: 100%;
+  }
+  
+  .filter-header .hide-balance {
+    opacity: 0;
+    width: 10%;
+  }
+
+  .filter-header > div {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .filter-section {
+    height: 100vh;
+    padding: 1rem;
+    display: block;
+    align-items: center;
+  }
+
+  .filter-section section{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter-section h1{
+    font-family: "DM Sans", Arial, Helvetica, sans-serif;
+    font-weight: 800;
+  }
+
+  .filter-section button{
+    width: 90%;
+    margin: 0.5rem auto;
+    border-radius: 0.7rem;
+    background-color: #fff;
+    border: solid 2px #4b1805;
+    color: #4b1905;
+    height: 2rem;
+    font-weight: 600;
+  }
+
+  .filter-section button:active{
+    background-color: #e26a05;
+    color: #fff;
+  }
 
 }
 
