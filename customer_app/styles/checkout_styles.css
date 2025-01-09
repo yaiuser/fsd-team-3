@@ -29,62 +29,7 @@ body {
     height: 100vh;
   }
 
-  /* Start of Customer Login Page */
 
-   /* *Loading effects for Main Menu */
-   .loadingpage{
-    background-color: #e26a05;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-/*     animation-duration: 3s; */
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 2;
-/*     animation-name: loading; */
-    color: #fff;
-}
-
-.loadingpage h2{
-    margin-bottom: 0.5rem;
-    font-family: 'Gagalin', Arial, Helvetica, sans-serif;
-    font-size: 2rem;
-}
-
-.loadingpage h1, .loadingpage p, .loadingpage button, .loadingpage input{
-    font-family: 'DM Sans', Arial, Helvetica, sans-serif;
-}
-
-.loadingpage > img{
-    max-width: 50%;
-}
-
-.loadingpage .btn-outline-secondary{
-    background-color: #fff4e2;
-    font-weight: 500;
-    color: #e26a05;
-}
-
-.loadingpage p{
-    font-size: 0.8rem;
-}
-.loadingpage a{
-    color: #477caa;
-}
-
-.loadingpage button, .loadingpage input{
-    border-radius: 2rem;
-    border: 0.5px solid #e26a05;
-}
-
-.loadingpage button:hover, .loadingpage a:hover{
-    color: #000;
-}
-
-/* End of Customer Loading Page */
 
   /* Start of Main Order Page */
 
@@ -135,71 +80,7 @@ body {
     object-fit: contain;
     max-width: 100%;
   }
-  /* Tab Navigation Bar */
 
-  .tab-nav-bar {
-    justify-content: center;
-    align-items: center;
-    padding: 0.1875rem 0;
-  }
-
-  .tab-menu {
-    display: flex;
-    overflow-x: auto; /* Allow horizontal scrolling */
-    white-space: nowrap;
-    user-select: none; /* Disable text selection */
-    border-bottom: 2px solid #e26a05;
-    scroll-behavior: smooth;
-  }
-
-  .tab-menu.dragging {
-    scroll-behavior: unset;
-    transition: max-width 1s ease-in-out;
-  }
-  /* Remove the scroll bar for the nav tab */
-  .tab-menu::-webkit-scrollbar {
-    display: none;
-  }
-
-  .tab-navigation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    max-width: fit-content;
-  }
-
-  .tab-btn {
-    display: inline-block;
-    position: relative;
-    list-style: none;
-    font-family: "DM Sans";
-    font-weight: 600;
-    transition: 0.3s ease;
-    text-align: center;
-    padding: 1rem 1.5rem 0rem 0rem; /* Add vertical padding to increase height */
-  }
-
-  .tab-btn.active {
-    transition: all 0.2s ease-in-out;
-    color: #e26a05;
-    text-align: center;
-    position: relative; /* Needed for absolute positioning of ::after */
-  }
-
-  .menu_design active {
-    background-color: #fa3e3e;
-    border-radius: 2px;
-    color: white;
-    padding: 0.2rem 0.4rem;
-    font-size: 15rem;
-
-    position: absolute; /* Position the badge within the relatively positioned button */
-    top: 0;
-    right: 0;
-  }
-
-  /* end of nav bar */
 
   /* * Start of Tabs & Content Cards */
 
@@ -207,9 +88,9 @@ body {
     background-color: #fff4e2;
     padding-bottom: 10rem;
   } */
-  .tab-content {
-    margin: 0rem 1rem 0rem 1rem;
-    content-visibility: hidden; /* Hide content when tab is not active */
+  .cart-content {
+    margin: 1rem 1rem 0rem 1rem;
+
 
   }
   .title h1 {
@@ -220,11 +101,6 @@ body {
   }
 
 /* The content card itself */
-
-.tab-content.active{
-    content-visibility: visible;
-    transition:  1s ease-out;
-}
 
 .item-cards {
     display: flex;
@@ -344,14 +220,11 @@ body {
 
   /* Initially hidden footer content */
   .orderFooter {
-    opacity: 0;
-    transition: opacity 4s ease-in-out;
+    opacity:100%;
     padding: 0;
   }
 
-  .d-none {
-    display: none;
-  }
+
 
   /* Show the amount of items added to the cart */
   .order_badge {
@@ -360,25 +233,12 @@ body {
     color: white;
     padding: 0.2rem 0.4rem;
     font-size: 1rem;
-
     position: absolute; /* Position the badge within the relatively positioned button */
     top: -1rem;
     right: 0;
   }
 }
-/* * Adjusting Modal's Design */
 
-
-
-
-
-/* * End of Modal */
-
-/** Checkout Page */
-section > .checkout-page {
-  margin: 0rem 1rem 0rem 1rem;
-}
- 
 
 
 /* *********************** */

@@ -64,10 +64,12 @@ document.querySelectorAll('.btn-add').forEach((button) => {
   button.addEventListener('click', (event) => {
     totalItems++; // Increment the shared counter
 
+    
     // Update the global badge inside the 'btnConfirmOrder' button
     const badge = document.querySelector('#btnConfirmOrder .order_badge');
     if (badge) {
       badge.textContent = totalItems.toString(); // Update badge text
+     
     } else {
       console.error('Order badge not found!');
     }
