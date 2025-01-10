@@ -114,7 +114,7 @@ function appendDishes(dishes) {
 			dishImage.setAttribute("src", dish.img);
 			dishImage.setAttribute("alt", dish.name);
 
-			const dishDesc = modalSheet.querySelector(".modal-body");
+			const dishDesc = modalSheet.querySelector("#modal-body-description");
 			dishDesc.textContent = dish.description;
 		});
 
