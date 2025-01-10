@@ -31,7 +31,7 @@ body {
 
 
 
-  /* Start of Main Order Page */
+  /** Start of Main Order Page */
 
   .orderpage p {
     margin-top: 0;
@@ -56,31 +56,38 @@ body {
   .orderpage > header {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center; /* Centers everything in the header */
+    align-items: center; /* Vertically center items */
     padding: 0.3rem 0;
     color: #fff;
     background-color: #e26a05;
-    text-align: center;
-  }
+    width: 100%; /* Ensures it uses the full width */
+    position: relative; /* Needed for positioning the back button */
+}
 
-  .orderpage > header > div {
+.orderpage > header > div {
     display: flex;
     flex-direction: column;
-    align-content: center;
-  }
+    align-items: center; /* Centers text horizontally */
+    text-align: center; /* Centers the text inside the div */
+}
 
-  .orderpage img {
-    align-items: center;
+.return-link {
+    position: absolute; /* Allows controlled positioning inside the header */
+    left: 10px; /* Adjust this to move the link horizontally */
+    display: flex; /* Ensures the link behaves like a block element */
+    align-items: center; /* Keeps the image centered vertically */
     justify-content: center;
-    width: 10%;
-    height: auto;
-    text-align: center;
-    display: inline-block;
-    object-position: center;
+    height: 2.5rem; /* Same height as the icon */
+    text-decoration: none; /* Removes underline from the link */
+}
+
+.return-icon {
+    width: 2rem;
+    height: 2.5rem;
     object-fit: contain;
     max-width: 100%;
-  }
-
+}
 
   /* * Start of Tabs & Content Cards */
 
@@ -172,6 +179,15 @@ body {
     color: white;
     padding: 0rem 0.4rem;
     border: none;
+}
+
+.btn-minus{
+  background-color: #e96010;
+  border-radius: 0.5rem;
+  font-size: large;
+  color: white;
+  padding: 0rem 0.4rem;
+  border: none;
 }
 /* * End of Card Styling */
 
