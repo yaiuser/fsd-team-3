@@ -53,6 +53,7 @@ body{
         max-width: 50%;
     }
 
+   
     @keyframes loading{
         from {opacity: 1;}
         to {opacity: 0;}
@@ -156,6 +157,10 @@ body{
         color: #e26a05;
         font-weight: 600;
     }
+
+
+
+
 }
 
 /* *********************** */
