@@ -46,7 +46,7 @@ function appendDishes(dishes) {
 		thead.append(thCell);
 	});
 
-	const tbody = tbl.createTBody();		// create table body
+	const tbody = tbl.createTBody();			// create table body
 
 	dishes.forEach((dish) => {					// loop through the dishes array to create rows
 		const tbodyRow = tbody.insertRow(0);

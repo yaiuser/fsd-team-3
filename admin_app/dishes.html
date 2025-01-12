@@ -184,7 +184,17 @@
 				<!-- Start column for content area  -->
 				<div class="col-9 pt-4 pe-4">
 					<div class="h-100 border rounded-4 p-4">
+						<div class="d-flex justify-content-between align-items-center">
 						<h1>Dishes</h1>
+						<button		
+										
+									class="upload-btn btn btn-sm p-2 me-3"
+									type="button"
+									onclick="window.location.href='add_dish.html';";
+								>
+									+ Add Dish
+						</button>
+						</div>
 						<div id="dish-container" class="container mt-4">
 							<!-- To append dishes here -->
 						</div>
@@ -223,9 +233,9 @@
 					<div
 						class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0"
 					>
-						<button type="button" class="upload-btn btn btn-lg">Edit</button>
-						<button type="button" class="upload-btn btn btn-lg">Delete</button>
-						<button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">
+						<button type="button" class="upload-btn btn btn-sm p-2 me-3">Edit</button>
+						<button type="button" class="upload-btn btn btn-sm p-2 me-3">Delete</button>
+						<button type="button" class="btn btn-sm p-2 me-3 btn-secondary" data-bs-dismiss="modal">
 							Close
 						</button>
 					</div>
