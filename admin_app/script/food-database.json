@@ -1,0 +1,273 @@
+[
+
+	{
+		"id": 1,
+		"image": "../../img/Dessert/lemon-tart.jpg",
+		"title": "Lemon Tart",
+		"description": "A buttery golden crust filled with tangy lemon curd and topped with powdered sugar, this lemon tart perfectly balances sweetness and citrusy zest.",
+		"price": 6.5,
+		"category": "Dessert",
+		"quantity": 25
+	},
+	{
+		"id": 2,
+		"image": "../../img/Dessert/raspberry-cheesecake.jpg",
+		"title": "Raspberry Cheesecake",
+		"description": "A creamy cheesecake swirled with vibrant raspberry puree on a buttery graham cracker crust, offering a perfect blend of tangy fruitiness and rich indulgence.",
+		"price": 6.7,
+		"category": "Dessert",
+		"quantity": 18
+	},
+	{
+		"id": 3,
+		"image": "../../img/Dessert/strawberry-blueberry-waffles.jpg",
+		"title": "Strawberry Blueberry Waffles",
+		"description": "Crispy golden waffles topped with fresh strawberries and blueberries, drizzled with syrup for a perfect balance of sweetness and crunch.",
+		"price": 6.7,
+		"category": "Dessert",
+		"quantity": 30
+	},
+	{
+		"id": 4,
+		"image": "../../img/Drinks/coke.jpg",
+		"title": "Coca-cola",
+		"description": "A refreshing, ice-cold classic with crisp carbonation and the perfect balance of sweetness and bold cola flavor.",
+		"price": 1.8,
+		"category": "Drinks",
+		"quantity": 50
+	},
+	{
+		"id": 5,
+		"image": "../../img/Drinks/fruit-punch.jpg",
+		"title": "Fruit Punch",
+		"description": "A vibrant blend of tropical fruit flavors, perfectly chilled for a refreshing and sweet burst of sunshine in every sip.",
+		"price": 2.5,
+		"category": "Drinks",
+		"quantity": 40
+	},
+	{
+		"id": 6,
+		"image": "../../img/Drinks/orange-juice.jpg",
+		"title": "Orange Juice",
+		"description": "Freshly squeezed and bursting with citrusy goodness, our orange juice delivers a naturally sweet and refreshing taste in every sip.",
+		"price": 3,
+		"category": "Drinks",
+		"quantity": 60
+	},
+	{
+		"id": 7,
+		"image": "../../img/Drinks/sprite.jpg",
+		"title": "Sprite",
+		"description": "A crisp and refreshing lemon-lime soda with just the right balance of sweetness and fizz to brighten your day.",
+		"price": 1.8,
+		"category": "Drinks",
+		"quantity": 45
+	},
+	{
+		"id": 8,
+		"image": "../../img/Drinks/water.jpg",
+		"title": "Water",
+		"description": "Plain' ol water to quench your thirst and keep you hydrated.",
+		"price": 0.5,
+		"category": "Drinks",
+		"quantity": 100
+	},
+	{
+		"id": 9,
+		"image": "../../img/Mains/burrito.jpg",
+		"title": "Burrito",
+		"description": "A warm, soft tortilla wrapped around a flavorful mix of seasoned protein, rice, beans, fresh veggies, and a touch of zesty salsa.",
+		"price": 11,
+		"category": "Mains",
+		"quantity": 50
+	},
+	{
+		"id": 10,
+		"image": "../../img/Mains/cheeseburger.jpg",
+		"title": "Cheeseburger",
+		"description": "A juicy beef patty topped with melted cheese, crisp lettuce, fresh tomatoes, and tangy pickles, all nestled in a soft, toasted bun.",
+		"price": 8.9,
+		"category": "Mains",
+		"quantity": 80
+	},
+	{
+		"id": 11,
+		"image": "../../img/Mains/chicken-burger.jpg",
+		"title": "Chicken Burger",
+		"description": "A tender, grilled chicken patty topped with crispy lettuce, juicy tomatoes, and creamy mayonnaise, all inside a soft, toasted bun.",
+		"price": 10.9,
+		"category": "Mains",
+		"quantity": 70
+	},
+	{
+		"id": 12,
+		"image": "../../img/Mains/chicken-chop.jpg",
+		"title": "Chicken Chop",
+		"description": "A juicy, tender chicken chop grilled to perfection, served with a savory sauce and accompanied by potatoes and fresh veggies.",
+		"price": 13.9,
+		"category": "Mains",
+		"quantity": 35
+	},
+	{
+		"id": 13,
+		"image": "../../img/Mains/chicken-sausage-burrito.jpg",
+		"title": "Chicken Sausage Burrito",
+		"description": "A warm tortilla wrapped around flavorful chicken sausage, seasoned rice, beans, and a blend of fresh veggies, topped with a zesty sauce.",
+		"price": 12.9,
+		"category": "Mains",
+		"quantity": 40
+	},
+	{
+		"id": 14,
+		"image": "../../img/Mains/fish-and-chips.jpg",
+		"title": "Fish and Chips",
+		"description": "Crispy battered fish fillets served with golden, crispy fries and a side of tartar sauce for the perfect classic British meal.",
+		"price": 15.9,
+		"category": "Mains",
+		"quantity": 25
+	},
+	{
+		"id": 15,
+		"image": "../../img/Mains/grilled-salmon.jpg",
+		"title": "Grilled Salmon",
+		"description": "A perfectly grilled salmon fillet with a crispy exterior and tender, flaky interior, served with a squeeze of lemon and a side of fresh vegetables.",
+		"price": 19.9,
+		"category": "Mains",
+		"quantity": 20
+	},
+	{
+		"id": 16,
+		"image": "../../img/Mains/mac-and-cheese.jpg",
+		"title": "Mac and Cheese",
+		"description": "Creamy, cheesy macaroni enveloped in a rich, velvety sauce, baked to golden perfection with a crispy, buttery topping.",
+		"price": 6.9,
+		"category": "Mains",
+		"quantity": 60
+	},
+	{
+		"id": 17,
+		"image": "../../img/Mains/mignon-with-carrot-puree.jpg",
+		"title": "Mignon with carrot puree",
+		"description": "A tender, perfectly cooked filet mignon paired with smooth, velvety carrot puree, creating a luxurious balance of flavors and textures.",
+		"price": 23.9,
+		"category": "Mains",
+		"quantity": 15
+	},
+	{
+		"id": 18,
+		"image": "../../img/Mains/ribs.jpg",
+		"title": "Ribs",
+		"description": "Succulent, fall-off-the-bone ribs glazed with a smoky, sweet BBQ sauce, served with a side of crispy fries and tangy coleslaw.",
+		"price": 19.9,
+		"category": "Mains",
+		"quantity": 30
+	},
+	{
+		"id": 19,
+		"image": "../../img/Mains/roast-chicken.jpg",
+		"title": "Roast Chicken",
+		"description": "A perfectly roasted chicken with crispy, golden skin and juicy, tender meat, served with a side of savory potatoes and seasonal vegetables.",
+		"price": 11.9,
+		"category": "Mains",
+		"quantity": 55
+	},
+	{
+		"id": 20,
+		"image": "../../img/Mains/steak.jpg",
+		"title": "Steak",
+		"description": "A juicy, expertly cooked steak with a rich, savory crust and tender, flavorful interior, served with your choice of sides for a satisfying meal.",
+		"price": 20.9,
+		"category": "Mains",
+		"quantity": 45
+	},
+	{
+		"id": 21,
+		"image": "../../img/Pasta/lasagne.jpg",
+		"title": "Lasagne",
+		"description": "Layers of tender pasta sheets, rich tomato-based meat ragù, velvety béchamel sauce, and a blend of melted mozzarella and Parmesan cheese, baked to golden perfection.",
+		"price": 13.0,
+		"category": "Pasta",
+		"quantity": 20
+	},
+	{
+		"id": 22,
+		"image": "../../img/Pasta/turkey-aglio-olio.jpg",
+		"title": "Turkey Bacon Aglio Olio",
+		"description": "A flavorful twist on the classic Italian dish, featuring al dente spaghetti tossed with fragrant garlic, chili flakes, and olive oil. Savory turkey bacon adds a smoky richness, complemented by a sprinkle of fresh parsley and grated Parmesan for a perfectly balanced and satisfying meal.",
+		"price": 13.0,
+		"category": "Pasta",
+		"quantity": 25
+	},
+	{
+		"id": 23,
+		"image": "../../img/Pasta/pesto.jpg",
+		"title": "Pesto Pasta",
+		"description": "A vibrant and aromatic dish featuring al dente pasta coated in a luscious basil pesto sauce. Made with fresh basil, pine nuts, garlic, Parmesan cheese, and extra virgin olive oil, the sauce delivers a perfect balance of herbaceous, nutty, and cheesy flavors.",
+		"price": 11.0,
+		"category": "Pasta",
+		"quantity": 30
+	},
+	{
+		"id": 24,
+		"image": "../../img/Pasta/zucchini-pomodoro.jpg",
+		"title": "Zucchini Pomodoro Pasta",
+		"description": "A light and refreshing dish featuring al dente pasta tossed in a vibrant tomato-based pomodoro sauce. Fresh zucchini adds a tender, subtly sweet touch, while garlic, olive oil, and herbs enhance the natural flavors.",
+		"price": 11.0,
+		"category": "Pasta",
+		"quantity": 35
+	},
+	{
+		"id": 25,
+		"image": "../../img/Pizza/mozzarella-pizza.jpg",
+		"title": "Classic Mozzarella Pizza",
+		"description": "A timeless favorite featuring a golden, hand-tossed crust topped with rich tomato sauce and generously layered with creamy, melted mozzarella cheese. Baked to perfection for a bubbly, gooey finish and garnished with a touch of fresh basil for a burst of flavor.",
+		"price": 14.0,
+		"category": "Pizza",
+		"quantity": 50
+	},
+	{
+		"id": 26,
+		"image": "../../img/Pizza/pepperoni-pizza.jpg",
+		"title": "Pepperoni Pizza",
+		"description": "A classic delight with a crispy, hand-tossed crust, smothered in rich tomato sauce and topped with creamy melted mozzarella cheese. Finished with a generous layer of spicy, savory pepperoni slices, baked to golden, bubbly perfection.",
+		"price": 16.0,
+		"category": "Pizza",
+		"quantity": 40
+	},
+	{
+		"id": 27,
+		"image": "../../img/Pizza/spinach-pizza.jpg",
+		"title": "Spinach Pizza",
+		"description": "A wholesome favorite featuring a golden, hand-tossed crust topped with creamy mozzarella cheese, tender sautéed spinach, and a rich garlic-infused tomato cream sauce.",
+		"price": 14.0,
+		"category": "Pizza",
+		"quantity": 30
+	},
+	{
+		"id": 28,
+		"image": "../../img/Sides/chicken-wings.jpg",
+		"title": "Chicken Wings",
+		"description": "Juicy, tender chicken wings, seasoned to perfection and cooked until crispy. Served with a side of creamy ranch dressing for the perfect dip.",
+		"price": 11.0,
+		"category": "Sides",
+		"quantity": 60
+	},
+	{
+		"id": 29,
+		"image": "../../img/Sides/fries.jpg",
+		"title": "Shoestring Fries",
+		"description": "Crispy, golden, and perfectly seasoned thin-cut fries, fried to a light crunch. Served hot and ideal for dipping into ketchup.",
+		"price": 9.0,
+		"category": "Sides",
+		"quantity": 75
+	},
+	{
+		"id": 30,
+		"image": "../../img/Sides/onion-rings.jpg",
+		"title": "Onion Rings",
+		"description": "Crispy, golden-brown rings of sweet onion, coated in a light, seasoned batter and fried to perfection. Crunchy on the outside, tender on the inside.",
+		"price": 9.0,
+		"category": "Sides",
+		"quantity": 40
+	}
+]
