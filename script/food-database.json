@@ -5,8 +5,9 @@
      "title": "Lemon Tart",
      "description": "A buttery golden crust filled with tangy lemon curd and topped with powdered sugar, this lemon tart perfectly balances sweetness and citrusy zest.",
      "price": 6.50,
-     "category": "Dessert",
-     "quantity": 25
+     "category": "Desserts",
+     "quantity": 25,
+     "tags": ["veg","cr"]
    },
    {
      "id": 2,
@@ -14,8 +15,9 @@
      "title": "Raspberry Cheesecake",
      "description": "A creamy cheesecake swirled with vibrant raspberry puree on a buttery graham cracker crust, offering a perfect blend of tangy fruitiness and rich indulgence.",
      "price": 6.70,
-     "category": "Dessert",
-     "quantity": 18
+     "category": "Desserts",
+     "quantity": 18,
+     "tags": ["veg","cr"]
    },
    {
      "id": 3,
@@ -23,8 +25,9 @@
      "title": "Strawberry Blueberry Waffles",
      "description": "Crispy golden waffles topped with fresh strawberries and blueberries, drizzled with syrup for a perfect balance of sweetness and crunch.",
      "price": 6.70,
-     "category": "Dessert",
-     "quantity": 30
+     "category": "Desserts",
+     "quantity": 30,
+     "tags": ["veg"]
    },
    {
      "id": 4,
@@ -33,7 +36,8 @@
      "description": "A refreshing, ice-cold classic with crisp carbonation and the perfect balance of sweetness and bold cola flavor.",
      "price": 1.8,
      "category": "Drinks",
-     "quantity": 50
+     "quantity": 50,
+     "tags": ["veg","gf"]
    },
    {
      "id": 5,
@@ -42,7 +46,8 @@
      "description": "A vibrant blend of tropical fruit flavors, perfectly chilled for a refreshing and sweet burst of sunshine in every sip.",
      "price": 2.5,
      "category": "Drinks",
-     "quantity": 40
+     "quantity": 40,
+     "tags": ["veg","gf"]
    },
    {
      "id": 6,
@@ -51,7 +56,8 @@
      "description": "Freshly squeezed and bursting with citrusy goodness, our orange juice delivers a naturally sweet and refreshing taste in every sip.",
      "price": 3,
      "category": "Drinks",
-     "quantity": 60
+     "quantity": 60,
+     "tags": ["veg","gf"]
    },
    {
      "id": 7,
@@ -60,16 +66,18 @@
      "description": "A crisp and refreshing lemon-lime soda with just the right balance of sweetness and fizz to brighten your day.",
      "price": 1.8,
      "category": "Drinks",
-     "quantity": 45
+     "quantity": 45,
+     "tags": ["veg","gf"]
    },
    {
      "id": 8,
      "image": "/img/Drinks/water.jpg",
      "title": "Water",
-     "description": "Plain' ol water to quench your thirst and keep you hydrated.",
+     "description": "Plain ol water to quench your thirst and keep you hydrated.",
      "price": 0.5,
      "category": "Drinks",
-     "quantity": 100
+     "quantity": 100,
+     "tags": ["veg","gf","cr"]
    },
    {
      "id": 9,
@@ -78,7 +86,8 @@
      "description": "A warm, soft tortilla wrapped around a flavorful mix of seasoned protein, rice, beans, fresh veggies, and a touch of zesty salsa.",
      "price": 11,
      "category": "Mains",
-     "quantity": 50
+     "quantity": 50,
+     "tags": ["gf"]
    },
    {
      "id": 10,
@@ -86,8 +95,9 @@
      "title": "Cheeseburger",
      "description": "A juicy beef patty topped with melted cheese, crisp lettuce, fresh tomatoes, and tangy pickles, all nestled in a soft, toasted bun.",
      "price": 8.90,
-     "category": "Mains",
-     "quantity": 80
+     "category": "Burgers",
+     "quantity": 80,
+     "tags": ["cr"]
    },
    {
      "id": 11,
@@ -95,8 +105,9 @@
      "title": "Chicken Burger",
      "description": "A tender, grilled chicken patty topped with crispy lettuce, juicy tomatoes, and creamy mayonnaise, all inside a soft, toasted bun.",
      "price": 10.90,
-     "category": "Mains",
-     "quantity": 70
+     "category": "Burgers",
+     "quantity": 70,
+     "tags": ["cr"]
    },
    {
      "id": 12,
@@ -105,7 +116,8 @@
      "description": "A juicy, tender chicken chop grilled to perfection, served with a savory sauce and accompanied by potatoes and fresh veggies.",
      "price": 13.90,
      "category": "Mains",
-     "quantity": 35
+     "quantity": 35,
+     "tags": ["cr","gf"]
    },
    {
      "id": 13,
@@ -114,7 +126,8 @@
      "description": "A warm tortilla wrapped around flavorful chicken sausage, seasoned rice, beans, and a blend of fresh veggies, topped with a zesty sauce.",
      "price": 12.90,
      "category": "Mains",
-     "quantity": 40
+     "quantity": 40,
+     "tags": ["cr","gf"]
    },
    {
      "id": 14,
@@ -123,7 +136,8 @@
      "description": "Crispy battered fish fillets served with golden, crispy fries and a side of tartar sauce for the perfect classic British meal.",
      "price": 15.90,
      "category": "Mains",
-     "quantity": 25
+     "quantity": 25,
+     "tags": ["cr","gf"]
    },
    {
      "id": 15,
@@ -132,7 +146,8 @@
      "description": "A perfectly grilled salmon fillet with a crispy exterior and tender, flaky interior, served with a squeeze of lemon and a side of fresh vegetables.",
      "price": 19.90,
      "category": "Mains",
-     "quantity": 20
+     "quantity": 20,
+     "tags": ["cr","gf"]
    },
    {
      "id": 16,
@@ -141,7 +156,8 @@
      "description": "Creamy, cheesy macaroni enveloped in a rich, velvety sauce, baked to golden perfection with a crispy, buttery topping.",
      "price": 6.90,
      "category": "Mains",
-     "quantity": 60
+     "quantity": 60,
+     "tags": ["cr","veg"]
    },
    {
      "id": 17,
@@ -150,7 +166,8 @@
      "description": "A tender, perfectly cooked filet mignon paired with smooth, velvety carrot puree, creating a luxurious balance of flavors and textures.",
      "price": 23.90,
      "category": "Mains",
-     "quantity": 15
+     "quantity": 15,
+     "tags": ["cr","gf"]
    },
    {
      "id": 18,
@@ -159,7 +176,8 @@
      "description": "Succulent, fall-off-the-bone ribs glazed with a smoky, sweet BBQ sauce, served with a side of crispy fries and tangy coleslaw.",
      "price": 19.90,
      "category": "Mains",
-     "quantity": 30
+     "quantity": 30,
+     "tags": ["gf"]
    },
    {
      "id": 19,
@@ -168,7 +186,8 @@
      "description": "A perfectly roasted chicken with crispy, golden skin and juicy, tender meat, served with a side of savory potatoes and seasonal vegetables.",
      "price": 11.90,
      "category": "Mains",
-     "quantity": 55
+     "quantity": 55,
+     "tags": ["gf"]
    },
    {
      "id": 20,
@@ -177,7 +196,8 @@
      "description": "A juicy, expertly cooked steak with a rich, savory crust and tender, flavorful interior, served with your choice of sides for a satisfying meal.",
      "price": 20.90,
      "category": "Mains",
-     "quantity": 45
+     "quantity": 45,
+     "tags": ["cr","gf"]
    },
    {
      "id": 21,
@@ -186,7 +206,8 @@
      "description": "Layers of tender pasta sheets, rich tomato-based meat ragù, velvety béchamel sauce, and a blend of melted mozzarella and Parmesan cheese, baked to golden perfection.",
      "price": 13.00,
      "category": "Pasta",
-     "quantity": 20
+     "quantity": 20,
+     "tags": ["veg"]
    },
    {
      "id": 22,
@@ -195,7 +216,8 @@
      "description": "A flavorful twist on the classic Italian dish, featuring al dente spaghetti tossed with fragrant garlic, chili flakes, and olive oil. Savory turkey bacon adds a smoky richness, complemented by a sprinkle of fresh parsley and grated Parmesan for a perfectly balanced and satisfying meal.",
      "price": 13.00,
      "category": "Pasta",
-     "quantity": 25
+     "quantity": 25,
+     "tags": ["cr"]
    },
    {
      "id": 23,
@@ -204,7 +226,8 @@
      "description": "A vibrant and aromatic dish featuring al dente pasta coated in a luscious basil pesto sauce. Made with fresh basil, pine nuts, garlic, Parmesan cheese, and extra virgin olive oil, the sauce delivers a perfect balance of herbaceous, nutty, and cheesy flavors.",
      "price": 11.00,
      "category": "Pasta",
-     "quantity": 30
+     "quantity": 30,
+     "tags": ["cr","veg"]
    },
    {
      "id": 24,
@@ -213,7 +236,8 @@
      "description": "A light and refreshing dish featuring al dente pasta tossed in a vibrant tomato-based pomodoro sauce. Fresh zucchini adds a tender, subtly sweet touch, while garlic, olive oil, and herbs enhance the natural flavors.",
      "price": 11.00,
      "category": "Pasta",
-     "quantity": 35
+     "quantity": 35,
+     "tags": ["veg"]
    },
    {
      "id": 25,
@@ -222,7 +246,8 @@
      "description": "A timeless favorite featuring a golden, hand-tossed crust topped with rich tomato sauce and generously layered with creamy, melted mozzarella cheese. Baked to perfection for a bubbly, gooey finish and garnished with a touch of fresh basil for a burst of flavor.",
      "price": 14.00,
      "category": "Pizza",
-     "quantity": 50
+     "quantity": 50,
+     "tags": ["veg"]
    },
    {
      "id": 26,
@@ -231,7 +256,8 @@
      "description": "A classic delight with a crispy, hand-tossed crust, smothered in rich tomato sauce and topped with creamy melted mozzarella cheese. Finished with a generous layer of spicy, savory pepperoni slices, baked to golden, bubbly perfection.",
      "price": 16.00,
      "category": "Pizza",
-     "quantity": 40
+     "quantity": 40,
+     "tags": ["cr"]
    },
    {
      "id": 27,
@@ -240,7 +266,8 @@
      "description": "A wholesome favorite featuring a golden, hand-tossed crust topped with creamy mozzarella cheese, tender sautéed spinach, and a rich garlic-infused tomato cream sauce.",
      "price": 14.00,
      "category": "Pizza",
-     "quantity": 30
+     "quantity": 30,
+     "tags": ["cr","veg"]
    },
    {
      "id": 28,
@@ -249,7 +276,8 @@
      "description": "Juicy, tender chicken wings, seasoned to perfection and cooked until crispy. Served with a side of creamy ranch dressing for the perfect dip.",
      "price": 11.00,
      "category": "Sides",
-     "quantity": 60
+     "quantity": 60,
+     "tags": ["gf"]
    },
    {
      "id": 29,
@@ -258,7 +286,8 @@
      "description": "Crispy, golden, and perfectly seasoned thin-cut fries, fried to a light crunch. Served hot and ideal for dipping into ketchup.",
      "price": 9.00,
      "category": "Sides",
-     "quantity": 75
+     "quantity": 75,
+     "tags": ["gf"]
    },
    {
      "id": 30,
@@ -267,6 +296,7 @@
      "description": "Crispy, golden-brown rings of sweet onion, coated in a light, seasoned batter and fried to perfection. Crunchy on the outside, tender on the inside.",
      "price": 9.00,
      "category": "Sides",
-     "quantity": 40
+     "quantity": 40,
+     "tags": ["gf","veg","cr"]
    }
 ]

@@ -1,7 +1,9 @@
+// variables for filter
+
+let filter = [];
 
 
 // allow for the selection of multi filter
-
 
 // add to counter on adding the filter
 

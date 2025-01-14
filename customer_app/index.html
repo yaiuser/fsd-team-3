@@ -38,14 +38,13 @@
         <nav class="tab-nav-bar">
             <div class="tab-navigation">
             <ul class="tab-menu">
-                <li class ="tab-btn active">Burgers</li>
-                <li class ="tab-btn">Pasta</li>
-                <li class ="tab-btn">Pizza</li>
-                <li class ="tab-btn">Sides</li>
-                <li class ="tab-btn">Drinks</li>
-                <li class ="tab-btn">Desserts</li>
-                <li class ="tab-btn">Drinks</li>
-                <li class ="tab-btn">Desserts</li>
+                <li class ="tab-btn active" id="Mains">Mains</li>
+                <li class ="tab-btn" id="Burgers">Burgers</li>
+                <li class ="tab-btn" id="Pasta">Pasta</li>
+                <li class ="tab-btn" id="Pizza">Pizza</li>
+                <li class ="tab-btn" id="Sides">Sides</li>
+                <li class ="tab-btn" id="Drinks">Drinks</li>
+                <li class ="tab-btn" id="Desserts">Desserts</li>
             </ul>
             </div>
         </nav>
@@ -53,125 +52,8 @@
         <section class="menu-middle">
             <!-- Tab content to swap between in the nav bar -->
              <!-- Burger's tab -->
-            <div class="tab-content active">
-                <div class="title"> <!-- Title of the type of food-->
-                    <h1>Burgers</h1>
-                </div>
-                <div class="item-cards row">
-                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv">
-                        <div class="food-card">
-                            <div class="food-card-img">
-                                <img src="/img/Mains/cheeseburger.jpg" alt="Burger">
-                            </div>
-                            <div class="food-card-content">
-                                <h3 class = "food-title">Double Stack Burger</h3>
-                                <p class="food-desc">Two beef, double the cheese and toppings.</p>
-                                <p class="price">$12.99</p>
-                                <div class="card-button">
-                                    <button class="btn-add">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="tab-content active" id="page">
 
-                 
-                    <!-- 2nd Card  -->
-                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv" > 
-                        <div class="food-card">
-                            <div class="food-card-img">
-                                <img src="/img/Mains/chicken-burger.jpg" alt="Burger">
-                            </div>
-                            <div class="food-card-content">
-                                <h3 class = "food-title">Amazin' Chicken Burger</h3>
-                                <p class="food-desc">Chicken burger with the juicies meat in town.</p>
-                                <p class="price">$15.99</p>
-                                <div class="card-button">
-                                    <button class="btn-add">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                 
-                    <!-- 2nd Card  -->
-                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv" > 
-                        <div class="food-card">
-                            <div class="food-card-img">
-                                <img src="/img/Mains/chicken-burger.jpg" alt="Burger">
-                            </div>
-                            <div class="food-card-content">
-                                <h3 class = "food-title">Amazin' Chicken Burger</h3>
-                                <p class="food-desc">Chicken burger with the juicies meat in town.</p>
-                                <p class="price">$15.99</p>
-                                <div class="card-button">
-                                    <button class="btn-add">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                 
-                    <!-- 2nd Card  -->
-                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv" > 
-                        <div class="food-card">
-                            <div class="food-card-img">
-                                <img src="/img/Mains/chicken-burger.jpg" alt="Burger">
-                            </div>
-                            <div class="food-card-content">
-                                <h3 class = "food-title">Amazin' Chicken Burger</h3>
-                                <p class="food-desc">Chicken burger with the juicies meat in town.</p>
-                                <p class="price">$15.99</p>
-                                <div class="card-button">
-                                    <button class="btn-add">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                  
-                </div>
-                </div>
-             <!-- Tab content to swap between in the nav bar -->
-             <!-- Pasta's tab -->
-             <div class="tab-content">
-                <div class="title"> <!-- Title of the type of food-->
-                    <h1>PASTA</h1>
-                </div>
-                <div class="item-cards row">
-                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv"> 
-                        <div class="food-card">
-                            <div class="food-card-img">
-                                <img src="/img/Pasta/pesto.jpg" alt="Pasta1">
-                            </div>
-                            <div class="food-card-content">
-                                <h3 class = "food-title">Aglio Olio Pasta</h3>
-                                <p class="food-desc">Delicious Pasta with fresh shrimp and basil leaves</p>
-                                <p class="price">$12.99</p>
-                                <div class="card-button">
-                                    <button class="btn-add">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 2nd Card  -->
-                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv"> 
-                        <div class="food-card">
-                            <div class="food-card-img">
-                                <img src="/img/Pasta/turkey-aglio-olio.jpg" alt="Pasta2">
-                            </div>
-                            <div class="food-card-content">
-                                <h3 class = "food-title">Tomato Sauce Pasta</h3>
-                                <p class="food-desc">Delicious pasta marinated in tomato sauce with bacon bits.</p>
-                                <p class="price">$15.99</p>
-                                <div class="card-button">
-                                    <button class="btn-add">+</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
 
              <!-- Modal Structure Template-->
              <div class="modal fade modal-sm" id="food-item-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
