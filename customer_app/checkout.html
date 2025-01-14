@@ -8,90 +8,117 @@
     <!-- Bootstrap Styles -->
     <link 
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"
-    >
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
      <!-- Import fonts awesome stylesheet -->
      <link 
         rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer"
-    >
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     
     <!-- Import custom styles -->
     <link rel="stylesheet" href="styles/checkout_styles.css">
     
 </head>
 <body>
-
     <div class="orderpage">
         <header>
             <a href="index.html" class="return-link">
                 <img class="return-icon" src="/img/icons-logos/back.png" alt="Return Icon">
             </a>
             <div>
-                <h1>Your Cart</h1>
+                <h1>Checkout</h1>
                 <p>Table <span>01</span></p>
             </div>
-          
+
         </header>
     
-        <section>
+        <section class="menu-middle">
              <!-- Burger's tab -->
             <div class="cart-content">
-                <div class="title"> <!-- Title of the type of food-->
+                <div class="title edit-item"> <!-- Title of the type of food-->
                     <h1>Your Order</h1>
+                    <a href="viewcart.html"> Edit Items</p></a>
                 </div>
                 <div class="item-cards row">
                     <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv">
-                        <div class="food-card">
-                            <div class="food-card-img">
-                                <img src="/img/Mains/Cheeseburger.jpg" alt="Burger">
+                        <div class="checkout-card">
+                            <div class="checkout-card-counter">
+                                <h4>
+                                    <span class="qty">1</span>
+                                </h4>
                             </div>
                             <div class="food-card-content">
-                                <h3 class = "food-title">Double Stack Burger</h3>
-                                <p class="food-desc">Two beef, double the cheese and toppings.</p>
-                                <p class="price">$12.99</p>
-                                <div class="card-button">
-                                    <button class="btn-add">+</button>
-                                    <span class="number">1</span>
-                                    <button class="btn-minus">-</button>
+                                <div class="header-row">
+                                    <h3 class="food-title">Amazin' Chicken Burger</h3>
+                                    <button class="trash-button">
+                                        <i class="fa-solid fa-trash trash-icon" style="color: #e96010;"></i>
+                                    </button>
                                 </div>
+                                <p class="spec-request">No Lettuce</p>
+                                <p class="price">$15.99</p>
                             </div>
                         </div>
                     </div>
 
                  
                     <!-- 2nd Card  -->
-                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv" > 
-                        <div class="food-card">
-                            <div class="food-card-img">
-                                <img src="/img/Mains/chicken-burger.jpg" alt="Burger">
+                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv">
+                        <div class="checkout-card">
+                            <div class="checkout-card-counter">
+                                <h4>
+                                    <span class="qty">1</span>x
+                                </h4>
                             </div>
                             <div class="food-card-content">
-                                <h3 class = "food-title">Amazin' Chicken Burger</h3>
-                                <p class="food-desc">Chicken burger with the juicies meat in town.</p>
-                                <p class="price">$15.99</p>
-                                <div class="card-button">
-                                    <button class="btn-add">+</button>
-                                    <span class="number">3</span>
-                                    <button class="btn-minus">-</button>
+                                <div class="header-row">
+                                    <h3 class="food-title">Amazin' Chicken Burger</h3>
+                                    <button class="trash-button">
+                                        <i class="fa-solid fa-trash trash-icon" style="color: #e96010;"></i>
+                                    </button>
                                 </div>
+                                <p class="spec-request">No Lettuce</p>
+                                <p class="price">$15.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Payment Page  -->
+                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv">
+                        <div class="checkout-card">
+                         
+                            <div class="payment-methods">
+                                <div class="header-row">
+                                    <h3 class="food-title">Payment Methods</h3>
+                                
+                                </div>
+                                <form class ="payment-method-form" action="">
+                                <p>Please Select the payment method:</p>
+                                  <input type="radio" id="paynow" name="payment_method" value="paynow">
+                                  <label for="paynow">PayNow</label>
+                                    <img src="/img/icons-logos/paynow-logo.png"/><br>
+                                  <input type="radio" id="gpay" name="payment_method" value="gpay">
+                                  <label for="gpay">Google Pay</label>
+                                     <img src="/img/icons-logos/Gpay.png"/><br>
+                                  <input type="radio" id="card" name="payment_method" value="card">
+                                  <label for="card">Credit/Debit Card</label>
+                                <i class="fa-solid fa-credit-card"></i><br>
+                                  <input type="radio" id="cash" name="payment_method" value="cash">
+                                  <label for="cash">Cash</label>
+                                <i class="fa-solid fa-money-bill"></i>
+                            </form>
                             </div>
                         </div>
                     </div>
 
                 </div>
                 </div>
-     
-
-                
         </section>
-           
+           <!-- End of Card Section -->
  
-        <aside class="dragOrder">
 
+           <!-- Footer with pricing -->
+        <aside class="dragOrder">
             <div class="d-block text-center my-2" id="showConfirmOrder"></div>
             <div id="subTotalCofirmOrder" class="d-block p-0 m-0">
                 <div class="orderFooter mx-4 mt-3">
@@ -113,19 +140,17 @@
                 <button id="btnConfirmOrder" class="d-block my-3 mx-auto">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="order_badge">0</span>
-                    Checkout
+                    Place Order
                 </button>
             </div>
         </aside>
-
-
+             <!-- End of Footer with pricing -->
     </div>
 
    <!-- Bootstrap JavaScript Library -->
-   <script 
-   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-   
+ <script 
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
 </script>
 
 <script src="/script/viewcart.js"></script>

@@ -20,13 +20,12 @@
     >
     
     <!-- Import custom styles -->
-    <link rel="stylesheet" href="styles/checkout_styles.css">
+    <link rel="stylesheet" href="styles/viewcart_styles.css">
     
 </head>
 <body>
-
     <div class="orderpage">
-        <header>
+        <header >
             <a href="index.html" class="return-link">
                 <img class="return-icon" src="/img/icons-logos/back.png" alt="Return Icon">
             </a>
@@ -53,6 +52,7 @@
                                 <h3 class = "food-title">Double Stack Burger</h3>
                                 <p class="food-desc">Two beef, double the cheese and toppings.</p>
                                 <p class="price">$12.99</p>
+                                <a href="#" onclick="MyFunction();">Edit</a>
                                 <div class="card-button">
                                     <button class="btn-add">+</button>
                                     <span class="number">1</span>
@@ -73,6 +73,7 @@
                                 <h3 class = "food-title">Amazin' Chicken Burger</h3>
                                 <p class="food-desc">Chicken burger with the juicies meat in town.</p>
                                 <p class="price">$15.99</p>
+                                <a href="#" onclick="MyFunction();">Edit</a>
                                 <div class="card-button">
                                     <button class="btn-add">+</button>
                                     <span class="number">3</span>
@@ -85,7 +86,28 @@
                 </div>
                 </div>
      
-
+         <!-- Modal Structure Template-->
+             <div class="modal fade modal-sm" id="food-item-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modal-title"></h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <img id="modal-img"/>
+                      <h2 id="modal-title"></h3>
+                      <p id="modal-desc"></p>
+                      <p id="modal-price"></p>
+                      <div class="mb-3">
+                        <label for="Additional-Requests" class="form-label">Additional Requests</label>
+                        <textarea class="form-control" id="Additional-requests-text" rows="3"></textarea>
+                      </div>
+                      <input class="btn btn-warning btn-add" type="submit" value="Add to Cart">
+                    </div>
+                  </div>
+                </div>
+              </div>
                 
         </section>
            
@@ -110,7 +132,7 @@
                     <h4>Total:</h4>
                     <h4>$XX.XX<span class="totalPrice"></span></h4>
                 </div>
-                <button id="btnConfirmOrder" class="d-block my-3 mx-auto">
+                <button id="btnConfirmOrder" class="d-block my-3 mx-auto" onclick="location.href='checkout.html'">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="order_badge">0</span>
                     Checkout
@@ -128,7 +150,7 @@
    
 </script>
 
-<script src="/script/viewcart.js"></script>
+<script src="/script/viewcart-modal.js"></script>
 
 
 </body>

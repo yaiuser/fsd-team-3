@@ -27,6 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
             numberDisplay.textContent = counter; 
         });
     });
+
+
+    const deleteCard = document.querySelectorAll('.trash-icon');
+
+    deleteCard.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            const card = button.closest('.triggerDiv');
+            card.remove();
+        })
+    })
 });
 
 
