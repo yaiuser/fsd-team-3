@@ -1,4 +1,3 @@
-
 // * Function to make the footer clickable to hide or show 
 let isVisible = false; // Track whether the footer is visible
 
@@ -60,6 +59,25 @@ document.querySelectorAll('.food-card').forEach(card => {
 let totalItems = 0; // Shared counter for all 'btn-add' buttons
 
 // Selecting all .btn-add will increase my Cart counter.
+document.querySelectorAll('.btn-add').forEach((button) => {
+  button.addEventListener('click', (event) => {
+    totalItems++; // Increment the shared counter
+
+    
+    // Update the global badge inside the 'btnConfirmOrder' button
+    const badge = document.querySelector('#btnConfirmOrder .order_badge');
+    if (badge) {
+      badge.textContent = totalItems.toString(); // Update badge text
+     
+    } else {
+      console.error('Order badge not found!');
+    }
+
+    // Prevent the event from propagating to parent (card click event)
+    event.stopPropagation();
+  });
+});
+
 // * Populating modal cards
 document.addEventListener('DOMContentLoaded', function () {
   // Get all food cards, the food cards have the same class when populated
@@ -86,6 +104,11 @@ document.addEventListener('DOMContentLoaded', function () {
       // Set the modal image src
       const modalImage = document.querySelector('#modal-img');
       modalImage.src = foodImage.src;  
+      modalImage.onload = function() {
+      modalImage.style.width = 'auto';  // Ensure it takes up full width
+      modalImage.style.height = 'auto'; // Adjust the height
+        
+      };
       // Show the modal
       modal.show();
 
@@ -108,6 +131,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
-
-
-//* End of Populating Cards 

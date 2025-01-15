@@ -1,10 +1,7 @@
-
-
 @import url("https://fonts.cdnfonts.com/css/gagalin");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Merriweather:ital,wght@1,300&display=swap");
 
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -29,8 +26,6 @@ body {
     height: 100vh;
   }
 
-
-
   /** Start of Main Order Page */
 
   .orderpage p {
@@ -40,9 +35,8 @@ body {
   }
 
   .orderpage h1 {
-    font-family: 'Gagalin', Arial, Helvetica, sans-serif;
+    font-family: "Gagalin", Arial, Helvetica, sans-serif;
     margin-bottom: 0.1875rem;
-    
   }
   .orderpage {
     /* position: fixed; */
@@ -57,38 +51,38 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center; /* Centers everything in the header */
-    align-items: center; 
+    align-items: center;
     padding: 0.3rem 0;
     color: #fff;
     background-color: #e26a05;
     width: 100%; /* Ensures it uses the full width */
     position: relative; /* Needed for positioning the back button */
-}
+  }
 
-.orderpage > header > div {
+  .orderpage > header > div {
     display: flex;
     flex-direction: column;
-    align-items: center; 
-    text-align: center; 
-}
+    align-items: center;
+    text-align: center;
+  }
 
-.return-link {
-  position: absolute; 
-  left: 10px; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  height: 2.5rem; 
-  text-decoration: none; 
-}
+  .return-link {
+    position: absolute;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    text-decoration: none;
+  }
 
-.return-icon {
-  width: auto;
-  height: 2.4rem;
-  object-fit: contain;
-  max-width: 100%;
-  margin-left: 1.3rem;
-}
+  .return-icon {
+    width: auto;
+    height: 2.4rem;
+    object-fit: contain;
+    max-width: 100%;
+    margin-left: 1.3rem;
+  }
 
   /* * Start of Tabs & Content Cards */
 
@@ -97,107 +91,103 @@ body {
     padding-bottom: 10rem;
   } */
 
-
   .cart-content {
     margin: 1rem 1rem 0rem 1rem;
-
-
   }
   .title h1 {
-    font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+    font-family: "DM Sans", Arial, Helvetica, sans-serif;
     font-size: x-large;
     font-weight: bold;
     color: #5a2806;
     padding-bottom: 0.5rem; /* Add some space between the card */
   }
 
-/* The content card itself */
+  /* The content card itself */
 
-.item-cards {
+  .item-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 15px; /* Gap between the different cards */
-}
+  }
 
-.food-card {
-  display: flex;
-  border: 1px solid #ddd;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  .food-card {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
 
-}
+  .food-card-img {
+    width: 100px; /* Image size (small square) */
+    height: 100px;
+    overflow: hidden;
+    flex-shrink: 0; /* Prevent resizing */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 1rem; /* Space between image and content */
+    border-radius: 20%;
+  }
 
-.food-card-img {
-  width: 100px;  /* Image size (small square) */
-  height: 100px;
-  overflow: hidden;
-  flex-shrink: 0; /* Prevent resizing */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 1rem; /* Space between image and content */
-  border-radius: 20%;
-}
+  .food-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the square */
+  }
 
-.food-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  /* Ensures the image covers the square */
-}
-
-.food-card-content {
+  .food-card-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 10px;
     flex-grow: 1; /* Content grows to take remaining space */
-}
-.qty {
-  font-family: "DM Sans", Arial, Helvetica, sans-serif;
-}
+  }
+  .qty {              /* Styling for the qty  */
+    font-family: "DM Sans", Arial, Helvetica, sans-serif;
+  }
 
-.food-card-content h3 {
+  .food-card-content h3 {
     font-size: 1.2rem;
     margin-bottom: 5px;
     color: #5a2806;
     font-weight: bold;
-    
-}
+  }
 
-.food-card-content .price {
+  .food-card-content .price {
     font-size: 1rem;
     color: #555;
     margin-bottom: 10px;
     color: #5a2806;
-}
+  }
 
-.card-button {
+  .card-button {
     display: flex;
     gap: 10px;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     padding: 0rem 1rem 0rem 0rem;
-}
+  }
 
-/* Adjust button design */
-.btn-add{
+  /* Adjust button design */
+  .btn-add {
     background-color: #e96010;
     border-radius: 0.5rem;
     font-size: large;
     color: white;
     padding: 0rem 0.4rem;
     border: none;
-}
+  }
 
-.btn-minus{
-  background-color: #e96010;
-  border-radius: 0.5rem;
-  font-size: large;
-  color: white;
-  padding: 0rem 0.4rem;
-  border: none;
-}
-/* * End of Card Styling */
+  .btn-minus {
+    background-color: #e96010;
+    border-radius: 0.5rem;
+    font-size: large;
+    color: white;
+    padding: 0rem 0.4rem;
+    border: none;
+  }
+  /* * End of Card Styling */
 
+  /* * Styling for the checkout button and footer */
   aside {
     background-color: #ff9800;
     position: fixed;
@@ -229,59 +219,54 @@ body {
     font-weight: 600;
     position: relative;
   }
-
-
-  /* * Style for the view total button. */
-  .dragButton {
-    width: 10%;
-    height: .625rem;
-    background-color: #e96010;
-    margin: .3125rem auto;
-    cursor: pointer; 
-    border-radius: 5px; 
-  }
-
- 
-  .orderFooter {
-    opacity:100%;
-    padding: 0;
-  }
-
-
-
-  /* Show the amount of items added to the cart */
-  .order_badge {
+  
+  .order_badge {                   /* Show the amount of items added to the cart */
     background-color: #e96010;
     border-radius: 2px;
     color: white;
     padding: 0.2rem 0.4rem;
     font-size: 1rem;
-    position: absolute; /* Position the badge within the relatively positioned button */
+    position: absolute;           /* Position the badge within the relatively positioned button */
     top: -1rem;
     right: 0;
   }
 
-  /* * Add more spacing to the section to be able to scroll down  */
-  .menu-middle{
+  /* *END of Styling for the checkout button and footer */
+
+  /* * Style for the view total button. */
+  .dragButton {
+    width: 10%;
+    height: 0.625rem;
+    background-color: #e96010;
+    margin: 0.3125rem auto;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .orderFooter {
+    opacity: 100%;
+    padding: 0;
+  }
+
+  .menu-middle {
+    /* * Add more spacing to the section to be able to scroll down  */
     background-color: #fff4e2;
     padding-bottom: 15rem;
   }
 
+  /* * Styling for food item Modal */
   #modal-img {
     max-width: 100%; /* Limit width to the modal's width */
     max-height: 300px; /* Limit height */
-    display: block;    /* Center the image */
+    display: block; /* Center the image */
     margin: 0 auto;
-}
-   a{
-    color: #e96010;
   }
-
-
-
+  .edit {        /* Change Edit Link's Color*/     
+    color: #e96010;
+    cursor: pointer; 
+    text-decoration: underline;
+  }
 }
-
-
 
 /* *********************** */
 /** End of Mobile Section **/

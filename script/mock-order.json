@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "image": "/img/Dessert/lemon-tart.jpg",
+      "title": "Lemon Tart",
+      "description": "A buttery golden crust filled with tangy lemon curd and topped with powdered sugar, this lemon tart perfectly balances sweetness and citrusy zest.",
+      "additionalRequest": " Please serve it now ",
+      "price": 6.50,
+      "category": "Dessert",
+      "quantityOrdered": 2
+    },
+    {
+        "id": 6,
+        "image": "/img/Drinks/orange-juice.jpg",
+        "title": "Orange Juice",
+        "description": "Freshly squeezed and bursting with citrusy goodness, our orange juice delivers a naturally sweet and refreshing taste in every sip.",
+        "additionalRequest": " I want ice please",
+        "price": 3,
+        "category": "Drinks",
+        "quantityOrdered": 2
+    }
+]
