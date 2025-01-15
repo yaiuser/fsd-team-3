@@ -37,12 +37,51 @@
         </header>
     
         <section>
+             <!-- Burger's tab -->
             <div class="cart-content">
-                <div class="title"> <!-- Title for Your Order -->
+                <div class="title"> <!-- Title of the type of food-->
                     <h1>Your Order</h1>
                 </div>
                 <div class="item-cards row">
-                   <!-- To be populated with Order Cards -->
+                    <!-- <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv">
+                        <div class="food-card">
+                            <div class="food-card-img">
+                                <img src="/img/Mains/Cheeseburger.jpg" alt="Burger">
+                            </div>
+                            <div class="food-card-content">
+                                <h3 class = "food-title">Double Stack Burger</h3>
+                                <p class="food-desc">Two beef, double the cheese and toppings.</p>
+                                <p class="price">$12.99</p>
+                                <span class="edit">Edit</a>
+                                <div class="card-button">
+                                    <button class="btn-add">+</button>
+                                    <span class="number">1</span>
+                                    <button class="btn-minus">-</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                 
+                    <!-- 2nd Card  -->
+                    <!-- <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv" > 
+                        <div class="food-card">
+                            <div class="food-card-img">
+                                <img src="/img/Mains/chicken-burger.jpg" alt="Burger">
+                            </div>
+                            <div class="food-card-content">
+                                <h3 class = "food-title">Amazin' Chicken Burger</h3>
+                                <p class="food-desc">Chicken burger with the juicies meat in town.</p>
+                                <p class="price">$15.99</p>
+                                <a class="edit">Edit</a>
+                                <div class="card-button">
+                                    <button class="btn-add">+</button>
+                                    <span class="number">3</span>
+                                    <button class="btn-minus">-</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
 
                 </div>
                 </div>
@@ -64,15 +103,17 @@
                         <label for="Additional-Requests" class="form-label">Additional Requests</label>
                         <textarea class="form-control" id="Additional-requests-text" rows="3"></textarea>
                       </div>
-                      <input class="btn btn-warning btn-add" type="submit" value="Confirm" data-bs-dismiss="modal">
+                      <input class="btn btn-warning btn-add" type="submit" value="Confirm">
                     </div>
                   </div>
                 </div>
-              </div> 
+              </div>
+                
         </section>
            
-        <!-- Footer for the Page -->
+ 
         <aside class="dragOrder">
+
             <div class="d-block text-center my-2" id="showConfirmOrder"></div>
             <div id="subTotalCofirmOrder" class="d-block p-0 m-0">
                 <div class="orderFooter mx-4 mt-3">
@@ -109,7 +150,7 @@
    
 </script>
 
-<script src="/script/viewcart-populate.js"></script>
+<script src="/script/viewcart-populate"></script>
 <script src="/script/viewcart-modal.js"></script>
 
 
