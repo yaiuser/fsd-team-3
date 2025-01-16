@@ -18,5 +18,25 @@
         "price": 3,
         "category": "Drinks",
         "quantityOrdered": 2
+    },
+    {
+        "id": 6,
+        "image": "/img/Drinks/orange-juice.jpg",
+        "title": "Orange Juice",
+        "description": "Freshly squeezed and bursting with citrusy goodness, our orange juice delivers a naturally sweet and refreshing taste in every sip.",
+        "additionalRequest": " I want ice please",
+        "price": 3,
+        "category": "Drinks",
+        "quantityOrdered": 2
+    },
+    {
+        "id": 6,
+        "image": "/img/Drinks/orange-juice.jpg",
+        "title": "Orange Juice",
+        "description": "Freshly squeezed and bursting with citrusy goodness, our orange juice delivers a naturally sweet and refreshing taste in every sip.",
+        "additionalRequest": " I want ice please",
+        "price": 3,
+        "category": "Drinks",
+        "quantityOrdered": 2
     }
 ]

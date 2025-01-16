@@ -266,6 +266,10 @@ body {
     cursor: pointer; 
     text-decoration: underline;
   }
+
+  .menu-middle{
+    padding-bottom: 15rem;
+  }
 }
 
 /* *********************** */
