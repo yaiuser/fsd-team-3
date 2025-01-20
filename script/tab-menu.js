@@ -5,6 +5,7 @@ let htmlObject; // declare variable for use later
 let htmlObject2;
 let htmlObject3;
 let placeholder;
+let foodItem;
 let pagetitle = document.getElementById("page");
 
 fetch("../script/food-database.json")
@@ -97,6 +98,7 @@ const tab_Nav = function(tabBtnClick){
 
         htmlObject3 = document.createElement("div");  
         htmlObject3.classList.add("food-card");
+        htmlObject3.setAttribute("id",element.id)
         htmlObject.appendChild(htmlObject3);
 
         htmlObject = document.createElement("div");
@@ -136,6 +138,29 @@ const tab_Nav = function(tabBtnClick){
         htmlObject.innerText = "+";
         htmlObject2.appendChild(htmlObject)
     });
+    
+
+    // adding the modal
+
+    cards = document.querySelectorAll(".food-card");
+    
+    cards.forEach((card, i) => {
+      card.addEventListener("click", () => {
+        const modalElement = document.getElementById('food-item-modal');
+        const modal = new bootstrap.Modal(modalElement);
+        foodItem = foodArray.filter(item => item.id == card.id)[0];
+        document.getElementById('modal-title').textContent = foodItem.title;
+        document.getElementById('modal-desc').textContent = foodItem.description;
+        placeholder = foodItem.price;
+        document.getElementById('modal-price').textContent = "$" + placeholder.toFixed(2);
+        const modalImage = document.querySelector('#modal-img');
+        modalImage.src = foodItem.image;  
+        modal.show();
+
+        
+      })
+    })
+
 
 }
 

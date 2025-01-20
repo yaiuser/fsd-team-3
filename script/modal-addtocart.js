@@ -70,43 +70,43 @@ document.addEventListener('DOMContentLoaded', function () {
   const modal = new bootstrap.Modal(modalElement);
 
   // Add click event listener to each food card
-  foodCards.forEach(card => {
-    card.addEventListener('click', function () {
-      // Get the content from the already populated clicked card
-      const foodTitle = card.querySelector('.food-title').textContent;
-      const foodDesc = card.querySelector('.food-desc').textContent;
-      const foodPrice = card.querySelector('.price').textContent;
-      const foodImage = card.querySelector('.food-card-img img'); // Get the image from the clicked card
+  // foodCards.forEach(card => {
+  //   card.addEventListener('click', function () {
+  //     // Get the content from the already populated clicked card
+  //     const foodTitle = card.querySelector('.food-title').textContent;
+  //     const foodDesc = card.querySelector('.food-desc').textContent;
+  //     const foodPrice = card.querySelector('.price').textContent;
+  //     const foodImage = card.querySelector('.food-card-img img'); // Get the image from the clicked card
       
-      // Populate the modal with the content
-      document.getElementById('modal-title').textContent = foodTitle;
-      document.getElementById('modal-desc').textContent = foodDesc;
-      document.getElementById('modal-price').textContent = foodPrice;
+  //     // Populate the modal with the content
+  //     document.getElementById('modal-title').textContent = foodTitle;
+  //     document.getElementById('modal-desc').textContent = foodDesc;
+  //     document.getElementById('modal-price').textContent = foodPrice;
       
-      // Set the modal image src
-      const modalImage = document.querySelector('#modal-img');
-      modalImage.src = foodImage.src;  
-      // Show the modal
-      modal.show();
+  //     // Set the modal image src
+  //     const modalImage = document.querySelector('#modal-img');
+  //     modalImage.src = foodImage.src;  
+  //     // Show the modal
+  //     modal.show();
 
-      // Get the "Add to Cart" button inside the modal and add the event listener
-      const btnAddModal = modalElement.querySelector('.cart-add');
-      if (btnAddModal) {
-        btnAddModal.addEventListener('click', function (event) {
-          totalItems++; // Increment the cart counter on modal add button click
+  //     // Get the "Add to Cart" button inside the modal and add the event listener
+  //     const btnAddModal = modalElement.querySelector('.cart-add');
+  //     if (btnAddModal) {
+  //       btnAddModal.addEventListener('click', function (event) {
+  //         totalItems++; // Increment the cart counter on modal add button click
           
-          // Update the cart badge in the 'btnConfirmOrder'
-          const badge = document.querySelector('#btnConfirmOrder .order_badge');
-          if (badge) {
-            badge.textContent = totalItems.toString(); // Update badge text
-          }
+  //         // Update the cart badge in the 'btnConfirmOrder'
+  //         const badge = document.querySelector('#btnConfirmOrder .order_badge');
+  //         if (badge) {
+  //           badge.textContent = totalItems.toString(); // Update badge text
+  //         }
 
-          // Prevent the click from propagating to the modal card click listener
-          event.stopPropagation();
-        });
-      }
-    });
-  });
+  //         // Prevent the click from propagating to the modal card click listener
+  //         event.stopPropagation();
+  //       });
+  //     }
+  //   });
+  // });
 });
 
 
