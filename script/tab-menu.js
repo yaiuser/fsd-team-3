@@ -6,7 +6,13 @@ let htmlObject2;
 let htmlObject3;
 let placeholder;
 let foodItem;
+let menuRefer = ["Mains","Burgers","Pasta","Pizza","Sides","Drinks","Desserts"];
+let defaultMenu = ["Mains","Burgers","Pasta","Pizza","Sides","Drinks","Desserts"];
 let pagetitle = document.getElementById("page");
+let counter = 0;
+
+let importedFilter = JSON.parse(localStorage.getItem('filterArray')) || [];
+console.log(importedFilter);
 
 fetch("../script/food-database.json")
   .then((response) => {
@@ -16,8 +22,51 @@ fetch("../script/food-database.json")
     return response.json(); // Parse the JSON content
   })
   .then((data) => {
-    foodArray = data; // Store the array in the variable
-    tab_Nav(0); // load mains after data is fetched
+
+    if (importedFilter.length === 0){
+      foodArray = data;
+      defaultMenu.forEach(element => {
+        htmlObject = document.createElement("li");
+        htmlObject.innerText = element;
+        htmlObject.classList.add("tab-btn");
+        htmlObject.setAttribute("id",element);
+        if(counter===0){
+          htmlObject.classList.add("active");
+        }
+        tabMenu.appendChild(htmlObject);
+        counter++;
+      });
+      tabBtns = document.querySelectorAll(".tab-btn");
+      tab_Nav(0);// load mains after data is fetched
+    }else{
+      foodArray=data.filter(item => importedFilter.every((element) => item.tags.includes(element)))
+    defaultMenu = menuCleaner(defaultMenu,foodArray);
+    defaultMenu.forEach(element => {
+      htmlObject = document.createElement("li");
+      htmlObject.innerText = element;
+      htmlObject.classList.add("tab-btn");
+      htmlObject.setAttribute("id",element);
+      if(counter===0){
+        htmlObject.classList.add("active");
+      }
+      tabMenu.appendChild(htmlObject);
+      counter++;
+      
+    });
+  }
+    // defaultMenu.forEach(element => {
+      console.log(tabBtns);
+      tabBtns = document.querySelectorAll(".tab-btn");
+
+      tabBtns.forEach((tabBtn, i) => {
+        tabBtn.addEventListener("click", () => {
+          activeMenuItems = [];       // reset activeMenuItems on each click
+          tab_Nav(i); 
+        })
+      })
+
+      tab_Nav(0);
+    // });
   })
   .catch((error) => {
     console.error('There was a problem fetching the JSON:', error);
@@ -46,7 +95,7 @@ tabMenu.addEventListener("mousedown", () => {
 // Change Tab contents
 
 // const tabs = document.querySelectorAll(".tab-content");
-const tabBtns = document.querySelectorAll(".tab-btn");
+let tabBtns = document.querySelectorAll(".tab-btn");
 
 tabBtns.forEach((tabBtn, i) => {
   tabBtn.addEventListener("click", () => {
@@ -164,3 +213,26 @@ const tab_Nav = function(tabBtnClick){
 
 }
 
+document.getElementById("filter").addEventListener("click", () => {
+  localStorage.setItem('menuArray', JSON.stringify(importedFilter));
+  console.log('Array saved to sessionStorage:', filter);
+});
+
+function menuCleaner(menu, itemArray){  
+  
+  let menuArray = [];
+
+  itemArray.forEach(element => {
+    if(!menuArray.includes(element.category)){
+      menuArray.push(element.category)
+    }
+  });
+
+  menu.forEach(element => {
+    if(!menuArray.includes(element)){
+      menu = menu.filter((elem) => elem !== element)
+    }
+  });
+
+  return menu;
+};

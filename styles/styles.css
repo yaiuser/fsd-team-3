@@ -381,7 +381,7 @@ body {
   }
 
   .filter-header > a {
-    width: 10%;
+    width: 8%;
     margin: auto 0;
   }
 
@@ -392,7 +392,7 @@ body {
   
   .filter-header .hide-balance {
     opacity: 0;
-    width: 10%;
+    width: 8%;
   }
 
   .filter-header > div {
@@ -434,10 +434,32 @@ body {
     color: #fff;
   }
 
+  .selected{
+    background-color: #e26a05 !important;
+    color: #fff !important;
+  }
+
   .menu-middle{
     padding-bottom: 6rem;
   }
 
+  .return-link {
+    position: absolute; 
+    left: 10px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    height: 2.5rem;
+  }
+
+
+  .return-icon {
+    width: auto;
+    height: 2.4rem;
+    object-fit: contain;
+    max-width: 100%;
+    margin-left: 1.3rem;
+  }
 
 }
 

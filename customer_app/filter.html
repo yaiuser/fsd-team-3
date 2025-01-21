@@ -15,28 +15,26 @@
 </head>
 <body>
     <header class="filter-header">
-        <a href="index.html" class="return-link">
-            <img class="return-icon" src="/img/icons-logos/back.png" alt="Return Icon">
-        </a>
+        <a href="index.html" id="back"><img src="/img/icons-logos/back.png" alt="Back Button"></a>
         <div>
             <h1>Granola Cafe</h1>
             <p>Table <span>01</span></p>
         </div>
-       
+        <img class="hide-balance" src="/img/icons-logos/back.png" alt="Hidden Back Button">
     </header>    
     <section class="filter-section">
         <h1>Filter</h1>
-        <section>
-            <button>
+        <section id="filter">
+            <button id="none">
                 None
             </button>
-            <button>
+            <button id = "cr">
                 Chef's Recommendation
             </button>
-            <button>
+            <button id="veg">
                 Vegetarian
             </button>
-            <button>
+            <button id ="gf">
                 Gluten Free
             </button>
         </section>
@@ -47,5 +45,9 @@
             Apply
         </button>
     </aside>
+
+
+    <script src="/script/filter.js"></script>
+
 </body>
 </html>
