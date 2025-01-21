@@ -3,3 +3,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
    navController.displayNav();
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const sidebarController = new SidebarController ("sidebarNav", SIDEBAR_ITEMS);
+    sidebarController.renderSidebar();
+});

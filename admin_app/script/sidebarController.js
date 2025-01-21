@@ -8,7 +8,7 @@ class SidebarController {
 	// Function to display sidebar navigation menu dynamically
 	renderSidebar() {
 
-		if (!this.sidebarMenu){
+		if (!this.sidebarMenu){																// Check if sidebar container exists
 			console.error(`Sidebar element with ID "${this.sidebarMenu}" not found.`);
 			return;
 		}
@@ -21,13 +21,18 @@ class SidebarController {
 
 		this.sidebarItems.forEach((item, index) => {
 			this.renderSidebarItem(item, sidebarList, index);
+
+			if (item.title === '') {
+				this.addDivider();
+				
+			}
 		});
 
 		this.sidebarMenu.appendChild(sidebarList);
 
 	}
 
-	// Function to display sidebar navigation item dynamically
+	// Function to display sidebar navigation item + submenu dynamically
 	renderSidebarItem(item, parentElement, index) {
 		const listItem = document.createElement('li');
 		listItem.className = 'sidebar-btn rounded-4 mb-2';
@@ -72,46 +77,15 @@ class SidebarController {
 			listItem.appendChild(submenuDiv);
 		}
 
+	}
 
+	addDivider(){
+		const sidebarDivider = document.createElement("li");
+		sidebarDivider.className = "sidebar-divider";
+		this.sidebarMenu.appendChild(divider);
 	}
 }
 
-const SIDEBAR_ITEMS = [
-	{ 
-		title: 'Dashboard', 
-		url: '#',
-		icon: 'fa fa-sliders',
-		submenu: [],
-	},
-	{ 
-		title: 'Orders', 
-		url: '#',
-		icon: 'fa fa-bell',
-		submenu: [
-			{title: 'Orders List', url: '#'},
-		],
-	},
-	{ 
-		title: 'Dishes', 
-		url: '#',
-		icon: 'fa fa-cutlery',
-		submenu: [
-			{title: 'Dishes List', url: 'dishes.html'},
-			{title: 'Add Dish', url: 'add_dish.html'},
-		],
-	},
-	{ 
-		title: 'Members', 
-		url: '#',
-		icon: 'fa fa-users',
-		submenu: [
-			{title: 'Voucher', url: '#'},
-		],
-	},
 
-]
 
-document.addEventListener("DOMContentLoaded", () => {
-    const sidebarController = new SidebarController ("sidebarNav", SIDEBAR_ITEMS);
-    sidebarController.renderSidebar();
-});
+

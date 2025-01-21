@@ -13,3 +13,50 @@ const _DISHES_URL = "dishes.html";
 const _USERS_URL = "#"; 
 const _LOGIN_URL = "#"; 
 const _LOGOUT_URL = "#";
+
+const SIDEBAR_ITEMS = [
+	{ 
+		title: 'Dashboard', 
+		url: '#',
+		icon: 'fa fa-sliders',
+		submenu: [],
+	},
+	{ 
+		title: 'Orders', 
+		url: '#',
+		icon: 'fa fa-bell',
+		submenu: [
+			{title: 'Orders List', url: '#'},
+		],
+	},
+	{ 
+		title: 'Dishes', 
+		url: '#',
+		icon: 'fa fa-cutlery',
+		submenu: [
+			{title: 'Dishes List', url: 'dishes.html'},
+			{title: 'Add Dish', url: 'add_dish.html'},
+		],
+	},
+	{ 
+		title: 'Members', 
+		url: '#',
+		icon: 'fa fa-users',
+		submenu: [
+			{title: 'Voucher', url: '#'},
+		],
+	},
+    { 
+		title: 'Login', 
+		url: '#',
+		icon: 'fa fa-right-to-bracket',
+		submenu: [],
+	},
+    { 
+		title: 'Logout', 
+		url: '#',
+		icon: 'fa fa-right-from-bracket',
+		submenu: [],
+	},
+
+]
