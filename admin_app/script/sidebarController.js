@@ -6,29 +6,73 @@ class SidebarController {
 	}
 
 	// Function to display sidebar navigation menu dynamically
-	displaySidebarNav() {
+	renderSidebar() {
 
 		if (!this.sidebarMenu){
 			console.error(`Sidebar element with ID "${this.sidebarMenu}" not found.`);
 			return;
 		}
-		
-		this.sidebarMenu.className = "list-group text-small shadow";
 
-		this.sidebarItems.forEach((item) => {
-			this.displaySidebarItem(item);
+		this.sidebarMenu.textContent = '';
+		this.sidebarMenu.className= 'p-3 w-100';
+
+		const sidebarList = document.createElement('ul');
+		sidebarList.className = 'list-unstyled';
+
+		this.sidebarItems.forEach((item, index) => {
+			this.renderSidebarItem(item, sidebarList, index);
 		});
 
+		this.sidebarMenu.appendChild(sidebarList);
 
 	}
 
 	// Function to display sidebar navigation item dynamically
-	displaySidebarItem(item) {
-		const sidebarLink = document.createElement("a");
-		sidebarLink.className = "list-group-item list-group-item-action";
-		sidebarLink.href = item.url;
-		sidebarLink.textContent = item.title;
-		this.sidebarMenu.appendChild(sidebarLink);
+	renderSidebarItem(item, parentElement, index) {
+		const listItem = document.createElement('li');
+		listItem.className = 'sidebar-btn rounded-4 mb-2';
+
+		if (item.icon) {
+			const icon = document.createElement('i');
+			icon.className = `${item.icon} ms-2`;
+			listItem.appendChild(icon);
+			
+		}
+
+
+		const button = document.createElement('button');
+		button.className = 'btn btn-toggle d-inline-flex align-items-center collapsed';
+		button.setAttribute('data-bs-toggle', 'collapse');
+		button.setAttribute('data-bs-target', `#${item.title.toLowerCase().replace(/\s/g, '-')}-collapse-${index}`);
+		button.textContent = item.title;
+
+		listItem.appendChild(button);
+		parentElement.appendChild(listItem);
+
+		if (item.submenu && item.submenu.length > 0) {
+			const submenuDiv = document.createElement('div');
+			submenuDiv.className = 'collapse';
+			submenuDiv.id = `#${item.title.toLowerCase().replace(/\s/g, '-')}-collapse-${index}`;
+
+			const submenuList = document.createElement('ul');
+			submenuList.className = 'btn-toggle-nav list-unstyled fw-normal pb-1 small ms-5';
+
+			item.submenu.forEach((submenuItem) => {
+				const submenuListItem = document.createElement('li');
+				const submenuLink = document.createElement('a');
+				submenuLink.className = 'link-body-emphasis d-inline-flex text-decoration-none';
+				submenuLink.href = submenuItem.url;
+				submenuLink.textContent = submenuItem.title;
+
+				submenuListItem.appendChild(submenuLink);
+				submenuList.appendChild(submenuListItem);
+			});
+
+			submenuDiv.appendChild(submenuList);
+			listItem.appendChild(submenuDiv);
+		}
+
+
 	}
 }
 
@@ -69,5 +113,5 @@ const SIDEBAR_ITEMS = [
 
 document.addEventListener("DOMContentLoaded", () => {
     const sidebarController = new SidebarController ("sidebarNav", SIDEBAR_ITEMS);
-    sidebarController.displaySidebarNav();
+    sidebarController.renderSidebar();
 });
