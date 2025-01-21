@@ -60,3 +60,5 @@ const SIDEBAR_ITEMS = [
 	},
 
 ]
+
+const _USERTOKEN = "usertoken";
