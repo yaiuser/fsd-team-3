@@ -23,7 +23,7 @@ class SidebarController {
 			this.renderSidebarItem(item, sidebarList, index);
 
 			if (item.title === 'Users') {
-				this.addDivider();
+				this.addDivider(sidebarList);
 				
 			}
 		});
@@ -57,7 +57,7 @@ class SidebarController {
 		if (item.submenu && item.submenu.length > 0) {
 			const submenuDiv = document.createElement('div');
 			submenuDiv.className = 'collapse';
-			submenuDiv.id = `#${item.title.toLowerCase().replace(/\s/g, '-')}-collapse-${index}`;
+			submenuDiv.id = `${item.title.toLowerCase().replace(/\s/g, '-')}-collapse-${index}`;
 
 			const submenuList = document.createElement('ul');
 			submenuList.className = 'btn-toggle-nav list-unstyled fw-normal pb-1 small ms-5';
@@ -79,10 +79,10 @@ class SidebarController {
 
 	}
 
-	addDivider(){
+	addDivider(parentElement){
 		const sidebarDivider = document.createElement("li");
-		sidebarDivider.className = "sidebar-divider";
-		this.sidebarMenu.appendChild(sidebarDivider);
+		sidebarDivider.className = "sidebar-divider border-top my-3";
+		parentElement.appendChild(sidebarDivider);
 	}
 }
 

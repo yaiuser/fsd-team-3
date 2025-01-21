@@ -44,8 +44,29 @@ body{
 	text-decoration: none;
 }
 
-.sidebar-btn:hover {
+.sidebar-btn > button:hover {
 	background-color: #f0f3f7;
+}
+
+.btn-toggle-nav li a{
+	background-color: transparent !important;
+	text-decoration: none;
+	padding: 5px 10px;
+	border-radius: 0;
+}
+
+.btn-toggle-nav li a:hover{
+	background-color: #f0f3f7 !important;
+	text-decoration: underline;
+	border-radius: 20px;
+}
+
+.sidebar-btn:hover{
+	background-color: transparent !important;
+}
+
+.btn-toggle-nav li a{
+	display: block;
 }
 
 /* add dish page */
