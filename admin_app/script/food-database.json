@@ -43,7 +43,7 @@
 		"description": "A vibrant blend of tropical fruit flavors, perfectly chilled for a refreshing and sweet burst of sunshine in every sip.",
 		"price": 2.5,
 		"category": "Drinks",
-		"quantity": 40
+		"quantity": 0
 	},
 	{
 		"id": 6,
@@ -79,7 +79,7 @@
 		"description": "A warm, soft tortilla wrapped around a flavorful mix of seasoned protein, rice, beans, fresh veggies, and a touch of zesty salsa.",
 		"price": 11,
 		"category": "Mains",
-		"quantity": 50
+		"quantity": 0
 	},
 	{
 		"id": 10,

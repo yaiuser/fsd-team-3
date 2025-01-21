@@ -58,12 +58,13 @@ function appendDishes(dishes) {
 			{text: dish.category, className: "text-center"},			
 			{text: `$${dish.price.toFixed(2)}`, className: "text-center"},
 			{text: dish.quantity, className: "text-center"},
-			{text: dish.quantity > 0 ? "Available" : "Out of Stock", className: "text-center text-success"},		// if dish quantity is > 0 means available. if quantity is < 0 means out of stock
+			{text: dish.quantity > 0 ? "Available" : "Out of Stock", 
+			className: `text-center ${dish.quantity > 0 ? "text-success" : "text-danger"}`},		// if dish quantity is > 0 means available. if quantity is < 0 means out of stock
 		].forEach(({ text, className }) => {
 			const cell = tbodyRow.insertCell();
 			cell.className = className;
 			cell.innerText = text;
-		});
+		});``
 
 
 		const btnAction = document.createElement("button");							// add "More" button

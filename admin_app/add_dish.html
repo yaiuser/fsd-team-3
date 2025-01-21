@@ -30,21 +30,21 @@
 		>
 			<section class="row w-100">
 				<!-- Company Logo -->
-				<div class="col-7">
+				<div class="col-7 d-flex align-items-center">
 					<img
 						width="80px"
 						height="auto"
 						src="images/granola-logo.png"
 						alt="Company Logo"
 					/>
-					<span class="h2 fw-semibold ms-2 mt-3">Granola Cafe</span>
+					<span class="h2 mb-0 fw-semibold ms-2">Granola Cafe</span>
 				</div>
 
 				<!-- Admin Profile -->
-				<div class="col-5">
+				<div class="col-5 d-flex justify-content-end align-items-center">
 					<a
 						href="#"
-						class="profile d-flex align-items-center mt-3 me-3 dropdown float-end dropdown-toggle"
+						class="profile d-flex align-items-center dropdown float-end dropdown-toggle"
 						data-bs-toggle="dropdown"
 					>
 						<img
@@ -59,13 +59,9 @@
 					</a>
 
 					<!-- Dropdown menu -->
-					<ul class="dropdown-menu text-small shadow">
-						<li><a class="dropdown-item" href="#">Orders</a></li>
-						<li><a class="dropdown-item" href="dishes.html">Dishes</a></li>
-						<li><a class="dropdown-item" href="#">Users</a></li>
-						<li><hr class="dropdown-divider" /></li>
-						<li><a class="dropdown-item" href="#">Sign out</a></li>
-					</ul>
+					<div id="dropdownNav">
+						<!-- Dynamic dropdown navigation menu goes here -->
+					</div>
 				</div>
 			</section>
 		</header>
@@ -278,5 +274,8 @@
 		</main>
 
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="script/const.js"></script>
+		<script src="script/navController.js"></script>
+		<script src="script/loader.js"></script>
 	</body>
 </html>

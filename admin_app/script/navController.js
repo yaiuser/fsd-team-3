@@ -19,21 +19,31 @@ class NavController {
 
 		this.dropdownItems.forEach((item) => {
 			this.displayNavItem(item);
+
+			if (item.title === _USERS_TITLE) {
+				this.addDivider();
+				
+			}
 		});
 	}
 
 	// Function to display dropdown navigation item dynamically
 	displayNavItem(item) {
 		const dropdownItem = document.createElement("li");
-		this.dropdownMenu, appendChild(dropdownItem);
-		dropdownItem.className = "dropdown-item text-success";
+		this.dropdownMenu.appendChild(dropdownItem);
+		dropdownItem.className = "dropdown-item";
 
 		const dropdownLink = document.createElement("a");
 		dropdownItem.appendChild(dropdownLink);
-		dropdownLink.className = "dropdown-link";
+		dropdownLink.className = "dropdown-link link-dark link-underline-opacity-0";
+		dropdownLink.style.cursor = "pointer";
 		dropdownLink.textContent = item.title;
+		dropdownLink.href = item.url;
+	}
+
+	addDivider(){
+		const divider = document.createElement("li");
+		divider.className = "dropdown-divider";
+		this.dropdownMenu.appendChild(divider);
 	}
 }
-
-displayNav();
-displayNavItem(item);
