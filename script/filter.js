@@ -1,7 +1,9 @@
 // variables for filter
 
 let filter = JSON.parse(localStorage.getItem('menuArray')) || [];
+let currentState = filter;
 let index;
+let htmlObject;
 
 console.log('Array from menu side:', filter);
 
@@ -52,11 +54,20 @@ function checkNone(){
     } else if (filter.length >= 0) {
         document.getElementById("none").classList.remove("selected");
     }
+    filterNumber()
 };
 
 // exporting the filter array for use in tab-menu.js
 
 document.getElementById("back").addEventListener("click", () => {
-    localStorage.setItem('filterArray', JSON.stringify(filter));
-    console.log('Array saved to sessionStorage:', filter);
+    localStorage.setItem('filterArray', JSON.stringify(currentState));
 });
+
+document.getElementById("apply").addEventListener("click", () => {
+    localStorage.setItem('filterArray', JSON.stringify(filter));
+});
+
+function filterNumber(){
+    htmlObject = document.getElementById("order_badge");
+    htmlObject.innerText=filter.length;
+}

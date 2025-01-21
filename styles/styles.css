@@ -335,6 +335,10 @@ body {
     position: relative;
   }
 
+  aside a{
+    text-decoration: none;
+  }
+
 
   /* * Style for the view total button. */
   .dragButton {
@@ -381,7 +385,7 @@ body {
   }
 
   .filter-header > a {
-    width: 8%;
+    width: 7%;
     margin: auto 0;
   }
 
@@ -392,7 +396,7 @@ body {
   
   .filter-header .hide-balance {
     opacity: 0;
-    width: 8%;
+    width: 7%;
   }
 
   .filter-header > div {
