@@ -72,104 +72,8 @@
 			<div class="row">
 				<!-- Start column for Sidebar -->
 				<div class="col-3 border-bottom border-end">
-					<div class="flex-shrink-0 p-3 w-100">
-
-						<!-- List of sidebar menu -->
-						<!-- Menu 1 -->
-						<ul class="list-unstyled">
-							<li class="sidebar-btn rounded-4 mb-2">
-								<i class="fa fa-sliders ms-2"></i>
-								<button
-									class="btn btn-toggle d-inline-flex align-items-center collapsed"
-									data-bs-toggle="collapse"
-									data-bs-target="#dashboard-collapse"
-								>
-									Dashboard
-								</button>
-							</li>
-
-							<!-- Menu 2 -->
-							<li>
-								<div class="sidebar-btn rounded-4 mb-2">
-								<i class="fa fa-bell ms-2"></i>
-								<button
-									class="btn btn-toggle d-inline-flex align-items-center collapsed ms-1"
-									data-bs-toggle="collapse"
-									data-bs-target="#orders-collapse"
-								>
-									Orders
-								</button>
-								</div>
-								<div class="collapse" id="orders-collapse">
-									<ul class="btn-toggle-nav list-unstyled pb-1 small ms-5">
-										<li>
-											<a
-												href="#"
-												class="link-body-emphasis d-inline-flex text-decoration-none"
-												>Orders List</a
-											>
-										</li>
-									</ul>
-								</div>
-							</li>
-
-							<!-- Menu 3 -->
-							<li class="rounded-4 mb-2">
-								<div class="sidebar-btn rounded-4 mb-2">
-								<i class="fa fa-cutlery ms-2"></i>
-								<button
-									class="btn btn-toggle d-inline-flex align-items-center collapsed ms-1"
-									data-bs-toggle="collapse"
-									data-bs-target="#dishes-collapse"
-								>
-									Dishes
-								</button>
-								</div>
-								<div class="collapse" id="dishes-collapse">
-									<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-5">
-										<li>
-											<a
-												href="dishes.html"
-												class="link-body-emphasis d-inline-flex text-decoration-none"
-												>Dishes List</a
-											>
-										</li>
-										<li>
-											<a
-												href="#"
-												class="link-body-emphasis d-inline-flex text-decoration-none"
-												>Add Dish</a
-											>
-										</li>
-									</ul>
-								</div>
-							</li>
-
-							<!-- Menu 4 -->
-							<li class="mb-2">
-								<div class="sidebar-btn rounded-4 mb-2">
-								<i class="fa fa-users ms-2"></i>
-								<button
-									class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-									data-bs-toggle="collapse"
-									data-bs-target="#members-collapse"
-								>
-									Members
-								</button>
-								</div>
-								<div class="collapse" id="members-collapse">
-									<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-5">
-										<li>
-											<a
-												href="#"
-												class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-												>Voucher</a
-											>
-										</li>
-									</ul>
-								</div>
-							</li>
-						</ul>
+					<div id="sidebarNav" class= "sidebar-menu flex-shrink-0 p-3 w-100">
+						<!-- Dynamic sidebar navigation menu goes here -->
 					</div>
 				</div>
 				<!-- End column for sidebar -->
@@ -198,7 +102,7 @@
 							<div class="row g-3">
 
 							  <div class="col-sm-6">
-								<label for="productName" class="form-label">Product Name</label>
+								<label for="productName" class="form-label">Product Title</label>
 								<input type="text" class="form-control" id="productName" placeholder="" value="" required="">
 							  </div>
 				  
@@ -206,43 +110,33 @@
 								<label for="productCat" class="form-label">Product Category</label>
 								<select class="form-select" id="productCat" required="">
 								  <option value="">Choose...</option>
-								  <option>Burger</option>
+								  <option>Mains</option>
 								  <option>Pasta</option>
-								  <option>Appetizer</option>
+								  <option>Pizza</option>
+								  <option>Sides</option>
 								  <option>Dessert</option>
-								  <option>Drink</option>
+								  <option>Drinks</option>
 								</select>
 							  </div>
 
-							  <div class="col-sm-6">
-								<label for="costPrice" class="form-label">Cost Price</label>
-								<input type="text" class="form-control" id="costPrice" placeholder="" value="" required="">
+
+							  <div class="col-sm-4">
+								<label for="Price" class="form-label">Price</label>
+								<input type="text" class="form-control" id="Price" placeholder="" value="" required="">
 							  </div>
 
-							  <div class="col-sm-6">
-								<label for="sellingPrice" class="form-label">Selling Price</label>
-								<input type="text" class="form-control" id="sellingPrice" placeholder="" value="" required="">
+							  <div class="col-sm-4">
+								<label for="Quantity" class="form-label">Quantity</label>
+								<input type="text" class="form-control" id="Quantity" placeholder="" value="" required="">
 							  </div>
-				  
-							  <div class="col-sm-6">
-								<label for="quantity" class="form-label">Quantity</label>
-								<select class="form-select" id="quantity" required="">
-								  <option value="">Choose...</option>
-								  <option>0-10</option>
-								  <option>10-20</option>
-								  <option>20-30</option>
-								  <option>30-40</option>
-								  <option>40-50</option>
-								</select>
-							  </div>
+				
 
-							  <div class="col-sm-6">
+							  <div class="col-sm-4">
 								<label for="status" class="form-label">Status</label>
 								<select class="form-select" id="status" required="">
 								  <option value="">Choose...</option>
 								  <option>Available</option>
-								  <option>In Review</option>
-								  <option>Sold Out</option>
+								  <option>Out of Stock</option>
 								</select>
 							  </div>
 				  
@@ -276,6 +170,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="script/const.js"></script>
 		<script src="script/navController.js"></script>
+		<script src="script/sidebarController.js"></script>
 		<script src="script/loader.js"></script>
 	</body>
 </html>

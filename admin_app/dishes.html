@@ -72,107 +72,8 @@
 			<div class="row">
 				<!-- Start column for Sidebar -->
 				<div class="col-3 border-bottom border-end">
-					<div class="flex-shrink-0 p-3 w-100">
-						<!-- List of sidebar menu -->
-						<!-- Menu 1 -->
-						<ul class="list-unstyled">
-							<li class="sidebar-btn rounded-4 mb-2">
-								<i class="fa fa-sliders ms-2"></i>
-								<button
-									class="btn btn-toggle d-inline-flex align-items-center collapsed"
-									data-bs-toggle="collapse"
-									data-bs-target="#dashboard-collapse"
-								>
-									Dashboard
-								</button>
-							</li>
-
-							<!-- Menu 2 -->
-							<li>
-								<div class="sidebar-btn rounded-4 mb-2">
-									<i class="fa fa-bell ms-2"></i>
-									<button
-										class="btn btn-toggle d-inline-flex align-items-center collapsed ms-1"
-										data-bs-toggle="collapse"
-										data-bs-target="#orders-collapse"
-									>
-										Orders
-									</button>
-								</div>
-								<div class="collapse" id="orders-collapse">
-									<ul class="btn-toggle-nav list-unstyled pb-1 small ms-5">
-										<li>
-											<a
-												href="#"
-												class="link-body-emphasis d-inline-flex text-decoration-none"
-												>Orders List</a
-											>
-										</li>
-									</ul>
-								</div>
-							</li>
-
-							<!-- Menu 3 -->
-							<li class="rounded-4 mb-2">
-								<div class="sidebar-btn rounded-4 mb-2">
-									<i class="fa fa-cutlery ms-2"></i>
-									<button
-										class="btn btn-toggle d-inline-flex align-items-center collapsed ms-1"
-										data-bs-toggle="collapse"
-										data-bs-target="#dishes-collapse"
-									>
-										Dishes
-									</button>
-								</div>
-								<div class="collapse" id="dishes-collapse">
-									<ul
-										class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-5"
-									>
-										<li>
-											<a
-												href="dishes.html"
-												class="link-body-emphasis d-inline-flex text-decoration-none"
-												>Dishes List</a
-											>
-										</li>
-										<li>
-											<a
-												href="add_dish.html"
-												class="link-body-emphasis d-inline-flex text-decoration-none"
-												>Add Dish</a
-											>
-										</li>
-									</ul>
-								</div>
-							</li>
-
-							<!-- Menu 4 -->
-							<li class="mb-2">
-								<div class="sidebar-btn rounded-4 mb-2">
-									<i class="fa fa-users ms-2"></i>
-									<button
-										class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-										data-bs-toggle="collapse"
-										data-bs-target="#members-collapse"
-									>
-										Members
-									</button>
-								</div>
-								<div class="collapse" id="members-collapse">
-									<ul
-										class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-5"
-									>
-										<li>
-											<a
-												href="#"
-												class="link-body-emphasis d-inline-flex text-decoration-none rounded"
-												>Voucher</a
-											>
-										</li>
-									</ul>
-								</div>
-							</li>
-						</ul>
+					<div id="sidebarNav" class= "sidebar-menu flex-shrink-0 p-3 w-100">
+						<!-- Dynamic sidebar navigation menu goes here -->
 					</div>
 				</div>
 				<!-- End column for sidebar -->
@@ -243,6 +144,7 @@
 		
 		<script src="script/const.js"></script>
 		<script src="script/navController.js"></script>
+		<script src="script/sidebarController.js"></script>
 		<script src="script/loader.js"></script>
 
 		<script src="script/dishes.js"></script>
