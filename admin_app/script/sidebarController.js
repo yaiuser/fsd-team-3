@@ -17,12 +17,12 @@ class SidebarController {
 		this.sidebarMenu.className= 'p-3 w-100';
 
 		const sidebarList = document.createElement('ul');
-		sidebarList.className = 'list-unstyled';
+		sidebarList.className = 'list-unstyled ms-2';
 
 		this.sidebarItems.forEach((item, index) => {
 			this.renderSidebarItem(item, sidebarList, index);
 
-			if (item.title === '') {
+			if (item.title === 'Users') {
 				this.addDivider();
 				
 			}
@@ -39,14 +39,14 @@ class SidebarController {
 
 		if (item.icon) {
 			const icon = document.createElement('i');
-			icon.className = `${item.icon} ms-2`;
+			icon.className = `${item.icon}`;
 			listItem.appendChild(icon);
 			
 		}
 
 
 		const button = document.createElement('button');
-		button.className = 'btn btn-toggle d-inline-flex align-items-center collapsed';
+		button.className = 'btn btn-toggle d-inline-flex align-items-center collapsed ms-2';
 		button.setAttribute('data-bs-toggle', 'collapse');
 		button.setAttribute('data-bs-target', `#${item.title.toLowerCase().replace(/\s/g, '-')}-collapse-${index}`);
 		button.textContent = item.title;
@@ -82,7 +82,7 @@ class SidebarController {
 	addDivider(){
 		const sidebarDivider = document.createElement("li");
 		sidebarDivider.className = "sidebar-divider";
-		this.sidebarMenu.appendChild(divider);
+		this.sidebarMenu.appendChild(sidebarDivider);
 	}
 }
 

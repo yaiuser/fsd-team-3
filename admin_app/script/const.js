@@ -39,9 +39,9 @@ const SIDEBAR_ITEMS = [
 		],
 	},
 	{ 
-		title: 'Members', 
+		title: 'Users', 
 		url: '#',
-		icon: 'fa fa-users',
+		icon: 'fa fa-users fa-sm',
 		submenu: [
 			{title: 'Voucher', url: '#'},
 		],
