@@ -50,41 +50,41 @@ body {
     height: 100%;
   }
 
-  .orderpage > header {
+  .checkout-header {
     display: flex;
     flex-direction: row;
-    justify-content: center; /* Centers everything in the header */
-    align-items: center; /* Vertically center items */
+    justify-content: space-around;
     padding: 0.3rem 0;
     color: #fff;
     background-color: #e26a05;
-    width: 100%; /* Ensures it uses the full width */
-    position: relative; /* Needed for positioning the back button */
+    text-align: center;
   }
 
-  .orderpage > header > div {
+  .checkout-header > div {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers text horizontally */
-    text-align: center; /* Centers the text inside the div */
+    align-content: center;
   }
 
-  .return-link {
-    position: absolute; 
-    left: 10px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    height: 2.5rem; 
-   
+  .checkout-header > a {
+    width: 7%;
+    margin: auto 0;
   }
 
-  .return-icon {
-    width: auto;
-    height: 2.4rem;
-    object-fit: contain;
+  .checkout-header > a > img {
+    height: auto;
     max-width: 100%;
-    margin-left: 1.3rem;
+  }
+  
+  .checkout-header .hide-balance {
+    opacity: 0;
+    width: 7%;
+  }
+
+  .checkout-header > div {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
   }
 
   /* * Start of Tabs & Content Cards */
