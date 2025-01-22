@@ -23,15 +23,13 @@
 </head>
 <body>
     <div class="orderpage">
-        <header>
-            <a href="index.html" class="return-link">
-                <img class="return-icon" src="/img/icons-logos/back.png" alt="Return Icon">
-            </a>
+        <header class="checkout-header">
+            <a href="index.html"><img src="/img/icons-logos/back.png" alt="Back Button"></a>
             <div>
                 <h1>Checkout</h1>
                 <p>Table <span>01</span></p>
             </div>
-
+            <img class="hide-balance" src="/img/icons-logos/back.png" alt="Hidden Back Button">
         </header>
     
         <section class="menu-middle">
@@ -41,56 +39,16 @@
                     <h1>Your Order</h1>
                     <a href="viewcart.html"> Edit Items</p></a>
                 </div>
-                <div class="item-cards row">
-                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv">
-                        <div class="checkout-card">
-                            <div class="checkout-card-counter">
-                                <h4>
-                                    <span class="qty">1</span>
-                                </h4>
-                            </div>
-                            <div class="food-card-content">
-                                <div class="header-row">
-                                    <h3 class="food-title">Amazin' Chicken Burger</h3>
-                                    <button class="trash-button">
-                                        <i class="fa-solid fa-trash trash-icon" style="color: #e96010;"></i>
-                                    </button>
-                                </div>
-                                <p class="spec-request">No Lettuce</p>
-                                <p class="price">$15.99</p>
-                            </div>
-                        </div>
-                    </div>
-
-                 
-                    <!-- 2nd Card  -->
-                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv">
-                        <div class="checkout-card">
-                            <div class="checkout-card-counter">
-                                <h4>
-                                    <span class="qty">1</span>x
-                                </h4>
-                            </div>
-                            <div class="food-card-content">
-                                <div class="header-row">
-                                    <h3 class="food-title">Amazin' Chicken Burger</h3>
-                                    <button class="trash-button">
-                                        <i class="fa-solid fa-trash trash-icon" style="color: #e96010;"></i>
-                                    </button>
-                                </div>
-                                <p class="spec-request">No Lettuce</p>
-                                <p class="price">$15.99</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="item-cards row"></div>
+                   <!-- Ordered Items Content  -->
+             
                     <!-- Payment Page  -->
+                    <div class="payment-card row">
                     <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv">
                         <div class="checkout-card">
-                         
                             <div class="payment-methods">
                                 <div class="header-row">
-                                    <h3 class="food-title">Payment Methods</h3>
-                                
+                                    <h3 class="food-title">Payment Methods</h3>                              
                                 </div>
                                 <form class ="payment-method-form" action="">
                                 <p>Please Select the payment method:</p>
@@ -110,9 +68,9 @@
                             </div>
                         </div>
                     </div>
-
-                </div>
-                </div>
+                    </div>
+            
+        </div>
         </section>
            <!-- End of Card Section -->
  
@@ -154,6 +112,7 @@ integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIe
 </script>
 
 <script src="/script/viewcart.js"></script>
+<script src="/script/checkout-populate.js"></script>
 
 
 </body>

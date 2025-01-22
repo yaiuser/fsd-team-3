@@ -25,70 +25,29 @@
 </head>
 <body>
     <div class="orderpage">
-        <header >
-            <a href="index.html" class="return-link">
-                <img class="return-icon" src="/img/icons-logos/back.png" alt="Return Icon">
-            </a>
+        <header class="cart-header">
+            <a href="index.html"><img src="/img/icons-logos/back.png" alt="Back Button"></a>
             <div>
                 <h1>Your Cart</h1>
                 <p>Table <span>01</span></p>
             </div>
-          
+            <img class="hide-balance" src="/img/icons-logos/back.png" alt="Hidden Back Button">
         </header>
     
-        <section>
-             <!-- Burger's tab -->
+        <section class="menu-middle">
             <div class="cart-content">
-                <div class="title"> <!-- Title of the type of food-->
+                <div class="title"> <!-- Title for Your Order -->
                     <h1>Your Order</h1>
                 </div>
                 <div class="item-cards row">
-                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv">
-                        <div class="food-card">
-                            <div class="food-card-img">
-                                <img src="/img/Mains/Cheeseburger.jpg" alt="Burger">
-                            </div>
-                            <div class="food-card-content">
-                                <h3 class = "food-title">Double Stack Burger</h3>
-                                <p class="food-desc">Two beef, double the cheese and toppings.</p>
-                                <p class="price">$12.99</p>
-                                <a href="#" onclick="MyFunction();">Edit</a>
-                                <div class="card-button">
-                                    <button class="btn-add">+</button>
-                                    <span class="number">1</span>
-                                    <button class="btn-minus">-</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                 
-                    <!-- 2nd Card  -->
-                    <div class="col-sm-12 col-md-6 col-lg-4 triggerDiv" > 
-                        <div class="food-card">
-                            <div class="food-card-img">
-                                <img src="/img/Mains/chicken-burger.jpg" alt="Burger">
-                            </div>
-                            <div class="food-card-content">
-                                <h3 class = "food-title">Amazin' Chicken Burger</h3>
-                                <p class="food-desc">Chicken burger with the juicies meat in town.</p>
-                                <p class="price">$15.99</p>
-                                <a href="#" onclick="MyFunction();">Edit</a>
-                                <div class="card-button">
-                                    <button class="btn-add">+</button>
-                                    <span class="number">3</span>
-                                    <button class="btn-minus">-</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   <!-- To be populated with Order Cards -->
 
                 </div>
                 </div>
      
          <!-- Modal Structure Template-->
-             <div class="modal fade modal-sm" id="food-item-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+             <div class="modal fade modal-sm " id="food-item-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="modal-title"></h5>
@@ -103,17 +62,15 @@
                         <label for="Additional-Requests" class="form-label">Additional Requests</label>
                         <textarea class="form-control" id="Additional-requests-text" rows="3"></textarea>
                       </div>
-                      <input class="btn btn-warning btn-add" type="submit" value="Add to Cart">
+                      <input class="btn btn-warning btn-add" type="submit" value="Confirm" data-bs-dismiss="modal">
                     </div>
                   </div>
                 </div>
-              </div>
-                
+              </div> 
         </section>
            
- 
+        <!-- Footer for the Page -->
         <aside class="dragOrder">
-
             <div class="d-block text-center my-2" id="showConfirmOrder"></div>
             <div id="subTotalCofirmOrder" class="d-block p-0 m-0">
                 <div class="orderFooter mx-4 mt-3">
@@ -150,7 +107,9 @@
    
 </script>
 
+<script src="/script/viewcart-populate.js"></script>
 <script src="/script/viewcart-modal.js"></script>
+
 
 
 </body>
