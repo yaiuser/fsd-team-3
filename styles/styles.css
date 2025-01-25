@@ -84,6 +84,10 @@ body {
     color: #000;
 }
 
+.loadingpage > a > .btn-light{
+  color: #e26805;
+}
+
 /* End of Customer Loading Page */
 
   /* Start of Main Order Page */

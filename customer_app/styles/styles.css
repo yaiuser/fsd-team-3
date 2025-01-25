@@ -72,7 +72,9 @@ body {
     font-size: 0.8rem;
 }
 .loadingpage a{
+    font-size: 0.8rem;
     color: #477caa;
+
 }
 
 .loadingpage button, .loadingpage input{
