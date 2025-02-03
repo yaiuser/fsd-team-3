@@ -2,6 +2,7 @@ let foodArray = []; // Declare a variable to store the array
 let activeMenuItems = [];
 // dragging part of menu
 let htmlObject; // declare variable for use later
+let menuHeader;
 let htmlObject2;
 let htmlObject3;
 let placeholder;
@@ -14,34 +15,40 @@ let counter = 0;
 let importedFilter = JSON.parse(localStorage.getItem('filterArray')) || [];
 console.log(importedFilter);
 
-fetch("../script/food-database.json")
+fetch("http://localhost:8080/category/all")
   .then((response) => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    return response.json(); // Parse the JSON content
+    return response.json(); // Parse the JSON contentDesserts
   })
   .then((data) => {
-
-    if (importedFilter.length === 0){
+    console.log(data);
+    if (importedFilter.length === 0){         
       foodArray = data;
-      defaultMenu.forEach(element => {
+      foodArray.forEach(element => {
         htmlObject = document.createElement("li");
-        htmlObject.innerText = element;
+        htmlObject.innerText = element.category;
         htmlObject.classList.add("tab-btn");
-        htmlObject.setAttribute("id",element);
+        htmlObject.setAttribute("value",element.id);
+        htmlObject.setAttribute("id","mainmenu" + element.id);
+        htmlObject.addEventListener("click", (event) => {
+          event.preventDefault();
+          activeMenuItems = [];       // reset activeMenuItems on each click
+          tab_Nav(element.id); 
+        });
         if(counter===0){
           htmlObject.classList.add("active");
         }
         tabMenu.appendChild(htmlObject);
         counter++;
       });
-      tabBtns = document.querySelectorAll(".tab-btn");
-      tab_Nav(0);// load mains after data is fetched
+      tab_Nav(1);// load mains after data is fetched
     }else{
-      foodArray=data.filter(item => importedFilter.every((element) => item.tags.includes(element)))
-    defaultMenu = menuCleaner(defaultMenu,foodArray);
-    defaultMenu.forEach(element => {
+      //TODO: TO check with Yirong
+      foodArray=data.filter(item => importedFilter.every((element) => item.tags.includes(element)));
+      defaultMenu = menuCleaner(defaultMenu,foodArray);
+      defaultMenu.forEach(element => {
       htmlObject = document.createElement("li");
       htmlObject.innerText = element;
       htmlObject.classList.add("tab-btn");
@@ -70,6 +77,15 @@ fetch("../script/food-database.json")
   })
   .catch((error) => {
     console.error('There was a problem fetching the JSON:', error);
+  //   const itemsContainer = document.getElementById("menu-middle");
+  
+  // // Create a new div for displaying the "No data found" message
+  // const noDataDiv = document.createElement("div");
+  // noDataDiv.textContent = "No data found"; // Set the text content
+
+  // // Append the newly created div to the items container
+  // itemsContainer.appendChild(noDataDiv);
+  //   console.error('Error:', error);
   });
 
 const tabMenu = document.querySelector(".tab-menu");
@@ -92,24 +108,14 @@ tabMenu.addEventListener("mousedown", () => {
     activeDrag = true;
 });
 
-// Change Tab contents
 
-// const tabs = document.querySelectorAll(".tab-content");
-let tabBtns = document.querySelectorAll(".tab-btn");
-
-tabBtns.forEach((tabBtn, i) => {
-  tabBtn.addEventListener("click", () => {
-    activeMenuItems = [];       // reset activeMenuItems on each click
-    tab_Nav(i); 
-  })
-})
 
 // document.addEventListener("DOMContentLoaded", (event)=>{
-//   console.log(foodArray);
-//   tab_Nav(0);
+//   tab_Nav(1);
 // });
 
-const tab_Nav = function(tabBtnClick){
+const tab_Nav = function(catId){
+    let tabBtns = document.querySelectorAll(".tab-btn");
     // clearing all childs in middle section
     while (pagetitle.firstChild) {
         pagetitle.removeChild(pagetitle.lastChild);
@@ -118,100 +124,123 @@ const tab_Nav = function(tabBtnClick){
     tabBtns.forEach((tabBtn) => {
         tabBtn.classList.remove("active");
     });
-    // tabs.forEach((tab) => {
-    //     tab.classList.remove("active");
-    // });
+ 
+    const activeBtn = document.getElementById("mainmenu" + catId);  
+    activeBtn.classList.add("active");
+    // let activeMenu = tabBtnClick;
 
-    tabBtns[tabBtnClick].classList.add("active");
-    // tabs[tabBtnClick].classList.add("active");
-    let activeMenu = tabBtns[tabBtnClick].getAttribute('id');
     // foodArray.forEach(item => { if (item.category === activeMenu) activeMenuItems.push(item);});    // getting all the relevant items out
-    activeMenuItems = foodArray.filter(item => item.category === activeMenu);   // getting all the relevant items out using filter
+    activeMenuItems = foodArray.filter(item => item.id === activeBtn.value);   // getting all the relevant items out using filter
     // add the category title at the top
-    htmlObject = document.createElement("h1");
-    htmlObject.innerText = activeMenu;
-    pagetitle.appendChild(htmlObject);
-
-    // add the
-    htmlObject.classList.add("menuheader");
-    htmlObject = document.createElement("div");
-    htmlObject.id = "cardrow";
-    htmlObject.classList.add("item-cards", "row");
-    pagetitle.appendChild(htmlObject);
-    activeMenuItems.forEach(element => {
-
-        htmlObject3 = document.getElementById("cardrow");
-        htmlObject = document.createElement("div");    
-        htmlObject.classList.add("col-sm-12", "col-md-6", "col-lg-4", "triggerDiv");
-        htmlObject3.appendChild(htmlObject);
-
-        htmlObject3 = document.createElement("div");  
-        htmlObject3.classList.add("food-card");
-        htmlObject3.setAttribute("id",element.id)
-        htmlObject.appendChild(htmlObject3);
-
-        htmlObject = document.createElement("div");
-        htmlObject.classList.add("food-card-img");
-        htmlObject3.appendChild(htmlObject);
-
-        htmlObject2 = document.createElement("img");
-        htmlObject2.setAttribute("src",element.image);
-        htmlObject.appendChild(htmlObject2);
-
-        htmlObject = document.createElement("div");
-        htmlObject.classList.add("food-card-content");
-        htmlObject3.appendChild(htmlObject);
-
-        htmlObject2 = document.createElement("h3");
-        htmlObject2.classList.add("food-title");
-        htmlObject2.innerText = element.title;
-        htmlObject.appendChild(htmlObject2);
-
-        htmlObject2 = document.createElement("p");
-        htmlObject2.classList.add("food-desc");
-        htmlObject2.innerText = element.description;
-        htmlObject.appendChild(htmlObject2);
-
-        htmlObject2 = document.createElement("p");
-        htmlObject2.classList.add("price");
-        placeholder = element.price;
-        htmlObject2.innerText = "$" + placeholder.toFixed(2);
-        htmlObject.appendChild(htmlObject2);
-
-        htmlObject2 = document.createElement("div");
-        htmlObject2.classList.add("card-button");
-        htmlObject.appendChild(htmlObject2);
-        
-        htmlObject = document.createElement("button");
-        htmlObject.classList.add("btn-add");
-        htmlObject.innerText = "+";
-        htmlObject2.appendChild(htmlObject)
-    });
+    menuHeader = document.createElement("h1");
+    menuHeader.innerText = activeMenuItems[0].category;
+    pagetitle.appendChild(menuHeader);
+    productsByCategory(catId);
+   
     
-
-    // adding the modal
-
-    cards = document.querySelectorAll(".food-card");
-    
-    cards.forEach((card, i) => {
-      card.addEventListener("click", () => {
-        const modalElement = document.getElementById('food-item-modal');
-        const modal = new bootstrap.Modal(modalElement);
-        foodItem = foodArray.filter(item => item.id == card.id)[0];
-        document.getElementById('modal-title').textContent = foodItem.title;
-        document.getElementById('modal-desc').textContent = foodItem.description;
-        placeholder = foodItem.price;
-        document.getElementById('modal-price').textContent = "$" + placeholder.toFixed(2);
-        const modalImage = document.querySelector('#modal-img');
-        modalImage.src = foodItem.image;  
-        modal.show();
-
-        
-      })
-    })
-
-
+   
 }
+
+// FETCH PRODUCTS BY CATEGORY
+function productsByCategory(id = null){
+ // TODO: Fetch and populate the menucards 
+    fetch("http://localhost:8080/product/"+ id)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Parse the JSON contentDesserts
+    }).then((data) => {
+
+         // Clear previous content if needed (e.g., remove old cards)
+         const htmlObject = document.createElement("div");
+         htmlObject.id = "cardrow";
+         htmlObject.classList.add("item-cards", "row");
+ 
+         // Add the menuheader class to the main container
+         const menuHeader = document.createElement("div");
+         menuHeader.classList.add("menuheader");
+         pagetitle.appendChild(menuHeader); // Assuming pagetitle is already defined, append it to that
+         menuHeader.appendChild(htmlObject); //
+   
+        data.forEach((element) => {
+          console.log(element);
+                const cartPopulation = document.querySelector(".item-cards.row");
+                // Create the position container for the card (column layout)
+                // Create the column layout for the card
+                      const cardPos = document.createElement("div");
+                      cardPos.className = "col-sm-12 col-md-6 col-lg-4";
+                      cartPopulation.appendChild(cardPos);
+
+                      // Create the food card container
+                      const itemCol = document.createElement("div");
+                      itemCol.className = "food-card";
+                      cardPos.appendChild(itemCol);
+
+                      // Add the image container
+                      const cardItem = document.createElement("div");
+                      cardItem.className = "food-card-img";
+                      itemCol.appendChild(cardItem);
+
+                      const cardImage = document.createElement("img");
+                      cardImage.src = element.image;  
+                      cardImage.alt = element.title;  
+                      cardItem.appendChild(cardImage);
+
+                      // Add the content container
+                      const cardBody = document.createElement("div");
+                      cardBody.className = "food-card-content";
+                      itemCol.appendChild(cardBody);
+
+                      // Add the title
+                      const cardTitle = document.createElement("h3");
+                      cardTitle.className = "food-title";
+                      cardTitle.innerText = element.title;  // Use the correct product title
+                      cardBody.appendChild(cardTitle);
+
+                      // Add the description
+                      const cardDesc = document.createElement("p");
+                      cardDesc.className = "food-desc";
+                      cardDesc.innerText = element.description;  // Use the correct description
+                      cardBody.appendChild(cardDesc);
+
+                      // Add the price
+                      const cardPrice = document.createElement("p");
+                      cardPrice.className = "price";
+                      cardPrice.innerText = `$${element.price.toFixed(2)}`;  // Format the price
+                      cardBody.appendChild(cardPrice);
+
+                      // Add the add button
+                      const cardButton = document.createElement("div");
+                      cardButton.className = "card-button";
+                      cardBody.appendChild(cardButton);
+
+                      const cardAddBtn = document.createElement("button");
+                      cardAddBtn.className = "btn-add";
+                      cardAddBtn.textContent = "+";  // Add "+" button
+                      cardButton.appendChild(cardAddBtn);
+  
+
+                          //Populating the Modal
+                  cardPos.addEventListener("click", () => {
+                  // Populate modal with the item's data
+                  document.getElementById("modal-title").innerText = element.title;
+                  document.getElementById("modal-img").src = element.image;
+                  document.getElementById("modal-desc").innerText = element.description;
+                  document.getElementById("modal-price").innerText = `$${element.price.toFixed(2)}`;
+
+                  // Show the Modal on Click
+                  const modal = new bootstrap.Modal(document.getElementById("food-item-modal"));
+                  modal.show();
+              });
+        });
+
+      
+    });
+ 
+}
+
+
 
 document.getElementById("filter").addEventListener("click", () => {
   localStorage.setItem('menuArray', JSON.stringify(importedFilter));

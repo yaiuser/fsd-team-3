@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Fetch the mock items from a JSON file
+  // fetch("../script/mock-order.json") // TODO: Mock Data to be from server that collects added items from previous page.
   fetch("../script/mock-order.json") // TODO: Mock Data to be from server that collects added items from previous page.
     .then((response) => {
       if (!response.ok) {

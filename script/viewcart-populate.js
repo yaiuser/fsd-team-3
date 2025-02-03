@@ -1,19 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Fetch the mock items from a JSON file
-    fetch("../script/mock-order.json") // TODO: Mock Data to be from server that collects added items from previous page.
+    // fetch("../script/mock-order.json") // TODO: Mock Data to be from server that collects added items from previous page.
+    fetch("http://localhost:8080/order/all") // TODO: Mock Data to be from server that collects added items from previous page.
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
             return response.json();
         })
-        .then((data) => {
-            // Select the cart-population container
+        .then((orderData) => {
+           
             const cartPopulation = document.querySelector(".item-cards.row");
-
-            // Use a for loop to create cards for each item in the JSON data
-            for (let i = 0; i < data.length; i++) {
-                const mockItem = data[i];
+            for (let i = 0; i < orderData.length; i++) {
+                const orderItem = orderData[i]; 
+                const menuItem = orderItem.menuItem; 
+                console.log("API Response:", orderData); 
+                console.log("Order Items:", orderData.orderItems); 
+                console.log(orderItem);
 
                 // Create the position container for the card (column layout)
                 const cardPos = document.createElement("div");
@@ -31,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 itemCol.appendChild(cardItem);
 
                 const cardImage = document.createElement("img");
-                cardImage.src = mockItem.image;
-                cardImage.alt = mockItem.title;
+                cardImage.src = menuItem.image;
+                cardImage.alt = menuItem.title;
                 cardItem.appendChild(cardImage);
 
                 // Add the content container
@@ -43,20 +46,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Add the title
                 const cardTitle = document.createElement("h3");
                 cardTitle.className = "food-title";
-                cardTitle.innerText = mockItem.title;
+                cardTitle.innerText = menuItem.title;
                 cardBody.appendChild(cardTitle);
 
                
                 // Add the Price
                 const cardPrice = document.createElement("p");
                 cardPrice.className = "price";
-                cardPrice.innerText = `$${mockItem.price.toFixed(2)}`;
+                cardPrice.innerText = `$${menuItem.price.toFixed(2)}`;
                 cardBody.appendChild(cardPrice);
 
+             
                  // Add the Special request
                 const cardText = document.createElement("p");
                 cardText.className = "food-desc";
-                cardText.innerText = mockItem.additionalRequest;
+                cardText.innerText = orderItem.additionalRequest;
                 cardBody.appendChild(cardText);
 
                 // Add an edit link
@@ -79,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Add the quantity number
                 const cardQtyNumber = document.createElement("span");
                 cardQtyNumber.className = "number";
-                cardQtyNumber.textContent = mockItem.quantityOrdered;
+                cardQtyNumber.textContent = orderItem.quantityOrdered;
                 cardQtyContainer.appendChild(cardQtyNumber);
 
                 // Add the "-" button
@@ -91,11 +95,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
               cardEdit.addEventListener("click", () => {
                     // Populate modal with the item's data
-                    document.getElementById("modal-title").innerText = mockItem.title;
-                    document.getElementById("modal-img").src = mockItem.image;
-                    document.getElementById("modal-desc").innerText = mockItem.description;
-                    document.getElementById("modal-price").innerText = `$${mockItem.price.toFixed(2)}`;
-                    document.getElementById("Additional-requests-text").value = mockItem.additionalRequest;
+                    document.getElementById("modal-title").innerText = menuItem.title;
+                    document.getElementById("modal-img").src = menuItem.image;
+                    document.getElementById("modal-desc").innerText = menuItem.description;
+                    document.getElementById("modal-price").innerText = `$${menuItem.price.toFixed(2)}`;
+                    document.getElementById("Additional-requests-text").value = orderItem.additionalRequest;
 
                     // Show the Modal on Click
                     const modal = new bootstrap.Modal(document.getElementById("food-item-modal"));
