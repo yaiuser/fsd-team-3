@@ -1,145 +1,85 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        
-        @media print {
-            body {
-                width: 300px;
-                margin: 0;
-                padding: 0;
-            }
-        }
-        
         body {
-            font-family: monospace;
-            width: 300px;
-            margin: 20px auto;
-            padding: 10px;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .address {
-            font-size: 12px;
-            margin-bottom: 5px;
-        }
-        
-        .receipt-info {
-            margin: 10px 0;
-            border-top: 1px dashed #000;
-            border-bottom: 1px dashed #000;
-            padding: 10px 0;
-        }
-        
-        .items {
-            margin: 15px 0;
-        }
-        
-        .item {
             display: flex;
-            justify-content: space-between;
-            margin: 5px 0;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
         }
-        
-        .item-details {
-            flex: 1;
+        .receipt {
+            width: 320px;
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
-        
-        .quantity {
-            width: 30px;
+        .receipt h1 {
+            font-size: 1.5rem;
         }
-        
-        .price {
-            width: 70px;
-            text-align: right;
+        .receipt p, .receipt ul {
+            font-size: 0.9rem;
         }
-        
-        .totals {
-            border-top: 1px dashed #000;
-            padding-top: 10px;
-        }
-        
-        .total-line {
-            display: flex;
-            justify-content: space-between;
-            margin: 5px 0;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 12px;
+        .top-button {
+            margin-bottom: 15px;
         }
     </style>
 </head>
 <body>
-    <a href="G_cafe.html" class="btn btn-outline-primary">Back to Dashboard</a>
-    <div class="header">
-        <div class="logo">GRANOLA CAFE</div>
-        <div class="address">
-            123 Coffee Street<br>
-            Singapore, S888888<br>
-            Tel: (+65) 8888-9999
+    <div class="receipt">
+        <div class="text-start top-button">
+            <button class="btn btn-outline-primary btn-sm"><strong>Back to Dashboard</strong></button>
+        </div>
+        <div class="text-center">
+            <h1>GRANOLA CAFE</h1>
+            <p>123 Coffee Street<br>Singapore, S888888<br>Tel: (+65) 8888-9999</p>
+        </div>
+        <hr>
+        <p><strong>Order #:</strong> <span id="orderNumber"></span></p>
+        <p><strong>Date:</strong> <span id="date"></span></p>
+        <p><strong>Time:</strong> <span id="time"></span></p>
+        <p><strong>Server:</strong> <span id="server"></span></p>
+        <p><strong>Table:</strong> <span id="table"></span></p>
+        <hr>
+        <ul id="itemsList" class="list-unstyled"></ul>
+        <hr>
+        <p><strong>Subtotal:</strong> $<span id="subtotal"></span></p>
+        <p><strong>Tax (10%):</strong> $<span id="taxAmount"></span></p>
+        <h3><strong>Total:</strong> $<span id="total"></span></h3>
+        <hr>
+        <div class="text-center">
+            <p>Thank you for dining with us!<br>Please come again.<br><a href="http://www.granolacafe.com">www.granolacafe.com</a></p>
         </div>
     </div>
 
-    <div class="receipt-info">
-        Order #: 001234<br>
-        Date: 23/12/2024<br>
-        Time: 11:30 AM<br>
-        Server: John<br>
-        Table: 5
-    </div>
+    <script>
+        fetch('mock-receipt.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('orderNumber').innerText = data.orderNumber;
+                document.getElementById('date').innerText = data.date;
+                document.getElementById('time').innerText = data.time;
+                document.getElementById('server').innerText = data.server;
+                document.getElementById('table').innerText = data.table;
+                
+                const itemsList = document.getElementById('itemsList');
+                data.items.forEach(item => {
+                    const li = document.createElement('li');
+                    li.innerText = `${item.quantity}x ${item.name} - $${item.price.toFixed(2)}`;
+                    itemsList.appendChild(li);
+                });
 
-    <div class="items">
-        <div class="item">
-            <div class="quantity">2x</div>
-            <div class="item-details">Cappuccino</div>
-            <div class="price">$9.00</div>
-        </div>
-        <div class="item">
-            <div class="quantity">1x</div>
-            <div class="item-details">Chicken Sandwich</div>
-            <div class="price">$15.50</div>
-        </div>
-        <div class="item">
-            <div class="quantity">1x</div>
-            <div class="item-details">Caesar Salad</div>
-            <div class="price">$8.00</div>
-        </div>
-    </div>
-
-    <div class="totals">
-        <div class="total-line">
-            <div>Subtotal</div>
-            <div>$32.50</div>
-        </div>
-        <div class="total-line">
-            <div>Tax (10%)</div>
-            <div>$3.25</div>
-        </div>
-        <div class="total-line" style="font-weight: bold;">
-            <div>TOTAL</div>
-            <div>$35.75</div>
-        </div>
-    </div>
-
-    <div class="footer">
-        Thank you for dining with us!<br>
-        Please come again<br>
-        www.granolacafe.com
-    </div>
+                document.getElementById('subtotal').innerText = data.subtotal.toFixed(2);
+                document.getElementById('taxAmount').innerText = data.taxAmount.toFixed(2);
+                document.getElementById('total').innerText = data.total.toFixed(2);
+            });
+    </script>
 </body>
 </html>

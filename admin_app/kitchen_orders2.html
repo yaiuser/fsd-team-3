@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitchen Processing Orders</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .order-chit {
+      font-size: 20px;
+      border: 1px solid #000;
+      padding: 20px;
+      margin: 10px;
+      display: inline-block;
+      width: calc((100% - 60px) / 3); /* Adjust width for 3 columns with margins */
+      box-sizing: border-box; 
+      background-color: #ef8d79; 
+    }
+    .order-header {
+      font-size: 22px;
+      text-align: left;
+      padding: 10px;
+      margin-bottom: 0px;
+    }
+  </style>
+</head>
+<body>
+
+  <h3>Kitchen Processing Orders</h3>
+  <a href="G_cafe.html" class="btn btn-outline-primary">Back to Dashboard</a>
+  <div id="orders-container"></div>
+
+  <script>
+    const ordersContainer = document.getElementById('orders-container');
+    let orders = []; 
+
+    function displayOrder(order) {
+      const orderChit = document.createElement('div');
+      orderChit.classList.add('order-chit');
+
+      const orderHeader = document.createElement('div');
+      orderHeader.classList.add('order-header');
+      orderHeader.innerHTML = `
+        <p>Table no.: <strong>${order.tableNumber}</strong> | Order No.: <strong>${order.orderNumber}</strong></p>
+      `;
+      orderChit.appendChild(orderHeader);
+
+      const orderTable = document.createElement('table');
+      orderTable.classList.add('table');
+
+      const tableHead = document.createElement('thead');
+      const tableRow = document.createElement('tr');
+      tableRow.innerHTML = `<th>Item</th><th>Qty</th><th>Remark</th>`;
+      tableHead.appendChild(tableRow);
+      orderTable.appendChild(tableHead);
+
+      const tableBody = document.createElement('tbody');
+      order.items.forEach(item => {
+        const tableRow = document.createElement('tr');
+        tableRow.innerHTML = `<td>${item.name}</td><td>${item.quantity}</td><td>${item.remark}</td>`;
+        tableBody.appendChild(tableRow);
+      });
+      orderTable.appendChild(tableBody);
+
+      orderChit.appendChild(orderTable);
+      ordersContainer.appendChild(orderChit); 
+    }
+
+    // Simulate receiving 9 orders (3 rows x 3 columns)
+    const order1 = { 
+      tableNumber: 1, 
+      orderNumber: 1001, 
+      items: [
+        { name: "Pizza", quantity: 2, remark: "Extra Cheese" },
+        { name: "Salad", quantity: 1, remark: "No Dressing" }
+      ]
+    };
+    const order2 = { 
+      tableNumber: 2, 
+      orderNumber: 1002, 
+      items: [
+        { name: "Burger", quantity: 1, remark: "Well Done" },
+        { name: "Fries", quantity: 1, remark: "Extra Salt" }
+      ]
+    };
+    const order3 = { 
+      tableNumber: 3, 
+      orderNumber: 1003, 
+      items: [
+        { name: "Pasta", quantity: 1, remark: "Alfredo Sauce" }
+      ]
+    };
+    const order4 = { 
+      tableNumber: 4, 
+      orderNumber: 1004, 
+      items: [
+        { name: "Steak", quantity: 1, remark: "Medium Rare" }
+      ]
+    };
+    const order5 = { 
+      tableNumber: 5, 
+      orderNumber: 1005, 
+      items: [
+        { name: "Sushi", quantity: 2, remark: "Spicy Tuna" }
+      ]
+    };
+    const order6 = { 
+      tableNumber: 6, 
+      orderNumber: 1006, 
+      items: [
+        { name: "Chicken Wings", quantity: 6, remark: "Hot" }
+      ]
+    };
+    const order7 = { 
+      tableNumber: 7, 
+      orderNumber: 1007, 
+      items: [
+        { name: "Soup", quantity: 1, remark: "Extra Vegetables" }
+      ]
+    };
+    const order8 = { 
+      tableNumber: 8, 
+      orderNumber: 1008, 
+      items: [
+        { name: "Salad", quantity: 1, remark: "No Dressing" },
+        { name: "Bread", quantity: 2, remark: "Butter" }
+      ]
+    };
+    const order9 = { 
+      tableNumber: 9, 
+      orderNumber: 1009, 
+      items: [
+        { name: "Coffee", quantity: 2, remark: "Black" }
+      ]
+    };
+
+    // Add simulated orders to the orders array
+    orders.push(order1, order2, order3, order4, order5, order6, order7, order8, order9);
+
+    // Display orders
+    orders.forEach(order => displayOrder(order)); 
+
+  </script>
+</body>
+</html>
