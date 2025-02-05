@@ -67,6 +67,7 @@
                         <div class="flex-shrink-0 p-3 w-100">
                         
                                 <!-- List of sidebar menu -->
+
                                 <!-- Menu 1 -->
                                 <ul class="list-unstyled ps-0">
                                 <li class="mb-1">
@@ -77,10 +78,11 @@
                                 <!-- Menu 2 -->
                                 <li class="mb-1">
                                 <i class="fa fa-bell" aria-hidden="true"></i>
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">Orders</button>
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">Orders &nbsp &#x25BC</button>
                                 <div class="collapse" id="orders-collapse" style="">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Orders List</a></li>
+                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Kitchen Orders Display</a></li>
                                 </ul>
                                 </div>
                                 </li>
@@ -88,7 +90,7 @@
                                 <!-- Menu 3 -->
                                 <li class="mb-1">
                                 <i class="fa fa-cutlery" aria-hidden="true"></i>
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dishes-collapse" aria-expanded="false">Dishes</button>
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dishes-collapse" aria-expanded="false">Dishes &nbsp &#x25BC</button>
                                 <div class="collapse" id="dishes-collapse" style="">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Dishes List</a></li>
@@ -101,15 +103,31 @@
                 
                                 <li class="mb-1">
                                 <i class="fa fa-users" aria-hidden="true"></i>
-                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#members-collapse" aria-expanded="false">Members</button>
+                                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#members-collapse" aria-expanded="false">Members &nbsp &#x25BC</button>
                                 <div class="collapse" id="members-collapse" style="">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                                 <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Voucher</a></li>
                                 </ul>
                                 </div>
                                 </li>
+
+                                <!-- Menu 5 -->
+                                                
+                                <li class="mb-1">
+                                        <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+                                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#receipt-collapse" aria-expanded="false">Receipt &nbsp &#x25BC</button>
+                                        <div class="collapse" id="receipt-collapse" style="">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                        <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Receipt</a></li>
+                                        </ul>
+                                        </div>
+                                        </li>
+             
+
                                 <li class="border-bottom my-3"></li>
                                 </ul>
+
+                                
                         </div>
                 </div>
                 <!-- End column for sidebar -->
@@ -117,7 +135,12 @@
                 <!-- Start column for content area  -->
                 <div class="col-8 pt-4 pe-4">
                         <div class="h-100 border rounded-4 p-4">
-                                <h1>Dashboard</h1>
+                            <h1>Dashboard</h1>
+                            <!-- Submenu -->
+                            <div class="submenu">
+                                <!-- iframe to display order_lists.html content -->
+                                <iframe name="contentFrame" src="order_lists.html" style="width: 100%; height: 500px; border: none; margin-top: 20px;"></iframe>
+                            </div>
                         </div>
                 </div>
                 <!-- End column for content area -->
