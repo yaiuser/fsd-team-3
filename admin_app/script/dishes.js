@@ -108,7 +108,7 @@ function appendDishes(dishes) {
 }
 
 function deleteDish(dishId) {
-    fetch(`http://localhost:8080/delete/${dishId}`, {
+    fetch(`http://localhost:8080/product/delete/${dishId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
