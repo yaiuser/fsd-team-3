@@ -3,6 +3,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+
+        <link rel="stylesheet" href="/styles.css">
         
         <!-- Import Bootstrap -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
@@ -21,6 +23,7 @@
         padding: 10px; /* Add padding to the top */
         filter: brightness(0) saturate(100%) invert(50%) sepia(100%) hue-rotate(-20deg) saturate(500%) brightness(100%);
     }    
+    
 </style> 
     
 
@@ -46,7 +49,7 @@
                                         Jane Doe (Admin)
                                         </a>
                         
-                                        <ul class="dropdown-menu text-small shadow" style="">
+                                        <ul class="dropdown-menu text-small shadow" styles="">
                                                 <li><a class="dropdown-item" href="#">Orders</a></li>
                                                 <li><a class="dropdown-item" href="#">Menu</a></li>
                                                 <li><a class="dropdown-item" href="#">Users</a></li>
@@ -78,11 +81,14 @@
                                 <!-- Menu 2 -->
                                 <li class="mb-1">
                                 <i class="fa fa-bell" aria-hidden="true"></i>
+
                                 <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">Orders &nbsp &#x25BC</button>
+
                                 <div class="collapse" id="orders-collapse" style="">
                                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Orders List</a></li>
-                                <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Kitchen Orders Display</a></li>
+                                <li><a href="order_lists.html" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Orders List</a></li>
+
+                                <li><a href="kitchen_orders.html" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Kitchen Orders Display</a></li>
                                 </ul>
                                 </div>
                                 </li>
@@ -115,13 +121,21 @@
                                                 
                                 <li class="mb-1">
                                         <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
-                                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#receipt-collapse" aria-expanded="false">Receipt &nbsp &#x25BC</button>
+
+                                        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#receipt-collapse" aria-expanded="false">
+                                                Receipt &nbsp &#x25BC
+                                        </button>
+
                                         <div class="collapse" id="receipt-collapse" style="">
-                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="receipt.html" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
-                                                Receipt</a></li>
-                                        </ul>
-                                        </div>
+                                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                                                    <!-- Link to receipt.html, targeting the iframe -->
+                                                    <li>
+                                                        <a href="receipt.html" target="contentFrame" class="link-body-emphasis d-inline-flex text-decoration-none rounded">
+                                                            Receipt
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </li>
              
 
@@ -140,7 +154,7 @@
                             <!-- Submenu -->
                             <div class="submenu">
                                 <!-- iframe to display order_lists.html content -->
-                                <iframe name="contentFrame" src="order_lists.html" style="width: 100%; height: 500px; border: none; margin-top: 20px;"></iframe>
+                                <iframe name="contentFrame" src="reports.html" style="width: 100%; height: 550px; border: none; margin-top: 10px;"></iframe>
                             </div>
                         </div>
                 </div>
