@@ -1,9 +1,10 @@
 // variables for filter
 
-let filter = JSON.parse(localStorage.getItem('menuArray')) || [];
-let currentState = filter;
+let filter = JSON.parse(localStorage.getItem('exportFilter')) || "";
+let currentState = filter; // saving the current filter if user presses back
 let index;
 let htmlObject;
+const filters = ["cr","gf","veg"];
 
 console.log('Array from menu side:', filter);
 
@@ -15,20 +16,18 @@ document.getElementById("gf").addEventListener("click", () => addRemoveTags("gf"
 
 document.getElementById("veg").addEventListener("click", () => addRemoveTags("veg"));
 
-// checking if the filter array is empty to make sure none is selected if empty
+// checking if the filter is "" to make sure none is selected if ""
 
 document.addEventListener("DOMContentLoaded", () => checkNone());
 document.addEventListener("DOMContentLoaded", () => 
-    filter.forEach(element => {
-        document.getElementById(element).classList.add("selected");
-    })
+    document.getElementById(filter).classList.add("selected")
 );
 document.getElementById("filter").addEventListener("click", () => checkNone());
 
 // if click none, clear the css on other buttons so only none is elected
 
 document.getElementById("none").addEventListener("click", () => {
-    filter = [];
+    filter = "";
     document.getElementById("cr").classList.remove("selected");
     document.getElementById("gf").classList.remove("selected");
     document.getElementById("veg").classList.remove("selected");
@@ -37,11 +36,14 @@ document.getElementById("none").addEventListener("click", () => {
 // function to check if tag should be selected or not
 
 function addRemoveTags(tag){
-    if(!filter.includes(tag)){
-        filter.push(tag);
+    if(filter!==tag){
+        filter=tag;
         document.getElementById(tag).classList.add("selected");
-    }else if(filter.includes(tag)){
-        filter = filter.filter((element) => element!=tag);
+        filters.forEach(element => {
+            if(element!==tag) document.getElementById(element).classList.remove("selected");
+        });
+    }else{
+        filter="";
         document.getElementById(tag).classList.remove("selected");
     };
 };
@@ -49,25 +51,19 @@ function addRemoveTags(tag){
 // function to check if none should be selected or not
 
 function checkNone(){
-    if (filter.length === 0) {
+    if (filter === "") {
         document.getElementById("none").classList.add("selected");
-    } else if (filter.length >= 0) {
+    } else {
         document.getElementById("none").classList.remove("selected");
     }
-    filterNumber()
 };
 
 // exporting the filter array for use in tab-menu.js
 
 document.getElementById("back").addEventListener("click", () => {
-    localStorage.setItem('filterArray', JSON.stringify(currentState));
+    localStorage.setItem('exporterFilter', JSON.stringify(currentState)); // exporting old filter if back
 });
 
 document.getElementById("apply").addEventListener("click", () => {
-    localStorage.setItem('filterArray', JSON.stringify(filter));
+    localStorage.setItem('exporterFilter', JSON.stringify(filter));    // exporting new filter if apply
 });
-
-function filterNumber(){
-    htmlObject = document.getElementById("order_badge");
-    htmlObject.innerText=filter.length;
-}
