@@ -40,11 +40,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// // //* Add the total quantity of items into the badge
-// let sum = 0;
-// numberDisplays.forEach(numberDisplay => { 
-//     sum += parseInt(numberDisplay.textContent); 
-// });
-//     const badge = document.querySelector('#btnConfirmOrder .order_badge');
-//       badge.textContent = sum; 
-
