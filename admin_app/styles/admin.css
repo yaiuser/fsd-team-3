@@ -13,7 +13,7 @@ html {
 	font-family: Arial, sans-serif;
 }
 body{
-	background-color: #fdf3eb;
+	background-color: #fff;
 }
 
 /* loginver2 page */
@@ -44,30 +44,50 @@ body{
 	text-decoration: none;
 }
 
-.sidebar-btn > button:hover {
-	background-color: #f0f3f7;
+.sidebar-btn{
+	display: flex;;
+	padding: 10px;
 }
 
-.btn-toggle-nav li a{
+.sidebar-btn i{
+	font-size: 1.2rem;
+	width: 20px;
+	text-align: center;
+}
+
+.btn-toggle {
+	flex-grow: 1;
+	text-align: left;
+}
+
+.collapse{
+	padding-left: 20px;
+}
+
+/* .sidebar-btn > button:hover {
+	background-color: #f0f3f7;
+} */
+
+/* .btn-toggle-nav li a{
 	background-color: transparent !important;
 	text-decoration: none;
 	padding: 5px 10px;
 	border-radius: 0;
-}
+} */
 
-.btn-toggle-nav li a:hover{
+/* .btn-toggle-nav li a:hover{
 	background-color: #f0f3f7 !important;
 	text-decoration: underline;
 	border-radius: 20px;
-}
+} */
 
-.sidebar-btn:hover{
+/* .sidebar-btn:hover{
 	background-color: transparent !important;
-}
+} */
 
-.btn-toggle-nav li a{
+/* .btn-toggle-nav li a{
 	display: block;
-}
+} */
 
 /* add dish page */
 .upload-btn {

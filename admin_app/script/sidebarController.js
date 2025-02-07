@@ -34,33 +34,36 @@ class SidebarController {
 
 	// Function to display sidebar navigation item + submenu dynamically
 	renderSidebarItem(item, parentElement, index) {
-		const listItem = document.createElement('li');			// Create a <li> element for the sidebar item
+		const listItem = document.createElement('li');													// Create a <li> element for the sidebar item
 		listItem.className = 'sidebar-btn rounded-4 mb-2';
 
-		if (item.icon) {										// if the item has an icon, create an <i> element for it
+		const itemContainer = document.createElement('div');											// Create a container for item.icon and item.title
+		itemContainer.className= 'dflex align-items-cente gap-2 p-2';
+
+		if (item.icon) {																				// if the item has an icon, create an <i> element for it
 			const icon = document.createElement('i');
-			icon.className = `${item.icon}`;
-			listItem.appendChild(icon);							// Append the icon to the list item
+			icon.className = `${item.icon} me-2`;
+			itemContainer.appendChild(icon);															// Append the icon to the list item
 			
 		}
 
-
 		const button = document.createElement('button');																// Create a <button> element for the item's title
-		button.className = 'btn btn-toggle d-inline-flex align-items-center collapsed ms-2';
+		button.className = 'btn btn-toggle d-inline-flex align-items-center collapsed';
 		button.setAttribute('data-bs-toggle', 'collapse');
 		button.setAttribute('data-bs-target', `#${item.title.toLowerCase().replace(/\s/g, '-')}-collapse-${index}`);
 		button.textContent = item.title;
-		listItem.appendChild(button);																					// Append the button to the list item
-		parentElement.appendChild(listItem);																			// Append the list item to the parent <ul> element
+
+		itemContainer.appendChild(button);
+		listItem.appendChild(itemContainer);																					// Append the button to the list item																		// Append the list item to the parent <ul> element
 
 		if (item.submenu && item.submenu.length > 0) {																	// Check if the item has a submenu
 			const submenuDiv = document.createElement('div');															// Create a <div> for the collapsible menu
-			submenuDiv.className = 'collapse';
+			submenuDiv.className = 'collapse ms-4 w-100';
 			submenuDiv.id = `${item.title.toLowerCase().replace(/\s/g, '-')}-collapse-${index}`;
 			
 
 			const submenuList = document.createElement('ul');															// Create a <ul> for the submenu items
-			submenuList.className = 'btn-toggle-nav list-unstyled fw-normal pb-1 small ms-5';
+			submenuList.className = 'btn-toggle-nav list-unstyled fw-normal pb-1 small';
 																	
 
 			item.submenu.forEach((submenuItem) => {														// Loop through the submenu items
@@ -76,10 +79,10 @@ class SidebarController {
 
 			submenuDiv.appendChild(submenuList);	// Append the submenu list to the submenu container
 			listItem.appendChild(submenuDiv);		// Append the submenu container to the main list item
-
-			
-			
+	
 		}
+
+		parentElement.appendChild(listItem);	
 
 	}
 
