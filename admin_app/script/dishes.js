@@ -5,7 +5,7 @@ const dishContainer = document.querySelector("#dish-container");
 // Function to fetch data and append dishes
 async function fetchDishes(){
 	try{
-		const response = await fetch('./script/food-database.json');		// fetch the JSON data
+		const response = await fetch('http://localhost:8080/product/all');	// fetch the JSON data
 		console.log('Fetch response:', response); 							// log the response
 		if(!response.ok){
 			throw new Error(`HTTP error! Status: ${response.status}`);
@@ -55,11 +55,11 @@ function appendDishes(dishes) {
 		[
 			{text: dish.id, className: "text-center"},
 			{text: dish.title, className: "text-center"},
-			{text: dish.category, className: "text-center"},			
+			{text: dish.category.category, className: "text-center"},			
 			{text: `$${dish.price.toFixed(2)}`, className: "text-center"},
-			{text: dish.quantity, className: "text-center"},
-			{text: dish.quantity > 0 ? "Available" : "Out of Stock", 
-			className: `text-center ${dish.quantity > 0 ? "text-success" : "text-danger"}`},		// if dish quantity is > 0 means available. if quantity is < 0 means out of stock
+			{text: dish.quantityAvailable, className: "text-center"},
+			{text: dish.quantityAvailable > 0 ? "Available" : "Out of Stock", 
+			className: `text-center ${dish.quantityAvailable > 0 ? "text-success" : "text-danger"}`},		// if dish quantity is > 0 means available. if quantity is < 0 means out of stock
 		].forEach(({ text, className }) => {
 			const cell = tbodyRow.insertCell();
 			cell.className = className;
@@ -72,6 +72,7 @@ function appendDishes(dishes) {
 		btnAction.setAttribute("data-bs-target", "#modalSheet");
 		btnAction.className = "btn btn-sm btn-secondary text-white fw-bold";
 		btnAction.innerText = "More";
+		btnAction.setAttribute("value", dish.id);
 
 		btnAction.addEventListener("click", (event) => {
 			event.preventDefault();
@@ -87,6 +88,14 @@ function appendDishes(dishes) {
 
 			const dishDesc = modalSheet.querySelector("#modal-body-description");	// display dish.description on modal
 			dishDesc.textContent = dish.description;
+
+			const btnDelete = document.getElementById("btndelete");
+			btnDelete.setAttribute("value", dish.id);
+			btnDelete.onclick = () => {
+			const dishId = btnAction.getAttribute("value");
+			deleteDish(dishId);
+
+		} 
 		});
 
 		const tbCellMoreBtn = tbodyRow.insertCell(0);
@@ -94,7 +103,28 @@ function appendDishes(dishes) {
 		tbCellMoreBtn.append(btnAction);
 		tbodyRow.append(tbCellMoreBtn);
 
+
 	});
+}
+
+function deleteDish(dishId) {
+    fetch(`http://localhost:8080/delete/${dishId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Dish deleted successfully!");
+        } else {
+            alert("Failed to delete the dish.");
+        }
+    })
+    .catch(error => {
+        console.error("Error deleting dish:", error);
+        alert("Error occurred while trying to delete.");
+    });
 }
 
 fetchDishes();
