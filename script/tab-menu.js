@@ -1,6 +1,6 @@
 let foodArray = []; // Declare a variable to store the array
 // dragging part of menu
-let htmlObject; // declare variable for use later
+let menuTab;
 let menuHeader;
 let firstHeader;
 let pagetitle = document.getElementById("page");
@@ -20,16 +20,16 @@ fetch("http://localhost:8080/category/all")
     // creating the menu headers
     foodArray = data;
     foodArray.forEach((element) => {
-      htmlObject = document.createElement("li");
-      htmlObject.innerText = element.category;
-      htmlObject.classList.add("tab-btn");
-      htmlObject.setAttribute("value", element.id);
-      htmlObject.setAttribute("id", "mainmenu" + element.id);
-      htmlObject.addEventListener("click", (event) => {
+      menuTab = document.createElement("li");
+      menuTab.innerText = element.category;
+      menuTab.classList.add("tab-btn");
+      menuTab.setAttribute("value", element.id);
+      menuTab.setAttribute("id", "mainmenu" + element.id);
+      menuTab.addEventListener("click", (event) => {
         event.preventDefault();
         tab_Nav(element.id);
       });
-      tabMenu.appendChild(htmlObject);
+      tabMenu.appendChild(menuTab);
     });
 
     if (importedFilter === "") {
@@ -85,23 +85,25 @@ function productsByCategory(id = null) {
     })
     .then((data) => {
       // Clear previous content if needed (e.g., remove old cards)
-      const htmlObject = document.createElement("div");
-      htmlObject.id = "cardrow";
-      htmlObject.classList.add("item-cards", "row");
 
       // Add the menuheader class to the main container
       const menuHeader = document.createElement("div");
       menuHeader.classList.add("menuheader");
       pagetitle.appendChild(menuHeader); // Assuming pagetitle is already defined, append it to that
-      menuHeader.appendChild(htmlObject); //
+
+      // Container to contain the cards
+      const cardContainer = document.createElement("div");
+      cardContainer.id = "cardrow";
+      cardContainer.classList.add("item-cards", "row");
+      menuHeader.appendChild(cardContainer); 
 
       data.forEach((element) => {
-        const cartPopulation = document.querySelector(".item-cards.row");
+        const cardPopulation = document.querySelector(".item-cards.row");
         // Create the position container for the card (column layout)
         // Create the column layout for the card
         const cardPos = document.createElement("div");
         cardPos.className = "col-sm-12 col-md-6 col-lg-4";
-        cartPopulation.appendChild(cardPos);
+        cardPopulation.appendChild(cardPos);
 
         // Create the food card container
         const itemCol = document.createElement("div");
@@ -223,8 +225,8 @@ function menuCleaner(endpoint) {
 
       tabBtns.forEach((tabBtn) => {
         if(!menuArray.includes(tabBtn.value)){
-          htmlObject=document.getElementById("mainmenu" + tabBtn.value);
-          htmlObject.remove();
+          menuTab=document.getElementById("mainmenu" + tabBtn.value);
+          menuTab.remove();
         }
       });
     });
