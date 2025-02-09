@@ -93,9 +93,18 @@ function appendDishes(dishes) {
 			btnDelete.setAttribute("value", dish.id);
 			btnDelete.onclick = () => {
 			const dishId = btnAction.getAttribute("value");
-			deleteDish(dishId);
+			deleteDish(dishId);			
+    };
+			const btnEdit = document.getElementById("btn-edit"); 
+			btnEdit.setAttribute("value", dish.id); 
+			btnEdit.onclick = () => {
+			const dishId = btnEdit.getAttribute("value"); 
+			localStorage.setItem("editDishId", dishId); 
+			console.log(dishId); 
+			window.location.href = '../admin_app/edit_dishes.html'; 
+			};
 
-		} 
+		
 		});
 
 		const tbCellMoreBtn = tbodyRow.insertCell(0);
@@ -118,7 +127,7 @@ function deleteDish(dishId) {
         if (response.ok) {
             alert("Dish deleted successfully!");
         } else {
-            alert("Failed to delete the dish.");
+            alert("Dish is being used in orders, unable to delete dish.");
         }
     })
     .catch(error => {

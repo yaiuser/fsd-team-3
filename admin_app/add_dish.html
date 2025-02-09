@@ -82,80 +82,83 @@
 				<div class="col-9 pe-3">
 					<div class="h-100 border rounded-4 p-4">
 						<h2>Add Dish</h2>
-						<img
-						class="img-fluid w-100 h-25"
-						src="images/placeholder.png" 
-						alt="placeholder">
-						
+						<div class="image-container">
+							<img class="img-fluid" id="imagePreview" src="images/placeholder.png" alt="placeholder">
+						</div>
+						<!-- Upload Img Button -->
 						<button
-									class="upload-btn btn btn-sm w-25 h-auto float-end mt-2"
-									type="button"
-									onclick="window.location.href='#'";
-								>
+						class="upload-btn btn btn-sm w-25 h-auto float-end mt-2"
+						type="button"
+						onclick="document.getElementById('fileInput').click();">
 									Upload Image
 						</button>
+
+						<input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="previewImage(event)">
 						
 						<hr class="my-5">
 						
 						<!-- Add Dish Form -->
 						<form class="">
 							<div class="row g-3">
-
+							
+								<!-- Product Title -->
 							  <div class="col-sm-6">
 								<label for="productName" class="form-label">Product Title</label>
-								<input type="text" class="form-control" id="productName" placeholder="" value="" required="">
+								<input type="text" class="form-control" id="productName" placeholder="" value="" required>
 							  </div>
 				  
 							  <div class="col-sm-6">
 								<label for="productCat" class="form-label">Product Category</label>
 								<select class="form-select" id="productCat" required="">
-								  <option value="">Choose...</option>
-								  <option>Mains</option>
-								  <option>Pasta</option>
-								  <option>Pizza</option>
-								  <option>Sides</option>
-								  <option>Dessert</option>
-								  <option>Drinks</option>
+									<option value="">Choose...</option> <!-- Default option -->
 								</select>
-							  </div>
+							</div>
 
 
 							  <div class="col-sm-4">
-								<label for="Price" class="form-label">Price</label>
-								<input type="text" class="form-control" id="Price" placeholder="" value="" required="">
+								<label for="Price" class="form-label">Price($)</label>
+								<input type="number" class="form-control" id="Price" placeholder="Enter price" required 
+								 >
 							  </div>
 
 							  <div class="col-sm-4">
 								<label for="Quantity" class="form-label">Quantity</label>
-								<input type="text" class="form-control" id="Quantity" placeholder="" value="" required="">
+								<input type="number" class="form-control" id="Quantity" placeholder="" value="" required>
 							  </div>
 				
-
+							  	<!-- Tags: Hardcoded as they are Enums and are hardly changed.  -->
 							  <div class="col-sm-4">
-								<label for="status" class="form-label">Status</label>
-								<select class="form-select" id="status" required="">
-								  <option value="">Choose...</option>
-								  <option>Available</option>
-								  <option>Out of Stock</option>
+								<label for="status" class="form-label">Tags</label>
+								<select class="form-select" id="tags" required="">
+								    <option value="">Choose...</option> 
+									<option value="NONE">None</option>
+									<option value="VEGAN">Vegan</option>
+									<option value="RECOMMEND">Chef's Recommendations</option>
+									<option value="GLUTEN_FREE">Gluten Free</option>
+									
 								</select>
+								</select>
+								
+						
+									
+								</div>
 							  </div>
 				  
 							  <div class="col-12 mt-4">
 								<label for="productDesc">Product Description</label>
-								<textarea class="form-control" placeholder="Add a product description" id="productDesc"></textarea>
+								<textarea class="form-control" placeholder="Add a product description" id="productDesc" required></textarea>
 							  </div>
 							
-							<button
-									class="upload-btn btn btn-sm w-25 ms-2 mt-2"
-									type="button"
-									onclick="window.location.href='#'";
-								>
-									Save
-						</button>
+							  <button
+							  class="upload-btn btn btn-sm w-25 ms-2 mt-2"
+							  type="button"
+							  onclick="saveProduct()">
+							  Save
+						  </button>
 						<button
 									class="btn btn-sm btn-secondary text-white w-25 ms-2 mt-2"
 									type="button"
-									onclick="window.location.href='#'";
+									onclick="window.location.href='dishes.html';";
 								>
 									Cancel
 						</button>
@@ -172,5 +175,6 @@
 		<script src="script/navController.js"></script>
 		<script src="script/sidebarController.js"></script>
 		<script src="script/loader.js"></script>
+		<script src="script/add-dish.js"></script>
 	</body>
 </html>

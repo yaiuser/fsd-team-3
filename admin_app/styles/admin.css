@@ -101,3 +101,22 @@ body{
 #productDesc{
 	height: 12.5rem;
 }
+
+/* Container for image to maintain size and center it */
+.image-container {
+    width: 100%;
+    max-width: 300px;  
+    height: 200px;     
+    margin: 0 auto;    
+    display: flex;
+    justify-content: center;  
+    align-items: center;     
+   
+}
+
+/* Image inside container */
+#imagePreview {
+    max-width: 100%;    
+    max-height: 100%;   
+    object-fit: cover;  
+}
