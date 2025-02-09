@@ -35,30 +35,21 @@ dragButton.addEventListener("click", () => {
     isVisible = !isVisible; 
 });
 
-
-//* End of FUNCTION to hide show footer
-
-//* Hover effect for the cards
-
-document.querySelectorAll('.food-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.style.transform = 'translateY(-2px)';
-        card.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
-    });
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'translateY(0)';
-        card.style.boxShadow = 'none';
-    });
-});
-
 // * Update Cart Item Badge based on database *//
 function updateCartItemBadge(orderItems) {
     const orderBadge = document.querySelector(".order_badge");
-    const totalItems = orderItems.reduce((total, item) => total + item.quantityOrdered, 0);
-    orderBadge.textContent = totalItems;
-}
 
-fetch("http://localhost:8080/order/all")
+    // Calculate total quantity ordered for all items
+    const totalItems = orderItems.reduce((total, orderItem) => total + orderItem.quantityOrdered, 0);
+
+    // Update the badge count with the total quantity
+    if (orderBadge) {
+        orderBadge.textContent = totalItems;
+    }
+}
+const orderId = localStorage.getItem("orderId"); // Retrieve orderId from localStorage
+
+fetch(`http://localhost:8080/order/${orderId}/all`)
 .then((response) => {
     if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -66,37 +57,11 @@ fetch("http://localhost:8080/order/all")
     return response.json();
 })
 .then((orderData) => {
-    // Get all order items
-    const allOrderItems = orderData.flatMap(order => order.orderItems);
-    
-    // Update the cart item badge count
-    updateCartItemBadge(allOrderItems);
-
+    const orderItems = orderData.orderItems; // Directly access the `orderItems` since you're fetching only one order
+    updateCartItemBadge(orderItems);  // Update the cart item badge count
+   
 })
 .catch((error) => {
     console.error("Error fetching order data:", error);
 });
 
-
-// * Populating modal cards
-document.addEventListener('DOMContentLoaded', function () {
-  // Get all food cards, the food cards have the same class when populated
-  const foodCards = document.querySelectorAll('.triggerDiv');
-  
-  // Initialize the modal
-  const modalElement = document.getElementById('food-item-modal');
-  const modal = new bootstrap.Modal(modalElement);
-
-      // Set the modal image src
-      const modalImage = document.querySelector('#modal-img');
-      modalImage.src = foodImage.src;  
-      modalImage.onload = function() {
-      modalImage.style.width = 'auto';  // Ensure it takes up full width
-      modalImage.style.height = 'auto'; // Adjust the height
-        
-      };
-      // Show the modal
-      modal.show();
-
-
-});

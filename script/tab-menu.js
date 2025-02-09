@@ -7,6 +7,7 @@ let pagetitle = document.getElementById("page");
 let counter = 0;
 let endpoint = "";
 let importedFilter = JSON.parse(localStorage.getItem("exporterFilter")) || "";
+let selectedItemId = null; // For add to cart 
 
 // fetching the categories
 fetch("http://localhost:8080/category/all")
@@ -103,6 +104,7 @@ function productsByCategory(id = null) {
         // Create the column layout for the card
         const cardPos = document.createElement("div");
         cardPos.className = "col-sm-12 col-md-6 col-lg-4";
+        cardPos.setAttribute("data-item-id", element.id); // Create orderItem id so can identify the card by clicking on it.
         cardPopulation.appendChild(cardPos);
 
         // Create the food card container
@@ -155,6 +157,8 @@ function productsByCategory(id = null) {
 
         //Populating the Modal
         cardPos.addEventListener("click", () => {
+        
+          selectedItemId = cardPos.getAttribute("data-item-id");  // Capture the item ID for add to cart
           // Populate modal with the item's data
           document.getElementById("modal-title").innerText = element.title;
           document.getElementById("modal-img").src = element.image;
@@ -169,9 +173,65 @@ function productsByCategory(id = null) {
           );
           modal.show();
         });
+    
+   
+
       });
     });
 }
+
+// Start of add to Cart
+const orderIdNumber = localStorage.getItem("orderId");
+document.getElementById("addToCartBtn").addEventListener("click", () => {
+  if (!selectedItemId) {
+    console.log("No item selected");  // In case the user hasn't selected an item
+    return;  // Prevent POST if no item is selected
+  }
+
+  const additionalRequests = document.getElementById("Additional-requests-text").value || "";  // Get additional request (default to empty if none)
+  const quantityOrdered = 1;  // Default quantity is 1
+
+  // The POST data to send
+  const postData = {
+    additionalRequests: additionalRequests,
+    quantityOrdered: quantityOrdered,
+    menuItem: {
+      id: parseInt(selectedItemId)  // Use the selected item ID
+    }
+  };
+
+  // Sending POST request to the backend
+  fetch(`http://localhost:8080/order/${orderIdNumber}/orderItem/add`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(postData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log("Item added to cart:", data);
+    closeModal();
+    
+  })
+  .catch(error => {
+    console.error("Error adding item to cart:", error);
+  });
+});
+
+//End of Cart
+
+// Function to close the modal
+function closeModal() {
+  const modal = bootstrap.Modal.getInstance(document.getElementById("food-item-modal"));
+  if (modal) {
+    modal.hide();
+  }
+}
+
+
+// End of add to cart//
+
 
 // transferring filter from tab-menu.js to filter.js
 document.getElementById("filter").addEventListener("click", () => {
@@ -230,4 +290,12 @@ function menuCleaner(endpoint) {
         }
       });
     });
+
+}
+
+function closeModal() {
+  const modal = bootstrap.Modal.getInstance(document.getElementById("food-item-modal"));
+  if (modal) {
+    modal.hide();
+  }
 }
