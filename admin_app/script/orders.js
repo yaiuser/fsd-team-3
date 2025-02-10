@@ -1,32 +1,27 @@
 
-// Select the dish container
-const dishContainer = document.querySelector("#dish-container");
+// Select the order container
+const dishContainer = document.querySelector("#order-container");
 
-// Function to fetch data and append dishes
-async function fetchDishes() {
-    try {
-        const response = await fetch('http://localhost:8080/product/all');
-        console.log('Fetch response:', response);
+// Function to fetch data and append orders
+async function fetchOrders(){
+	try{
+		const response = await fetch('http://localhost:8080/product/all');	// fetch data
+		console.log('Fetch response:', response); 							// log the response
+		if(!response.ok){
+			throw new Error(`HTTP error! Status: ${response.status}`);
+		}
+		const orders = await response.json();								// convert JSON response to a JavaScript Object
+		console.log('Orders data:', orders);								// log the fetched dishes
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+		appendOrders(orders.reverse());										// pass the data to appendDishes
 
-        const dishes = await response.json();
-        console.log('Dishes data:', dishes);
-
-        // Clear the previous table before appending a new one
-        dishContainer.innerHTML = ''; // Clear the content of the dishContainer
-
-        appendDishes(dishes.reverse()); // pass the data to appendDishes
-
-    } catch (error) {
-        console.log("Failed to fetch or render dishes:", error);
-    }
+	} catch (error){
+		console.log("Failed to fetch or render orders:", error);
+	}
 }
 
 // function to append each dish into a table
-function appendDishes(dishes) {
+function appendOrders(orders) {
 	const tbl = document.createElement("table"); 			// create the table
 	tbl.className = "table bg-light border-1 border";
 	dishContainer.append(tbl);
@@ -36,10 +31,10 @@ function appendDishes(dishes) {
 
 	const trHeadings = [
 		"ID No.",
-		"Dish Name",
-		"Category",
-		"Price",
-		"Quantity",
+		"Table",
+		"Items",
+		"Time",
+		"Amount",
 		"Status",
 		"Action",
 	];
@@ -53,7 +48,7 @@ function appendDishes(dishes) {
 
 	const tbody = tbl.createTBody();			// create table body
 
-	dishes.forEach((dish) => {					// loop through the dishes array to create rows
+	orders.forEach((dish) => {					// loop through the dishes array to create rows
 		const tbodyRow = tbody.insertRow(0);
 
 		// append cells with dish data
@@ -63,7 +58,7 @@ function appendDishes(dishes) {
 			{text: dish.category.category, className: "text-center"},			
 			{text: `$${dish.price.toFixed(2)}`, className: "text-center"},
 			{text: dish.quantityAvailable, className: "text-center"},
-			{text: dish.quantityAvailable > 0 ? "Available" : "Out of Stock", 
+			{text: dish.quantityAvailable > 0 ? "Served" : "Preparing", 
 			className: `text-center ${dish.quantityAvailable > 0 ? "text-success" : "text-danger"}`},		// if dish quantity is > 0 means available. if quantity is < 0 means out of stock
 		].forEach(({ text, className }) => {
 			const cell = tbodyRow.insertCell();
@@ -72,14 +67,14 @@ function appendDishes(dishes) {
 		});``
 
 
-		const btnAction = document.createElement("button");							// add "More" button
-		btnAction.setAttribute("data-bs-toggle", "modal");
-		btnAction.setAttribute("data-bs-target", "#modalSheet");
-		btnAction.className = "btn btn-sm btn-secondary text-white fw-bold";
-		btnAction.innerText = "More";
-		btnAction.setAttribute("value", dish.id);
+		const btnView = document.createElement("button");							// add "More" button
+		btnView.setAttribute("data-bs-toggle", "modal");
+		btnView.setAttribute("data-bs-target", "#modalSheet");
+		btnView.className = "btn btn-sm btn-secondary text-white fw-bold";
+		btnView.innerText = "View";
+		btnView.setAttribute("value", dish.id);
 
-		btnAction.addEventListener("click", (event) => {
+		btnView.addEventListener("click", (event) => {
 			event.preventDefault();
 			// pass dish data to the modal itself (title, image, description)
 			const modalSheet = document.getElementById("modalSheet");
@@ -88,10 +83,8 @@ function appendDishes(dishes) {
 			dishName.textContent = dish.title;
 
 			const dishImage = modalSheet.querySelector("#modalDishImage");			// display dish.image on modal
-			dishImage.setAttribute("src", _SERVER_URL + dish.image);
-			console.log(_SERVER_URL + dish.image);
+			dishImage.setAttribute("src", dish.image);
 			dishImage.setAttribute("alt", dish.title);
-			
 
 			const dishDesc = modalSheet.querySelector("#modal-body-description");	// display dish.description on modal
 			dishDesc.textContent = dish.description;
@@ -99,25 +92,16 @@ function appendDishes(dishes) {
 			const btnDelete = document.getElementById("btndelete");
 			btnDelete.setAttribute("value", dish.id);
 			btnDelete.onclick = () => {
-			const dishId = btnAction.getAttribute("value");
-			deleteDish(dishId);			
-    };
-			const btnEdit = document.getElementById("btn-edit"); 
-			btnEdit.setAttribute("value", dish.id); 
-			btnEdit.onclick = () => {
-			const dishId = btnEdit.getAttribute("value"); 
-			localStorage.setItem("editDishId", dishId); 
-			console.log(dishId); 
-			window.location.href = '../admin_app/edit_dishes.html'; 
-			};
+			const dishId = btnView.getAttribute("value");
+			deleteDish(dishId);
 
-		
+		} 
 		});
 
-		const tbCellMoreBtn = tbodyRow.insertCell(0);
-		tbCellMoreBtn.className = "text-center";
-		tbCellMoreBtn.append(btnAction);
-		tbodyRow.append(tbCellMoreBtn);
+		const tbCellViewBtn = tbodyRow.insertCell(0);
+		tbCellViewBtn.className = "text-center";
+		tbCellViewBtn.append(btnView);
+		tbodyRow.append(tbCellViewBtn);
 
 
 	});
@@ -132,12 +116,10 @@ function deleteDish(dishId) {
     })
     .then(response => {
         if (response.ok) {
-            alert("Dish deleted successfully!");
-			closeModal();
-			fetchDishes();
-	
+            //alert("Dish deleted successfully!");
+			closeModal()
         } else {
-            alert("Dish is being used in orders, unable to delete dish.");
+            alert("Failed to delete the dish.");
         }
     })
     .catch(error => {
@@ -146,4 +128,11 @@ function deleteDish(dishId) {
     });
 }
 
-fetchDishes();
+function closeModal() {
+	const modal = bootstrap.Modal.getInstance(document.getElementById("modalSheet"));
+	if (modal) {
+	  modal.hide();
+	}
+}``
+
+fetchOrders();
