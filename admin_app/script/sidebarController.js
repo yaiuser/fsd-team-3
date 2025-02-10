@@ -22,7 +22,7 @@ class SidebarController {
 		this.sidebarItems.forEach((item, index) => {			// Loop through each sidebar item in the array
 			this.renderSidebarItem(item, sidebarList, index);
 
-			if (item.title === 'Users') {						// If the item is "Users", add a divider below it
+			if (item.title === 'Dishes') {						// If the item is "Users", add a divider below it
 				this.addDivider(sidebarList);
 				
 			}
@@ -38,7 +38,7 @@ class SidebarController {
 		listItem.className = 'sidebar-btn rounded-4 mb-2';
 
 		const itemContainer = document.createElement('div');											// Create a container for item.icon and item.title
-		itemContainer.className= 'dflex align-items-cente gap-2 p-2';
+		itemContainer.className= 'd-flex align-items-center gap-2 p-2';
 
 		if (item.icon) {																				// if the item has an icon, create an <i> element for it
 			const icon = document.createElement('i');
@@ -68,7 +68,7 @@ class SidebarController {
 			
 
 			const submenuList = document.createElement('ul');															// Create a <ul> for the submenu items
-			submenuList.className = 'btn-toggle-nav list-unstyled fw-normal pb-1 small';
+			submenuList.className = 'btn-toggle-nav list-unstyled fw-normal small bg-light w-50 rounded p-1';
 																	
 
 			item.submenu.forEach((submenuItem) => {														// Loop through the submenu items
