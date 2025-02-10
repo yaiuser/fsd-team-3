@@ -27,11 +27,11 @@
       {
         "id": 2,
         "additionalRequests": "Extra sauce",
-        "quantityOrdered": 2,
+        "quantityOrdered": 1,
         "menuItem": {
           "id": 1,
-          "image": "/img/Dessert/lemon-tart.jpg",
-          "title": "Lemon Tart",
+          "image": "img/Drinks/Sprite.jpg",
+          "title": "Sprite",
           "description": "A buttery golden crust filled with tangy lemon curd and topped with powdered sugar, this lemon tart perfectly balances sweetness and citrusy zest.",
           "price": 6.5,
           "quantityAvailable": 25,

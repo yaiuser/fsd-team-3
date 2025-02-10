@@ -9,8 +9,8 @@
           "quantityOrdered": 2,
           "menuItem": {
             "id": 1,
-            "image": "/img/Dessert/Lemontart.jpg",
-            "title": "Lemon Tart",
+            "image": "/img/Pasta/Lasagne.jpg",
+            "title": "Lasagne",
             "description": "A buttery golden crust filled with tangy lemon curd and topped with powdered sugar, this lemon tart perfectly balances sweetness and citrusy zest.",
             "price": 6.5,
             "quantityAvailable": 25,
@@ -26,12 +26,12 @@
       "orderItems": [
         {
           "id": 2,
-          "additionalRequests": "Extra sauce",
+          "additionalRequests": "Nil",
           "quantityOrdered": 2,
           "menuItem": {
             "id": 1,
-            "image": "/img/Dessert/Lemontart.jpg",
-            "title": "Lemon Tart",
+            "image": "/img/Drinks/Sprite.jpg",
+            "title": "Sprite",
             "description": "A buttery golden crust filled with tangy lemon curd and topped with powdered sugar, this lemon tart perfectly balances sweetness and citrusy zest.",
             "price": 6.5,
             "quantityAvailable": 25,
@@ -40,12 +40,12 @@
         },
         {
           "id": 3,
-          "additionalRequests": "Extra sauce",
+          "additionalRequests": "Nil",
           "quantityOrdered": 2,
           "menuItem": {
             "id": 2,
-            "image": "/img/Dessert/Lemontart.jpg",
-            "title": "Lemon Tart",
+            "image": "/img/Drinks/Water.jpg",
+            "title": "Water",
             "description": "A buttery golden crust filled with tangy lemon curd and topped with powdered sugar, this lemon tart perfectly balances sweetness and citrusy zest.",
             "price": 6.5,
             "quantityAvailable": 25,
