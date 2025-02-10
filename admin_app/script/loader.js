@@ -8,4 +8,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 document.addEventListener("DOMContentLoaded", () => {
     const sidebarController = new SidebarController ("sidebarNav", SIDEBAR_ITEMS);     // Create a new instance of the SideBarController class
     sidebarController.renderSidebar();
+    token = isAuthenticated();
+    const user = decodeUser(token);
+    document.getElementById("currentuser").innerText = user.username + "(" + user.roles[0].authority +")";
 });

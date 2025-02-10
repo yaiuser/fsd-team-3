@@ -11,6 +11,20 @@ function isAuthenticated(){
     
 }
 
+// Function to check if the token has expired
+function isTokenExpired(token) {                                    
+
+    if (!token) return true;                                        // Return true if token passed in is undefined 
+
+    const payload = JSON.parse(atob(token.split('.')[1]));          // Decode the JWT token (a base64-encoded JSON payload)
+
+    const expirationTime = payload.exp;                             // Get the expiration time from the token payload
+
+    const currentTime = Math.floor(Date.now() / 1000);              // Current time in seconds
+
+    return expirationTime < currentTime;                            // Return true ONLY when currentTime is LESS THAN token's expirationTime
+}
+
 // Funtion to login
 async function login(formData = {}){
     
@@ -67,3 +81,4 @@ function decodeUser(token){
     return {username: username, roles: roles};
 
 }
+

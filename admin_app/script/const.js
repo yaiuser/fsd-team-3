@@ -16,7 +16,7 @@ const _SERVER_URL = "http://localhost:8080";
 const SIDEBAR_ITEMS = [
 	{ 
 		title: 'Dashboard', 
-		url: '#',
+		url: 'dashboard.html',
 		icon: 'fa fa-sliders',
 		submenu: [],
 	},
