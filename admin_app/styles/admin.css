@@ -1,0 +1,122 @@
+/* universal settings */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* outline: 1px dashed #000000; */
+}
+
+html {
+	font-size: 16px; 						/* 1 rem used on the page == 16px  */
+	font-family: Arial, sans-serif;
+}
+body{
+	background-color: #fff;
+}
+
+/* loginver2 page */
+
+.login-btn {
+	background-color: #f1823b;
+	color: #fff;
+}
+.login-btn:hover {
+	background-color: hsl(23, 87%, 65%);
+}
+
+.register-link {
+	text-decoration: none;
+	color: #f1823b;
+}
+
+.register-link:hover {
+	text-decoration: none;
+	color: hsl(23, 87%, 69%);
+}
+
+
+/* skeleton page */
+
+.profile{
+	color: black;
+	text-decoration: none;
+}
+
+.sidebar-btn{
+	display: flex;;
+	padding: 10px;
+}
+
+.sidebar-btn i{
+	font-size: 1.2rem;
+	width: 20px;
+	text-align: center;
+}
+
+.btn-toggle {
+	flex-grow: 1;
+	text-align: left;
+}
+
+.collapse{
+	padding-left: 20px;
+}
+
+/* .sidebar-btn > button:hover {
+	background-color: #f0f3f7;
+} */
+
+/* .btn-toggle-nav li a{
+	background-color: transparent !important;
+	text-decoration: none;
+	padding: 5px 10px;
+	border-radius: 0;
+} */
+
+/* .btn-toggle-nav li a:hover{
+	background-color: #f0f3f7 !important;
+	text-decoration: underline;
+	border-radius: 20px;
+} */
+
+/* .sidebar-btn:hover{
+	background-color: transparent !important;
+} */
+
+/* .btn-toggle-nav li a{
+	display: block;
+} */
+
+/* add dish page */
+.upload-btn {
+	background-color: #f1823b;
+	color: #fff;
+}
+.upload-btn:hover {
+	background-color: hsl(23, 87%, 65%);
+}
+
+#productDesc{
+	height: 12.5rem;
+}
+
+/* Container for image to maintain size and center it */
+.image-container {
+    width: 100%;
+    max-width: 300px;  
+    height: 200px;     
+    margin: 0 auto;    
+    display: flex;
+    justify-content: center;  
+    align-items: center;     
+   
+}
+
+/* Image inside container */
+#imagePreview {
+    max-width: 100%;    
+    max-height: 100%;   
+    object-fit: cover;  
+}
