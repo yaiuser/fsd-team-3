@@ -5,7 +5,7 @@ const dishContainer = document.querySelector("#dish-container");
 // Function to fetch data and append dishes
 async function fetchDishes(){
 	try{
-		const response = await fetch('http://localhost:8080/product/all');	// fetch the JSON data
+		const response = await fetch('http://localhost:8080/product/all');	// fetch data
 		console.log('Fetch response:', response); 							// log the response
 		if(!response.ok){
 			throw new Error(`HTTP error! Status: ${response.status}`);
