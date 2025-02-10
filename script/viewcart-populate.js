@@ -28,12 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const quantityOrdered = orderItem.quantityOrdered; 
       return total + (itemPrice * quantityOrdered);                           // Calculate the total for this order item and add it to the running total
     }, 0);  
-    
-
   }
-
-
-
   // Function to render the cart items
   function renderCartItems(orderItems) {
     const cartPopulation = document.querySelector(".item-cards.row");
@@ -135,6 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const currentOrderItemId = cardPos.getAttribute("data-id");                         // Get the current orderItemId
 
         // Save button event listener for this specific modal
+        // //TODO: cardMinusBtn.addEventListener("click", () => {
+        
         const saveButton = document.getElementById("save-edit-btn");
         saveButton.onclick = () => {
           const updatedRequest = document.getElementById(
@@ -175,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
       });
 
-      // Quantity Decrease
+      // Quantity Decrease 
       cardMinusBtn.addEventListener("click", () => {
         let counter = parseInt(cardQtyNumber.textContent);
         const currentOrderItemId = cardPos.getAttribute("data-id");
@@ -260,6 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
               cardQtyNumber.textContent = counter;                                        // Update UI with new quantity
 
               updateTotalPrice(orderItems);                                                // Update the total price dynamically
+              updateCartItemBadge(getCurrentOrderItems());                              // Update the cart item badge count dynamically
             })
             .catch((error) => console.error("Error updating quantity:", error));
         });
