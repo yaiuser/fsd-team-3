@@ -1,24 +1,5 @@
 // document.addEventListener("DOMContentLoaded", function () {
    
-//     fetch("http://localhost:8080/category/all") // Populate categories in the form
-//         .then(response => response.json())
-//         .then(categories => {
-//             let categorySelect = document.getElementById("productCat");
-
-//             // Clear existing options first
-//             categorySelect.innerHTML = '<option value="">Choose...</option>';
-
-//             categories.forEach(category => {
-//                 let option = document.createElement("option");
-//                 option.value = category.id; // Use category ID as value
-//                 option.id = "productCategory_" + category.id;
-//                 option.textContent = category.category; // Use category name for display
-//                 categorySelect.appendChild(option);
-//             });
-//         })
-//         .catch(error => console.error("Error loading categories:", error));
-
-//     });
 
 function fetchCategories (selectedId = -1) {
   fetch("http://localhost:8080/category/all") // Populate categories in the form
@@ -72,7 +53,7 @@ fetch(`http://localhost:8080/product/get/${dishId}`)
   });
 
 // Function to handle updating the dish
-function saveEditedDish(dishId) {
+async function saveEditedDish(dishId) {
   const dishId2 = localStorage.getItem("editDishId");
   //Get form values
   let formData = new FormData();
@@ -87,11 +68,33 @@ function saveEditedDish(dishId) {
       tag: document.getElementById('tags').value
   }));
   
-  // Append the image file if there's one selected
-  let imageFile = document.getElementById("fileInput").files[0];
-  if (imageFile) {
-      formData.append("image", imageFile);
-  }
+  // Check for a new image file selected
+   // Check if a new image file was selected
+   let imageInput = document.getElementById("fileInput");
+   let imageFile = imageInput.files[0];
+ 
+   if (!imageFile) {
+     // No new image selected, so get the existing image URL
+     const existingImageUrl = document.getElementById("imagePreview").src;
+     
+     try {
+       // Fetch the existing image and convert it to a blob
+       const response = await fetch(existingImageUrl);
+       if (!response.ok) {
+         throw new Error("Failed to fetch existing image");
+       }
+       const blob = await response.blob();
+       // Create a File from the blob. You can use a default filename.
+       imageFile = new File([blob], "existing.jpg", { type: blob.type });
+     } catch (error) {
+       console.error("Error fetching existing image:", error);
+       alert("Error updating dish image: cannot load existing image");
+       return; // Abort updating if the image cannot be retrieved
+     }
+   }
+   
+   // Append the image file (either new or converted from existing image)
+   formData.append("image", imageFile);
   
   // Sending the formData via a PUT request to update the dish
   fetch(`http://localhost:8080/product/update/${dishId2}`, {
