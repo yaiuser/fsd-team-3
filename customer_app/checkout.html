@@ -33,7 +33,7 @@
         </header>
     
         <section class="menu-middle">
-             <!-- Burger's tab -->
+             <!-- cart content-->
             <div class="cart-content">
                 <div class="title edit-item"> <!-- Title of the type of food-->
                     <h1>Your Order</h1>
@@ -50,9 +50,9 @@
                                 <div class="header-row">
                                     <h3 class="food-title">Payment Methods</h3>                              
                                 </div>
-                                <form class ="payment-method-form" action="">
+                                <form class ="payment-method-form" action="" required>
                                 <p>Please Select the payment method:</p>
-                                  <input type="radio" id="paynow" name="payment_method" value="paynow">
+                                  <input type="radio" id="paynow" name="payment_method" value="paynow" checked>
                                   <label for="paynow">PayNow</label>
                                     <img src="/img/icons-logos/paynow-logo.png"/><br>
                                   <input type="radio" id="gpay" name="payment_method" value="gpay">
@@ -95,7 +95,7 @@
                     <h4>Total:</h4>
                     <h4>$XX.XX<span class="totalPrice"></span></h4>
                 </div>
-                <button id="btnConfirmOrder" class="d-block my-3 mx-auto">
+                <button id="btnConfirmOrder" class="d-block my-3 mx-auto" onclick="location.href='reciept.html'">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span class="order_badge">0</span>
                     Place Order
@@ -111,7 +111,6 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.j
 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
 </script>
 
-<script src="/script/viewcart.js"></script>
 <script src="/script/checkout-populate.js"></script>
 
 

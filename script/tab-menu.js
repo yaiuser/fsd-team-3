@@ -180,7 +180,7 @@ function productsByCategory(id = null) {
     });
 }
 
-// Start of add to Cart
+// *Start of add to Cart
 const orderIdNumber = localStorage.getItem("orderId");
 document.getElementById("addToCartBtn").addEventListener("click", () => {
   if (!selectedItemId) {
@@ -191,12 +191,12 @@ document.getElementById("addToCartBtn").addEventListener("click", () => {
   const additionalRequests = document.getElementById("Additional-requests-text").value || "";  // Get additional request (default to empty if none)
   const quantityOrdered = 1;  // Default quantity is 1
 
-  // The POST data to send
+  // The POST data to send to orderItems
   const postData = {
     additionalRequests: additionalRequests,
     quantityOrdered: quantityOrdered,
     menuItem: {
-      id: parseInt(selectedItemId)  // Use the selected item ID
+      id: parseInt(selectedItemId)  
     }
   };
 
@@ -212,13 +212,25 @@ document.getElementById("addToCartBtn").addEventListener("click", () => {
   .then(data => {
     console.log("Item added to cart:", data);
     closeModal();
-  })
+
+    fetch(`http://localhost:8080/order/${orderIdNumber}/all`)       //Fetch all orders again to update the cartnumber
+    .then(response => response.json())
+    .then(orderData => {
+      const orderItems = orderData.orderItems; 
+      updateCartItemBadge(orderItems);                              // Update the cart item badge count on adding new item
+
+       // Update the total price
+       const totalPrice = calculateTotalPrice(orderItems);  // Calculate the new total price
+       document.getElementById("totalPrice").textContent = totalPrice.toFixed(2); // Update the total price on the page
+  
+    });
+})
   .catch(error => {
     console.error("Error adding item to cart:", error);
   });
 });
 
-//End of Cart
+//*End of add to Cart
 
 // Function to close the modal
 function closeModal() {

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .receipt {
+            width: 320px;
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .receipt h1 {
+            font-size: 1.5rem;
+        }
+        .receipt p, .receipt ul {
+            font-size: 0.9rem;
+        }
+        .top-button {
+            margin-bottom: 15px;
+        }
+
+        #itemsList li {
+        display: flex;
+        justify-content: space-between; /* This will push the price to the right */
+        margin-bottom: 10px;
+        }
+
+        .price-text {
+        text-align: right;
+        margin-left: 10px; /* Adds some space between the item text and price */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="receipt">
+        <div class="text-start top-button">
+            
+        </div>
+        <div class="text-center">
+            <h1>GRANOLA CAFE</h1>
+            <p>123 Coffee Street<br>Singapore, S888888<br>Tel: (+65) 8888-9999</p>
+        </div>
+        <hr>
+        <p><strong>Order #:</strong> <span id="orderNumber"></span></p>
+        <p><strong>Time:</strong> <span id="time"></span></p>
+        <hr>
+        <ul id="itemsList" class="list-unstyled"></ul>
+        <hr>
+        <p><strong>Subtotal:</strong> $<span id="subtotal"></span></p>
+        <p><strong>Tax (10%):</strong> $<span id="taxAmount"></span></p>
+        <p><strong>GST (9%):</strong> $<span id="gstAmount"></span></p>
+        <h3><strong>Total:</strong> $<span id="total"></span></h3>
+        <hr>
+        <div class="text-center">
+            <p>Thank you for dining with us!<br>Please come again.<br><a href="http://www.granolacafe.com">www.granolacafe.com</a></p>
+        </div>
+        <div class="text-center">
+            <a onclick="orderAgain();" id="orderAgainBtn" class="btn btn-primary center">Order Again</a>
+        </div>
+    </div>
+    
+
+    <script src="../script/reciept-generator.js"></script>

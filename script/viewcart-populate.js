@@ -187,10 +187,9 @@ document.addEventListener("DOMContentLoaded", () => {
           if (orderItem) {
             orderItem.quantityOrdered = counter; // Update the quantity in the local array
           }
-        
-          
+      
           fetch(                                                                        // Send PATCH request to update quantity
-            `http://localhost:8080/orderitem/update/${currentOrderItemId}`,
+            `http://localhost:8080/orderItem/update/${currentOrderItemId}`,
             {
               method: "PATCH",
               headers: {
@@ -211,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {                                                                        // If quantity is 1, send DELETE request
           
           fetch(
-            `http://localhost:8080/orderitem/delete/${currentOrderItemId}`,
+            `http://localhost:8080/orderItem/delete/${currentOrderItemId}`,
             {
               method: "DELETE",
             }
@@ -248,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
     
-          fetch(`http://localhost:8080/orderitem/update/${currentOrderItemId}`, {       // Send PATCH request to update quantity in the backend
+          fetch(`http://localhost:8080/orderItem/update/${currentOrderItemId}`, {       // Send PATCH request to update quantity in the backend
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
