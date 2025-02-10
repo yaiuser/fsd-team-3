@@ -69,7 +69,6 @@ async function saveEditedDish(dishId) {
   }));
   
   // Check for a new image file selected
-   // Check if a new image file was selected
    let imageInput = document.getElementById("fileInput");
    let imageFile = imageInput.files[0];
  
@@ -84,16 +83,16 @@ async function saveEditedDish(dishId) {
          throw new Error("Failed to fetch existing image");
        }
        const blob = await response.blob();
-       // Create a File from the blob. You can use a default filename.
+      
        imageFile = new File([blob], "existing.jpg", { type: blob.type });
      } catch (error) {
        console.error("Error fetching existing image:", error);
        alert("Error updating dish image: cannot load existing image");
-       return; // Abort updating if the image cannot be retrieved
+       return; 
      }
    }
    
-   // Append the image file (either new or converted from existing image)
+
    formData.append("image", imageFile);
   
   // Sending the formData via a PUT request to update the dish

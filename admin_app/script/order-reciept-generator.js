@@ -1,4 +1,8 @@
-const orderId = localStorage.getItem("orderId");
+const urlParams = new URLSearchParams(window.location.search);
+
+// Get the orderId from the URL query parameter
+const orderId = urlParams.get('orderId');
+console.log("Order ID from URL:", orderId);
 fetch(`http://localhost:8080/order/${orderId}/all`)
 .then(response => response.json())
 .then(data => {
@@ -43,13 +47,11 @@ fetch(`http://localhost:8080/order/${orderId}/all`)
 
    document.getElementById('total').innerText = `${(total).toFixed(2)}`;
    document.getElementById('subtotal').innerText = `${(subtotal).toFixed(2)}`;
-   document.getElementById('taxAmount').innerText = `${(taxAmount).toFixed(2)}`;
+   document.getElementById('serviceAmount').innerText = `${(taxAmount).toFixed(2)}`;
    document.getElementById('gstAmount').innerText = `${(gstAmount).toFixed(2)}`;
 });
 
-function orderAgain() {
-const seatNumber = localStorage.getItem('seatNumber');
-const orderAgainBtn = document.getElementById('orderAgainBtn');
+function returnBtn() {
 event.preventDefault(); // Prevent the default behavior
-window.location.href = `custlogin.html?seatNumber=${seatNumber}`;
+window.location.href = `orders.html`;
 }

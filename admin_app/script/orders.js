@@ -1,5 +1,5 @@
 // Select the order container
-const dishContainer = document.querySelector("#order-container");
+const orderContainer = document.querySelector("#order-container");
 
 async function fetchOrders() {
     try {
@@ -11,13 +11,10 @@ async function fetchOrders() {
         const orders = await response.json(); // convert JSON response to a JavaScript Object
         console.log('Orders data:', orders); // log the fetched orders
 
-        // Check if orders are present
-        if (orders.length > 0) {
-            appendOrders(orders.reverse()); // pass the data to appendOrders
-        } else {
-            console.log("No orders found!");
-        }
+		orderContainer.innerHTML = '';
         
+            appendOrders(orders); // pass the data to appendOrders
+      
     } catch (error) {
         console.log("Failed to fetch or render orders:", error);
     }
@@ -27,7 +24,7 @@ async function fetchOrders() {
 function appendOrders(orders) {
     const tbl = document.createElement("table"); // create the table
     tbl.className = "table bg-light border-1 border";
-    dishContainer.append(tbl);
+    orderContainer.append(tbl);
 
     const thead = tbl.createTHead(); // create the table header
     const theadRow = thead.insertRow(0); // insert row into the header
@@ -36,8 +33,9 @@ function appendOrders(orders) {
         "Order No.",
         "Items Ordered",
         "Order Time",
-        "Amount",
+        "Amount(w/GST)",
         "Action",
+        "Seat Number", // Added column for seat number
         "More",
     ];
     trHeadings.forEach((heading) => { // add each column header to the header row
@@ -45,6 +43,7 @@ function appendOrders(orders) {
         thCell.setAttribute("scope", "col");
         thCell.className = "fw-bolder text-center text-nowrap px-1 border-bottom";
         thCell.innerText = heading;
+		thead.append(thCell);
     });
 
     const tbody = tbl.createTBody(); // create table body
@@ -61,13 +60,14 @@ function appendOrders(orders) {
             },
             { text: new Date(order.createdAt).toLocaleString(), className: "text-center" }, // Format the createdAt timestamp
             {
-                text: `$${order.orderItems.reduce((sum, item) => sum + item.menuItem.price * item.quantityOrdered, 0).toFixed(2)}`,
+                text: `$${order.orderItems.reduce((sum, item) => sum + (item.menuItem.price * item.quantityOrdered * 1.19) , 0).toFixed(2)}`,
                 className: "text-center",
             },
             {
                 text: order.orderItems.length > 0 ? "Served" : "Preparing",
                 className: `text-center ${order.orderItems.length > 0 ? "text-success" : "text-danger"}`,
             },
+            { text: order.seatNumber, className: "text-center" }, // Display seat number in the last column
         ].forEach(({ text, className }) => {
             const cell = tbodyRow.insertCell();
             cell.className = className;
@@ -80,14 +80,65 @@ function appendOrders(orders) {
 		moreButton.className = "btn btn-sm btn-secondary text-white fw-bold";
 		moreButton.innerText = "More";
 		moreButton.setAttribute("value", order.id);
-   
-	const tbCellMoreBtn = tbodyRow.insertCell(0);
-	tbCellMoreBtn.className = "text-center";
-	tbCellMoreBtn.append(moreButton);
-	tbodyRow.append(tbCellMoreBtn);
+		
+		moreButton.addEventListener("click", (event) => {
+			event.preventDefault();
+
+			const btnDelete = document.getElementById("btndelete");
+			btnDelete.setAttribute("value", order.id);
+			btnDelete.onclick = () => {
+			const dishId = moreButton.getAttribute("value");
+			deleteDish(dishId);	
+			};
+
+            const btnReciept = document.getElementById("btnreciept");
+            btnReciept.setAttribute("value", order.id); 
+            btnReciept.onclick = () => { 
+                window.location.href = `orderreciept.html?orderId=${order.id}`;
+            };
+
+		
+	});
+
+		const tbCellMoreBtn = tbodyRow.insertCell(0);
+		tbCellMoreBtn.className = "text-center";
+		tbCellMoreBtn.append(moreButton);
+		tbodyRow.append(tbCellMoreBtn);
 
 		
     });
 }
+
+
+function deleteDish(dishId) {
+    fetch(`http://localhost:8080/order/delete/${dishId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Dish deleted successfully!");
+			closeModal();
+			fetchOrders();
+	
+        } else {
+            alert("Dish is being used in orders, unable to delete dish.");
+        }
+    })
+    .catch(error => {
+        console.error("Error deleting dish:", error);
+        alert("Error occurred while trying to delete.");
+    });
+}
+	function closeModal() {
+		const modal = bootstrap.Modal.getInstance(document.getElementById("modalSheet"));
+		if (modal) {
+		  modal.hide();
+		  
+		}
+	}
+
 
 fetchOrders();

@@ -1,4 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  function deleteItem(orderItemId, orderItems) {
+ // Delete the item from the backend
+ fetch(`http://localhost:8080/orderItem/delete/${orderItemId}`, {
+  method: "DELETE",
+})
+  .then((response) => {
+    if (response.ok) {
+      console.log(`Deleted order item with ID: ${orderItemId}`);
+
+      // Remove the item from the DOM
+      document.querySelector(`.triggerDiv[data-id="${orderItemId}"]`)?.remove();
+
+      // Fetch the updated order data
+      fetch(`http://localhost:8080/order/${orderId}/all`) 
+        .then((response) => response.json())
+        .then((orderData) => {
+          if (!orderData.ok) {
+            const allOrderItems = orderData.orderItems;
+
+            // Recalculate total price
+            calculateTotalPrice(allOrderItems);
+
+            // Update cart item badge
+            updateCartItemBadge(allOrderItems);
+          } else {
+            console.error("Invalid order data structure:", orderData);
+          }
+        })
+        .catch((error) => console.error("Error fetching updated order data:", error));
+    } else {
+      console.error("Error deleting order item.");
+    }
+  })
+  .catch((error) => console.error("Error deleting order item:", error));
+}
   
   function updateCartItemBadge(orderItems) {                                  // Function to update the cart item badge count
     const orderBadge = document.querySelector(".order_badge");
@@ -12,23 +48,40 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function calculateServiceCharge(totalPrice) {
-    const serviceChargePercentage = 0.10;                                    // 10% service charge
-    return totalPrice * serviceChargePercentage;
+  function calculateTotalPrice(orderItems) {
+    let totalPrice = 0;
+    let subtotal = 0;
+    let serviceRate = 0.10; // 10% tax rate
+    let gstRate = 0.09; // 9% GST rate
+  
+    let totalService = 0; // Initialize total service charge
+  let totalGst = 0; // Initialize total GST charge
+    // Loop through each item in the orderItems array
+    orderItems.forEach(item => {
+        const itemPrice = item.menuItem.price * item.quantityOrdered; // Calculate the price for each item
+        subtotal += itemPrice; // Add to subtotal
+  
+        // Optionally apply GST or tax to each item
+        const gstAmount = itemPrice * gstRate;
+        const serviceAmount = itemPrice * serviceRate;
+  
+        // Add the item price, GST, and tax to the total price
+        totalPrice += itemPrice + gstAmount + serviceAmount;
+  
+        totalGst += gstAmount;
+        totalService += serviceAmount;
+    });
+  
+    // Update the DOM with the calculated prices
+    document.getElementById("totalPrice").textContent = totalPrice.toFixed(2);
+    document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+    document.getElementById("servicePrice").textContent = totalService.toFixed(2);
+    document.getElementById("gstPrice").textContent = totalService.toFixed(2);
+  
+    // Return the total price and subtotal if needed
+    return { totalPrice, subtotal };
   }
 
-  function calculateGST(subtotal) {
-    const gstPercentage = 0.09;                                              // 9% GST
-    return subtotal * gstPercentage;
-  }
-  
-  function calculateTotalPrice(orderItems) {
-    return orderItems.reduce((total, orderItem) => {
-      const itemPrice = orderItem.menuItem.price;  
-      const quantityOrdered = orderItem.quantityOrdered; 
-      return total + (itemPrice * quantityOrdered);                           // Calculate the total for this order item and add it to the running total
-    }, 0);  
-  }
   // Function to render the cart items
   function renderCartItems(orderItems) {
     const cartPopulation = document.querySelector(".item-cards.row");
@@ -108,6 +161,9 @@ document.addEventListener("DOMContentLoaded", () => {
       cardMinusBtn.className = "btn-minus";
       cardMinusBtn.textContent = "-";
       cardQtyContainer.appendChild(cardMinusBtn);
+
+        
+   
 
       // Edit Button - Show Modal
       cardEdit.addEventListener("click", () => {
@@ -199,34 +255,14 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((updatedOrder) => {
               console.log("Updated order item:", updatedOrder);
               cardQtyNumber.textContent = counter;                                       // Update UI with new quantity
-              updateTotalPrice(orderItems);                                              //Update New Price
+              calculateTotalPrice(orderItems);                                             //Update New Price
              
-              updateCartItemBadge(getCurrentOrderItems());                              // Update the cart item badge count dynamically
+              updateCartItemBadge(orderItems);                              // Update the cart item badge count dynamically
             })
             .catch((error) => console.error("Error updating quantity:", error));
         } else {                                                                        // If quantity is 1, send DELETE request
-          
-          fetch(
-            `http://localhost:8080/orderItem/delete/${currentOrderItemId}`,
-            {
-              method: "DELETE",
-            }
-          )
-            .then((response) => {
-              if (response.ok) {
-                console.log(
-                  `Deleted order item with ID: ${currentOrderItemId}`
-                );
-                cardPos.remove(); 
-                           
-                updateCartItemBadge(getCurrentOrderItems());                                // Update the cart item badge count dynamically after deletion
-              } else {
-                console.error("Error deleting order item.");
-              }
-            })
-            .catch((error) =>
-              console.error("Error deleting order item:", error)
-            );
+          deleteItem(currentOrderItemId, orderItems);
+          cardPos.remove;
         }
       });
 
@@ -256,25 +292,24 @@ document.addEventListener("DOMContentLoaded", () => {
               console.log("Updated order item:", updatedOrder);
               cardQtyNumber.textContent = counter;                                        // Update UI with new quantity
 
-              updateTotalPrice(orderItems);                                                // Update the total price dynamically
+              calculateTotalPrice(orderItems);                                              // Update the total price dynamically
               updateCartItemBadge(getCurrentOrderItems());                              // Update the cart item badge count dynamically
             })
             .catch((error) => console.error("Error updating quantity:", error));
         });
-
-
-      function updateTotalPrice(orderItems) {
-        const totalPrice = calculateTotalPrice(orderItems);
-        const formattedTotalPrice = totalPrice.toFixed(2);
-        document.getElementById("totalPrice").textContent = `${formattedTotalPrice}`;
-      }
 
       // Function to get the current order items displayed in the UI
       function getCurrentOrderItems() {
         const orderItems = [];
         document.querySelectorAll(".triggerDiv").forEach((card) => {
           const quantity = parseInt(card.querySelector(".number").textContent);
-          orderItems.push({ quantityOrdered: quantity });
+          const menuItemPrice = parseFloat(card.querySelector(".price").textContent.replace('$', '')); // Assuming price is in .price element
+          const menuItem = {
+            price: menuItemPrice,
+            quantityOrdered: quantity,
+            // Add other necessary properties from the order item here (e.g., title, id)
+          };
+          orderItems.push(menuItem);
         });
         return orderItems;
       }
@@ -297,10 +332,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const allOrderItems = orderData.orderItems;                                     // Extract the order items array
 
        
-        const totalPrice = calculateTotalPrice(allOrderItems);                          // Calculate the total price of the order
-        document.getElementById("totalPrice").textContent = totalPrice.toFixed(2);                        
-        updateCartItemBadge(allOrderItems);                                             // Update the cart item badge with the total quantity
-        renderCartItems(allOrderItems);                                                 // Render the cart items in the UI using the renderCartItems function above
+        calculateTotalPrice(allOrderItems);   // Calculate total price first
+        updateCartItemBadge(allOrderItems);   // Update cart item badge with the total quantity
+        renderCartItems(allOrderItems);                                               // Render the cart items in the UI using the renderCartItems function above
       } else {
         console.error("Invalid order data structure:", orderData);
       }
@@ -309,6 +343,8 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error fetching order data:", error);
     });
 
+
+  
     // Function to update table number based on table in localStorage
     function updateTableNumber() {
       const seatNumber = localStorage.getItem("seatNumber");

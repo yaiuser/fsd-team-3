@@ -55,7 +55,12 @@ class SidebarController {
 
 		itemContainer.appendChild(button);
 		listItem.appendChild(itemContainer);																					// Append the button to the list item																		// Append the list item to the parent <ul> element
-
+		if(item.title === _LOGOUT_TITLE){                                                                       // If title is 'logout', 
+			button.href = "#";                                                                                 // Apply a placeholder anchor (#)
+			button.addEventListener("click", (event) => {                                                      // add eventListener                                                                    
+			  logout();                                                                                       // call function logout()                                                                        
+			})
+		  }
 		if (item.submenu && item.submenu.length > 0) {																	// Check if the item has a submenu
 			const submenuDiv = document.createElement('div');															// Create a <div> for the collapsible menu
 			submenuDiv.className = 'collapse ms-4 w-100';

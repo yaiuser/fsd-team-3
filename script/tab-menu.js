@@ -218,10 +218,7 @@ document.getElementById("addToCartBtn").addEventListener("click", () => {
     .then(orderData => {
       const orderItems = orderData.orderItems; 
       updateCartItemBadge(orderItems);                              // Update the cart item badge count on adding new item
-
-       // Update the total price
-       const totalPrice = calculateTotalPrice(orderItems);  // Calculate the new total price
-       document.getElementById("totalPrice").textContent = totalPrice.toFixed(2); // Update the total price on the page
+      calculateTotalPrice(orderItems);
   
     });
 })
@@ -338,13 +335,6 @@ function updateCartItemBadge(orderItems) {
 
 }
 
-function calculateTotalPrice(orderItems) {                                  
-  return orderItems.reduce((total, orderItem) => {
-    const itemPrice = orderItem.menuItem.price;  
-    const quantityOrdered = orderItem.quantityOrdered; 
-    return total + (itemPrice * quantityOrdered);                           // Calculate the total for this order item and add it to the running total
-  }, 0);  
-}
 
 const orderId = localStorage.getItem("orderId"); // Retrieve orderId from localStorage
 
@@ -359,10 +349,51 @@ fetch(`http://localhost:8080/order/${orderId}/all`)
   const orderItems = orderData.orderItems; // Directly access the `orderItems` since you're fetching only one order
   updateCartItemBadge(orderItems);  // Update the cart item badge count
 
-  const totalPrice = calculateTotalPrice(orderItems);                          // Calculate the total price of the order
-  document.getElementById("totalPrice").textContent = totalPrice.toFixed(2); 
+  calculateTotalPrice(orderItems);                          // Calculate the total price of the order
+ 
  
 })
 .catch((error) => {
   console.error("Error fetching order data:", error);
 });
+
+function calculateTotalPrice(orderItems) {
+  let totalPrice = 0;
+  let subtotal = 0;
+  let serviceRate = 0.10; // 10% tax rate
+  let gstRate = 0.09; // 9% GST rate
+
+  let totalService = 0; // Initialize total service charge
+let totalGst = 0; // Initialize total GST charge
+  // Loop through each item in the orderItems array
+  orderItems.forEach(item => {
+      const itemPrice = item.menuItem.price * item.quantityOrdered; // Calculate the price for each item
+      subtotal += itemPrice; // Add to subtotal
+
+      // Optionally apply GST or tax to each item
+      const gstAmount = itemPrice * gstRate;
+      const serviceAmount = itemPrice * serviceRate;
+
+      // Add the item price, GST, and tax to the total price
+      totalPrice += itemPrice + gstAmount + serviceAmount;
+
+      totalGst += gstAmount;
+      totalService += serviceAmount;
+  });
+
+  // Update the DOM with the calculated prices
+  document.getElementById("totalPrice").textContent = totalPrice.toFixed(2);
+  document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+  document.getElementById("servicePrice").textContent = totalService.toFixed(2);
+  document.getElementById("gstPrice").textContent = totalService.toFixed(2);
+
+  // Return the total price and subtotal if needed
+  return { totalPrice, subtotal };
+}
+
+// Example usage with orderItems array
+const orderItems = [
+  { menuItem: { price: 10 }, quantityOrdered: 2 },
+  { menuItem: { price: 20 }, quantityOrdered: 1 }
+];
+

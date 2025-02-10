@@ -6,7 +6,6 @@ class NavController {
 		this.dropdownItems = [										// Define the dropdown menu items (title and URL for each item)
 			{ title: _ORDERS_TITLE, url: _ORDERS_URL },
 			{ title: _DISHES_TITLE, url: _DISHES_URL },
-			{ title: _USERS_TITLE, url: _USERS_URL },
 			{ title: _LOGIN_TITLE, url: _LOGIN_URL },
 			{ title: _LOGOUT_TITLE, url: _LOGOUT_URL },
 		];
@@ -20,7 +19,7 @@ class NavController {
 		this.dropdownItems.forEach((item) => {									// Loop through the array of dropdown items
 			this.displayNavItem(item);
 
-			if (item.title === _USERS_TITLE) {									// If the current item is "Users", add a divider after it
+			if (item.title === _DISHES_TITLE) {									// If the current item is "Users", add a divider after it
 				this.addDivider();
 				
 			}
@@ -38,7 +37,14 @@ class NavController {
 		dropdownLink.style.cursor = "pointer";
 		dropdownLink.textContent = item.title;											// Set the text of the link to the item's title
 		dropdownLink.href = item.url;													// Set the link's href attribute to the item's URL
-		dropdownItem.appendChild(dropdownLink);											// Append the <a> link to the <li> element
+		dropdownItem.appendChild(dropdownLink);	
+		
+		// if(item.title === _LOGOUT_TITLE){                                                                       // If title is 'logout', 
+        //     navLink.href = "#";                                                                                 // Apply a placeholder anchor (#)
+        //     navLink.addEventListener("click", (event) => {                                                      // add eventListener                                                                    
+        //         logout();                                                                                       // call function logout()                                                                        
+        //     })  
+    	// }// Append the <a> link to the <li> element
 	}
 
 	// Function to add a divider line to the dropdown menu
@@ -48,3 +54,4 @@ class NavController {
 		this.dropdownMenu.appendChild(divider);					// Append the divider to the dropdown menu
 	}
 }
+
