@@ -24,7 +24,7 @@
 </head>
 <body>
   <div class="container mt-2">
-    <h1 class="text-center mb-3">Kitchen Order</h1>
+    <h1 class="text-center mb-3">Kitchen Orders</h1>
     <div class="text-start top-button">
       <a href="index.html" target="contentFrame" class="btn btn-primary">Back to Dashboard</a>
   </div><p></p>
@@ -45,19 +45,30 @@
               <div class="col-md-6 order-card">
                 <div class="card">
                   <div class="card-body">
+
                     <h5 class="card-title">Order ID: ${order.id}</h5>
+
                     <p class="card-text"><strong>Created At:</strong> ${new Date(order.createdAt).toLocaleString()}</p>
+
                     <p class="card-text"><strong>Updated At:</strong> ${new Date(order.updateAt).toLocaleString()}</p>
+
                     <h6 class="mt-3">Order Items:</h6>
+
                     <ul class="list-group">
                       ${order.orderItems.map(item => `
                         <li class="list-group-item d-flex align-items-center">
+
                           <img src="${item.menuItem.image}" alt="${item.menuItem.title}" class="menu-item-image me-3">
                           <div>
+
                             <h6>${item.menuItem.title}</h6>
-                            <p><small>${item.menuItem.description}</small></p>
-                            <p><strong>Price:</strong> $${item.menuItem.price.toFixed(2)} x ${item.quantityOrdered}</p>
+
+                            <!-- <p><small>${item.menuItem.description}</small></p> -->
+
+                            <!--<p><strong>Price:</strong> $${item.menuItem.price.toFixed(2)} x ${item.quantityOrdered}</p> -->
+
                             <p><small><strong>Request:</strong> ${item.additionalRequests}</small></p>
+                            
                           </div>
                         </li>
                       `).join('')}
