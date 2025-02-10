@@ -58,7 +58,7 @@ function appendOrders(orders) {
 			{text: dish.category.category, className: "text-center"},			
 			{text: `$${dish.price.toFixed(2)}`, className: "text-center"},
 			{text: dish.quantityAvailable, className: "text-center"},
-			{text: dish.quantityAvailable > 0 ? "Available" : "Out of Stock", 
+			{text: dish.quantityAvailable > 0 ? "Served" : "Preparing", 
 			className: `text-center ${dish.quantityAvailable > 0 ? "text-success" : "text-danger"}`},		// if dish quantity is > 0 means available. if quantity is < 0 means out of stock
 		].forEach(({ text, className }) => {
 			const cell = tbodyRow.insertCell();
@@ -67,14 +67,14 @@ function appendOrders(orders) {
 		});``
 
 
-		const btnAction = document.createElement("button");							// add "More" button
-		btnAction.setAttribute("data-bs-toggle", "modal");
-		btnAction.setAttribute("data-bs-target", "#modalSheet");
-		btnAction.className = "btn btn-sm btn-secondary text-white fw-bold";
-		btnAction.innerText = "More";
-		btnAction.setAttribute("value", dish.id);
+		const btnView = document.createElement("button");							// add "More" button
+		btnView.setAttribute("data-bs-toggle", "modal");
+		btnView.setAttribute("data-bs-target", "#modalSheet");
+		btnView.className = "btn btn-sm btn-secondary text-white fw-bold";
+		btnView.innerText = "View";
+		btnView.setAttribute("value", dish.id);
 
-		btnAction.addEventListener("click", (event) => {
+		btnView.addEventListener("click", (event) => {
 			event.preventDefault();
 			// pass dish data to the modal itself (title, image, description)
 			const modalSheet = document.getElementById("modalSheet");
@@ -92,16 +92,16 @@ function appendOrders(orders) {
 			const btnDelete = document.getElementById("btndelete");
 			btnDelete.setAttribute("value", dish.id);
 			btnDelete.onclick = () => {
-			const dishId = btnAction.getAttribute("value");
+			const dishId = btnView.getAttribute("value");
 			deleteDish(dishId);
 
 		} 
 		});
 
-		const tbCellMoreBtn = tbodyRow.insertCell(0);
-		tbCellMoreBtn.className = "text-center";
-		tbCellMoreBtn.append(btnAction);
-		tbodyRow.append(tbCellMoreBtn);
+		const tbCellViewBtn = tbodyRow.insertCell(0);
+		tbCellViewBtn.className = "text-center";
+		tbCellViewBtn.append(btnView);
+		tbodyRow.append(tbCellViewBtn);
 
 
 	});
