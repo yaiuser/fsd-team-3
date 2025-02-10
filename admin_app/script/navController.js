@@ -37,6 +37,14 @@ class NavController {
 		dropdownLink.style.cursor = "pointer";
 		dropdownLink.textContent = item.title;											// Set the text of the link to the item's title
 		dropdownLink.href = item.url;													// Set the link's href attribute to the item's URL
+
+		if(item.title === _LOGOUT_TITLE){                                                                       // If title is 'logout', 
+			dropdownLink.href = "#";                                                                                 // Apply a placeholder anchor (#)
+			dropdownLink.addEventListener("click", (event) => {                                                      // add eventListener                                                                    
+			  logout();                                                                                       // call function logout()                                                                        
+			})
+		  }
+
 		dropdownItem.appendChild(dropdownLink);	
 		
 		// if(item.title === _LOGOUT_TITLE){                                                                       // If title is 'logout', 

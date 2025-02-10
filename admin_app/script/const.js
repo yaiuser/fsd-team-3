@@ -6,11 +6,11 @@ const _LOGIN_TITLE = "Login";
 const _LOGOUT_TITLE = "Logout";
 
 // correspononding site pages' links
-const _DASHBOARD_URL = "#"; 
+const _DASHBOARD_URL = "dashboard.html"; 
 const _ORDERS_URL = "orders.html"; 
 const _DISHES_URL = "dishes.html"; 
 const _LOGIN_URL = "#"; 
-const _LOGOUT_URL = "#";
+const _LOGOUT_URL = "login.html";
 const _SERVER_URL = "http://localhost:8080";
 
 const SIDEBAR_ITEMS = [
