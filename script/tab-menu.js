@@ -118,7 +118,7 @@ function productsByCategory(id = null) {
         itemCol.appendChild(cardItem);
 
         const cardImage = document.createElement("img");
-        cardImage.src = element.image;
+        cardImage.setAttribute("src", "http://localhost:8080" + element.image )
         cardImage.alt = element.title;
         cardItem.appendChild(cardImage);
 
@@ -161,7 +161,7 @@ function productsByCategory(id = null) {
           selectedItemId = cardPos.getAttribute("data-item-id");  // Capture the item ID for add to cart
           // Populate modal with the item's data
           document.getElementById("modal-title").innerText = element.title;
-          document.getElementById("modal-img").src = element.image;
+          document.getElementById("modal-img").src = "http://localhost:8080" + element.image;
           document.getElementById("modal-desc").innerText = element.description;
           document.getElementById(
             "modal-price"

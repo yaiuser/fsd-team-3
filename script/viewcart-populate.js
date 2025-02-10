@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
       itemCol.appendChild(cardItem);
 
       const cardImage = document.createElement("img");
-      cardImage.src = menuItem.image;
+      cardImage.setAttribute("src", "http://localhost:8080" + menuItem.image);
       cardImage.alt = menuItem.title;
       cardItem.appendChild(cardImage);
 
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cardEdit.addEventListener("click", () => {
         // Populate the modal with the current item details
         document.getElementById("modal-title").innerText = menuItem.title;
-        document.getElementById("modal-img").src = menuItem.image;
+        document.getElementById("modal-img").src = "http://localhost:8080" + menuItem.image;
         document.getElementById("modal-desc").innerText = menuItem.description;
         document.getElementById(
           "modal-price"
