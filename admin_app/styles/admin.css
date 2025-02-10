@@ -132,3 +132,84 @@ body{
 	height: 320px;
 	position: relative;
 }
+
+ /* Rest of the styles */
+ .stats-card {
+	background-color: white;
+	border-radius: 8px;
+	padding: 15px;
+	margin-bottom: 20px;
+	box-shadow: 1px 1px 5px 5px rgba(0,0,0,0.1);
+}
+
+.stats-value {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.chart-container {
+	background-color: rgba(235, 225, 225, 0.413);
+	border-radius: 6px;
+	padding: 20px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	height: 320px;
+	position: relative;
+}
+
+.orders-table {
+	background-color: rgb(242, 239, 239);
+	border-radius: 8px;
+	padding: 20px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.profile-section {
+	text-align: right;
+	padding: 10px;
+}
+
+.status-badge {
+	padding: 5px 10px;
+	border-radius: 15px;
+	font-size: 16px;
+}
+
+.status-completed {
+	background-color: #DFF0D8;
+	color: #3C763D;
+}
+
+.status-preparing {
+	background-color: #FCF8E3;
+	color: #8A6D3B;
+}
+
+/* Sub-menu - it will auto hide, will only appear when hover above it*/
+.submenu {
+	display: none;
+	width: 100%;
+	margin-top: 8px;  /* Space between Orders and submenu */
+	background-color: #0773f8cf;
+}
+
+div:hover > .submenu {
+	display: block;
+}
+
+.submenu-item {
+	display: flex;
+	align-items: center;
+	padding: 10px 1px 5px 5px;
+	text-decoration: none;
+	background-color: grey;
+	color: white;
+}
+
+.submenu-item:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.submenu-item i {
+	margin-right: 10px;
+}
