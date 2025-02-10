@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("data", JSON.stringify({
             title: document.getElementById('productName').value,
             description: document.getElementById('productDesc').value,
-            price: document.getElementById('Price').value,
-            quantityAvailable: document.getElementById('Quantity').value,
+            price: parseFloat(parseFloat(document.getElementById('Price').value).toFixed(2)),
+            quantityAvailable: parseInt(document.getElementById("Quantity").value),
             category: { id: document.getElementById('productCat').value },
             tag: document.getElementById('tags').value
         }));
@@ -72,4 +72,3 @@ function previewImage(event) {
         reader.readAsDataURL(file);  // Convert the image file to a data URL for preview
     }      
 }
-

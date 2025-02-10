@@ -35,7 +35,7 @@ fetch(`http://localhost:8080/product/get/${dishId}`)
     document.getElementById("Quantity").value = dish.quantityAvailable;
     document.getElementById("tags").value = dish.tags;
     document.getElementById("productDesc").value = dish.description;
-    document.getElementById("imagePreview").src = dish.image;
+    document.getElementById("imagePreview").src = _SERVER_URL + dish.image;
     
     // Attach the update function to the form
     const form = document.querySelector("form");
@@ -50,33 +50,64 @@ fetch(`http://localhost:8080/product/get/${dishId}`)
 
 // Function to handle updating the dish
 function saveEditedDish(dishId) {
-  const updatedDish = {
-    title: document.getElementById("productName").value,
-    category: document.getElementById("productCat").value,
-    price: parseFloat(document.getElementById("Price").value),
-    quantity: parseInt(document.getElementById("Quantity").value),
-    tags: document.getElementById("tags").value,
-    description: document.getElementById("productDesc").value,
-    image: document.getElementById("imagePreview").src,  // Assuming image is updated
+  const dishId2 = localStorage.getItem("editDishId");
+  const formData = new FormData();  // Create FormData object
+
+    // Prepare the updated dish data (not including the image here)
+    const updatedDish = {
+      title: document.getElementById('productName').value,
+      description: document.getElementById('productDesc').value,
+      price: document.getElementById('Price').value,
+      quantityAvailable: document.getElementById('Quantity').value,
+      category: { id: document.getElementById('productCat').value },
+      tag: document.getElementById('tags').value,
+    };
+
+    console.log("Updated Dish Data:", updatedDish);
+
+    // Append updated dish data as JSON string
+    formData.append("data", JSON.stringify(updatedDish));
+
+    // Check if an image file is selected
+    let imageFile = document.getElementById("fileInput").files[0];
+    if (imageFile) {
+        // Append the image file to formData
+        formData.append("image", imageFile);
+    }
+
+    // Sending the formData via a PUT request to update the dish
+    fetch(`http://localhost:8080/product/update/${dishId2}`, {
+        method: "PUT",
+        body: formData,  // Send FormData as the request body
+    })
+        .then(response => {
+            if (response.ok) {
+                alert("Dish updated successfully!");
+                window.location.href = "dishes.html";  // Redirect to dishes list page
+            } else {
+                alert("Error updating dish.");
+            }
+        })
+        .catch(error => {
+            console.error("Error updating dish:", error);
+            alert("An error occurred.");
+        });
+
+    
+}
+
+// Move previewImage function outside of saveEditedDish
+function previewImage(event) {
+  const file = event.target.files[0];  // Get the file that was selected
+  const reader = new FileReader();
+
+  reader.onload = function() {
+      // Set the image source to the selected file
+      document.getElementById('imagePreview').src = reader.result;
   };
 
-  fetch(`http://localhost:8080/product/update/${dishId}`, {
-    method: "POST",  // PATCH for partial updates
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(updatedDish),
-  })
-    .then(response => {
-      if (response.ok) {
-        alert("Dish updated successfully!");
-        window.location.href = "/dishes.html";  // Redirect to dishes list page
-      } else {
-        alert("Error updating dish.");
-      }
-    })
-    .catch(error => {
-      console.error("Error updating dish:", error);
-      alert("An error occurred.");
-    });
+  if (file) {
+      reader.readAsDataURL(file);  // Convert the image file to a data URL for preview
+  }      
 }
+

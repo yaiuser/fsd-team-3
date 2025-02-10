@@ -3,21 +3,26 @@
 const dishContainer = document.querySelector("#dish-container");
 
 // Function to fetch data and append dishes
-async function fetchDishes(){
-	try{
-		const response = await fetch('http://localhost:8080/product/all');	// fetch the JSON data
-		console.log('Fetch response:', response); 							// log the response
-		if(!response.ok){
-			throw new Error(`HTTP error! Status: ${response.status}`);
-		}
-		const dishes = await response.json();								// convert JSON response to a JavaScript Object
-		console.log('Dishes data:', dishes);								// log the fetched dishes
+async function fetchDishes() {
+    try {
+        const response = await fetch('http://localhost:8080/product/all');
+        console.log('Fetch response:', response);
 
-		appendDishes(dishes.reverse());										// pass the data to appendDishes
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
 
-	} catch (error){
-		console.log("Failed to fetch or render dshes:", error);
-	}
+        const dishes = await response.json();
+        console.log('Dishes data:', dishes);
+
+        // Clear the previous table before appending a new one
+        dishContainer.innerHTML = ''; // Clear the content of the dishContainer
+
+        appendDishes(dishes.reverse()); // pass the data to appendDishes
+
+    } catch (error) {
+        console.log("Failed to fetch or render dishes:", error);
+    }
 }
 
 // function to append each dish into a table
@@ -83,8 +88,10 @@ function appendDishes(dishes) {
 			dishName.textContent = dish.title;
 
 			const dishImage = modalSheet.querySelector("#modalDishImage");			// display dish.image on modal
-			dishImage.setAttribute("src", dish.image);
+			dishImage.setAttribute("src", _SERVER_URL + dish.image);
+			console.log(_SERVER_URL + dish.image);
 			dishImage.setAttribute("alt", dish.title);
+			
 
 			const dishDesc = modalSheet.querySelector("#modal-body-description");	// display dish.description on modal
 			dishDesc.textContent = dish.description;
@@ -126,6 +133,9 @@ function deleteDish(dishId) {
     .then(response => {
         if (response.ok) {
             alert("Dish deleted successfully!");
+			closeModal();
+			fetchDishes();
+	
         } else {
             alert("Dish is being used in orders, unable to delete dish.");
         }
@@ -135,5 +145,13 @@ function deleteDish(dishId) {
         alert("Error occurred while trying to delete.");
     });
 }
+	function closeModal() {
+		const modal = bootstrap.Modal.getInstance(document.getElementById("modalSheet"));
+		if (modal) {
+		  modal.hide();
+		  
+		}
+	}
+
 
 fetchDishes();

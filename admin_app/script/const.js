@@ -13,6 +13,7 @@ const _DISHES_URL = "dishes.html";
 const _USERS_URL = "#"; 
 const _LOGIN_URL = "#"; 
 const _LOGOUT_URL = "#";
+const _SERVER_URL = "http://localhost:8080";
 
 const SIDEBAR_ITEMS = [
 	{ 
