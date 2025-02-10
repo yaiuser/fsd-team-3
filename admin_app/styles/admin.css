@@ -120,3 +120,15 @@ body{
     max-height: 100%;   
     object-fit: cover;  
 }
+
+
+/* To prevent chart from overflowing */
+.chart-container {
+	background-color: rgba(235, 225, 225, 0.413);
+	border-radius: 6px;
+	padding: 20px;
+	margin-bottom: 20px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	height: 320px;
+	position: relative;
+}

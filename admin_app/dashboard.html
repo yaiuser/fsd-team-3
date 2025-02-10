@@ -70,7 +70,7 @@
 		<main class="container-fluid p-0">
 			<div class="row justify-content-center">
 				<!-- Start column for Sidebar -->
-				<div class="col-lg-3 border-bottom border-end d-none d-lg-block p-3">
+				<div class="col-3 border-bottom border-end d-none d-md-block">
 					
 					<div id="sidebarNav" class= "sidebar-menu flex-shrink-0 p-3 w-100">
 						<!-- Dynamic sidebar navigation menu goes here -->
@@ -79,7 +79,7 @@
 				<!-- End column for sidebar -->
 
 				<!-- Start column for content area  -->
-				<div class="col-lg-9 col-md-10 col-sm-12 ps-4 pe-4">
+				<div class="col-9 pt-4 pe-4">
 					<div class="h-100 border rounded-4 p-4">
 						<h2>Dashboard</h2>
 						<hr>
@@ -264,5 +264,65 @@
 		<script src="script/sidebarController.js"></script>
 		<script src="script/loader.js"></script>
 		<script src="script/auth.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script>
+        window.onload = function() {
+            // Charts code remains the same
+            const singleLineCtx = document.getElementById('singleLineChart');
+            if (singleLineCtx) {
+                new Chart(singleLineCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['7AM', '8AM', '9AM', '10AM', '11AM', '12PM', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM', "7PM"],
+                        datasets: [{
+                            label: 'Sales ($)',
+                            data: [0, 50, 120, 150, 180, 240, 220, 300, 380],
+                            borderColor: '#4e73df',
+                            borderWidth: 2,
+                            pointRadius: 3,
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+
+            const pieCtx = document.getElementById('simplePieChart');
+            if (pieCtx) {
+                new Chart(pieCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Drinks', 'Foods', 'Desserts', 'Sides'],
+                        datasets: [{
+                            data: [45, 30, 15, 10],
+                            backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+        };
+		</script>
 	</body>
 </html>
