@@ -1,17 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Function to update the cart item badge count
-  function updateCartItemBadge(orderItems) {
+  
+  function updateCartItemBadge(orderItems) {                                  // Function to update the cart item badge count
     const orderBadge = document.querySelector(".order_badge");
-    // Calculate total quantity ordered for all items
-    const totalItems = orderItems.reduce(
+    const totalItems = orderItems.reduce(                                     // Calculate total quantity ordered for all items
       (total, item) => total + item.quantityOrdered,
       0
     );
-    // Update the badge count
-    if (orderBadge) {
+    
+    if (orderBadge) {                                                         // Update the badge count
       orderBadge.textContent = totalItems;
     }
   }
+
+  function calculateServiceCharge(totalPrice) {
+    const serviceChargePercentage = 0.10;                                    // 10% service charge
+    return totalPrice * serviceChargePercentage;
+  }
+
+  function calculateGST(subtotal) {
+    const gstPercentage = 0.09;                                              // 9% GST
+    return subtotal * gstPercentage;
+  }
+  
+  function calculateTotalPrice(orderItems) {
+    return orderItems.reduce((total, orderItem) => {
+      const itemPrice = orderItem.menuItem.price;  
+      const quantityOrdered = orderItem.quantityOrdered; 
+      return total + (itemPrice * quantityOrdered);                           // Calculate the total for this order item and add it to the running total
+    }, 0);  
+    
+
+  }
+
+
 
   // Function to render the cart items
   function renderCartItems(orderItems) {
@@ -110,8 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         modal.show();
 
-        // Get the current orderItemId
-        const currentOrderItemId = cardPos.getAttribute("data-id");
+        
+        const currentOrderItemId = cardPos.getAttribute("data-id");                         // Get the current orderItemId
 
         // Save button event listener for this specific modal
         const saveButton = document.getElementById("save-edit-btn");
@@ -133,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify(updateData), // Send the updated additionalRequests field
+              body: JSON.stringify(updateData),                                     // Send the updated additionalRequests field
             }
           )
             .then((response) => response.json())
@@ -145,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 `.triggerDiv[data-id="${currentOrderItemId}"] .food-desc`
               );
               if (cardDesc) {
-                cardDesc.innerText = updatedRequest; // Update the food description text
+                cardDesc.innerText = updatedRequest;                                 // Update the food description text
               }
             })
             .catch((error) =>
@@ -161,9 +182,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (counter > 1) {
           counter--;
-
-          // Send PATCH request to update quantity
-          fetch(
+          
+          const orderItem = orderItems.find(item => item.id == currentOrderItemId);
+          if (orderItem) {
+            orderItem.quantityOrdered = counter; // Update the quantity in the local array
+          }
+        
+          
+          fetch(                                                                        // Send PATCH request to update quantity
             `http://localhost:8080/orderitem/update/${currentOrderItemId}`,
             {
               method: "PATCH",
@@ -176,14 +202,14 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((response) => response.json())
             .then((updatedOrder) => {
               console.log("Updated order item:", updatedOrder);
-              cardQtyNumber.textContent = counter; // Update UI with new quantity
-
-              // Update the cart item badge count dynamically
-              updateCartItemBadge(getCurrentOrderItems());
+              cardQtyNumber.textContent = counter;                                       // Update UI with new quantity
+              updateTotalPrice(orderItems);                                              //Update New Price
+             
+              updateCartItemBadge(getCurrentOrderItems());                              // Update the cart item badge count dynamically
             })
             .catch((error) => console.error("Error updating quantity:", error));
-        } else {
-          // If quantity is 1, send DELETE request
+        } else {                                                                        // If quantity is 1, send DELETE request
+          
           fetch(
             `http://localhost:8080/orderitem/delete/${currentOrderItemId}`,
             {
@@ -196,9 +222,8 @@ document.addEventListener("DOMContentLoaded", () => {
                   `Deleted order item with ID: ${currentOrderItemId}`
                 );
                 cardPos.remove(); 
-             
-                // Update the cart item badge count dynamically after deletion
-                updateCartItemBadge(getCurrentOrderItems());
+                           
+                updateCartItemBadge(getCurrentOrderItems());                                // Update the cart item badge count dynamically after deletion
               } else {
                 console.error("Error deleting order item.");
               }
@@ -210,30 +235,42 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Quantity Increase
-      cardAddBtn.addEventListener("click", () => {
-        let counter = parseInt(cardQtyNumber.textContent);
-        counter++;
+        cardAddBtn.addEventListener("click", () => {
+          let counter = parseInt(cardQtyNumber.textContent);
+          counter++;
 
-        const currentOrderItemId = cardPos.getAttribute("data-id");
+          const currentOrderItemId = cardPos.getAttribute("data-id");
 
-        // Send PATCH request to update quantity
-        fetch(`http://localhost:8080/orderitem/update/${currentOrderItemId}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ quantityOrdered: counter }),
-        })
-          .then((response) => response.json())
-          .then((updatedOrder) => {
-            console.log("Updated order item:", updatedOrder);
-            cardQtyNumber.textContent = counter; // Update UI with new quantity
+          // Find the item in the local orderItems array
+          const orderItem = orderItems.find(item => item.id == currentOrderItemId);
+          if (orderItem) {
+            orderItem.quantityOrdered = counter;                                        // Update the quantity in the local array
+          }
 
-            // Update the cart item badge count dynamically
-            updateCartItemBadge(getCurrentOrderItems());
+    
+          fetch(`http://localhost:8080/orderitem/update/${currentOrderItemId}`, {       // Send PATCH request to update quantity in the backend
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ quantityOrdered: counter }),
           })
-          .catch((error) => console.error("Error updating quantity:", error));
-      });
+            .then((response) => response.json())
+            .then((updatedOrder) => {
+              console.log("Updated order item:", updatedOrder);
+              cardQtyNumber.textContent = counter;                                        // Update UI with new quantity
+
+              updateTotalPrice(orderItems);                                                // Update the total price dynamically
+            })
+            .catch((error) => console.error("Error updating quantity:", error));
+        });
+
+
+      function updateTotalPrice(orderItems) {
+        const totalPrice = calculateTotalPrice(orderItems);
+        const formattedTotalPrice = totalPrice.toFixed(2);
+        document.getElementById("totalPrice").textContent = `${formattedTotalPrice}`;
+      }
 
       // Function to get the current order items displayed in the UI
       function getCurrentOrderItems() {
@@ -244,8 +281,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         return orderItems;
       }
-    });
+    }); 
   }
+  
 
   const orderId = localStorage.getItem("orderId");
   fetch(`http://localhost:8080/order/${orderId}/all`)
@@ -256,16 +294,16 @@ document.addEventListener("DOMContentLoaded", () => {
       return response.json();
     })
     .then((orderData) => {
-      console.log("Received order data:", orderData); // Debugging
+      console.log("Received order data:", orderData); 
 
-      // Check if orderData is valid and contains orderItems
       if (!orderData.ok) {
-        const allOrderItems = orderData.orderItems; // Extract the order items array
+        const allOrderItems = orderData.orderItems;                                     // Extract the order items array
 
-        // Update the cart item badge with the total quantity
-        updateCartItemBadge(allOrderItems);
-        // Render the cart items in the UI using the renderCartItems function above
-        renderCartItems(allOrderItems);
+       
+        const totalPrice = calculateTotalPrice(allOrderItems);                          // Calculate the total price of the order
+        document.getElementById("totalPrice").textContent = totalPrice.toFixed(2);                        
+        updateCartItemBadge(allOrderItems);                                             // Update the cart item badge with the total quantity
+        renderCartItems(allOrderItems);                                                 // Render the cart items in the UI using the renderCartItems function above
       } else {
         console.error("Invalid order data structure:", orderData);
       }
@@ -273,4 +311,21 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => {
       console.error("Error fetching order data:", error);
     });
+
+    // Function to update table number based on table in localStorage
+    function updateTableNumber() {
+      const seatNumber = localStorage.getItem("seatNumber");
+      if (seatNumber) {
+        if (seatNumber <= 9) {
+          document.getElementById("tableNumber").textContent = "0" + seatNumber;
+        } else {
+          document.getElementById("tableNumber").textContent = seatNumber;
+        }
+      } else {
+        console.log("No seat number stored in localStorage");
+      }
+    }
+    updateTableNumber();
+
+
 });

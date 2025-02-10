@@ -91,4 +91,23 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => {
       console.error("Error fetching mock items:", error);
     });
+
+    function updateTableNumber() {
+      const seatNumber = localStorage.getItem("seatNumber");
+    
+      if (seatNumber) {
+        // If seatNumber exists in localStorage, display it
+        if (seatNumber <= 9) {
+          // Add a 0 if the seatNumber is less than 10
+          document.getElementById("tableNumber").textContent = "0" + seatNumber;
+        } else {
+          // Otherwise, display the seatNumber as is
+          document.getElementById("tableNumber").textContent = seatNumber;
+        }
+      } else {
+        // Optionally, you can handle the case where no seatNumber is found in localStorage
+        console.log("No seat number stored in localStorage");
+      }
+    }
+    updateTableNumber();
 });

@@ -212,7 +212,6 @@ document.getElementById("addToCartBtn").addEventListener("click", () => {
   .then(data => {
     console.log("Item added to cart:", data);
     closeModal();
-    
   })
   .catch(error => {
     console.error("Error adding item to cart:", error);
@@ -228,8 +227,6 @@ function closeModal() {
     modal.hide();
   }
 }
-
-
 // End of add to cart//
 
 
@@ -299,3 +296,61 @@ function closeModal() {
     modal.hide();
   }
 }
+
+
+function updateTableNumber() {
+  const seatNumber = localStorage.getItem("seatNumber");
+
+  if (seatNumber) {
+    if (seatNumber <= 9) {
+      document.getElementById("tableNumber").textContent = "0" + seatNumber;
+    } else {
+      document.getElementById("tableNumber").textContent = seatNumber;
+    }
+  } else {
+    console.log("No seat number stored in localStorage");
+  }
+}
+window.onload = updateTableNumber;
+
+function updateCartItemBadge(orderItems) {
+  const orderBadge = document.querySelector(".order_badge");
+
+  // Calculate total quantity ordered for all items
+  const totalItems = orderItems.reduce((total, orderItem) => total + orderItem.quantityOrdered, 0);
+  // Update the badge count with the total quantity
+  if (orderBadge) {
+      orderBadge.textContent = totalItems;
+  }
+ 
+
+}
+
+function calculateTotalPrice(orderItems) {                                  
+  return orderItems.reduce((total, orderItem) => {
+    const itemPrice = orderItem.menuItem.price;  
+    const quantityOrdered = orderItem.quantityOrdered; 
+    return total + (itemPrice * quantityOrdered);                           // Calculate the total for this order item and add it to the running total
+  }, 0);  
+}
+
+const orderId = localStorage.getItem("orderId"); // Retrieve orderId from localStorage
+
+fetch(`http://localhost:8080/order/${orderId}/all`)
+.then((response) => {
+  if (!response.ok) {
+      throw new Error("Network response was not ok");
+  }
+  return response.json();
+})
+.then((orderData) => {
+  const orderItems = orderData.orderItems; // Directly access the `orderItems` since you're fetching only one order
+  updateCartItemBadge(orderItems);  // Update the cart item badge count
+
+  const totalPrice = calculateTotalPrice(orderItems);                          // Calculate the total price of the order
+  document.getElementById("totalPrice").textContent = totalPrice.toFixed(2); 
+ 
+})
+.catch((error) => {
+  console.error("Error fetching order data:", error);
+});

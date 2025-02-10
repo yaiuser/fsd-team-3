@@ -35,33 +35,4 @@ dragButton.addEventListener("click", () => {
     isVisible = !isVisible; 
 });
 
-// * Update Cart Item Badge based on database *//
-function updateCartItemBadge(orderItems) {
-    const orderBadge = document.querySelector(".order_badge");
-
-    // Calculate total quantity ordered for all items
-    const totalItems = orderItems.reduce((total, orderItem) => total + orderItem.quantityOrdered, 0);
-
-    // Update the badge count with the total quantity
-    if (orderBadge) {
-        orderBadge.textContent = totalItems;
-    }
-}
-const orderId = localStorage.getItem("orderId"); // Retrieve orderId from localStorage
-
-fetch(`http://localhost:8080/order/${orderId}/all`)
-.then((response) => {
-    if (!response.ok) {
-        throw new Error("Network response was not ok");
-    }
-    return response.json();
-})
-.then((orderData) => {
-    const orderItems = orderData.orderItems; // Directly access the `orderItems` since you're fetching only one order
-    updateCartItemBadge(orderItems);  // Update the cart item badge count
-   
-})
-.catch((error) => {
-    console.error("Error fetching order data:", error);
-});
 

@@ -29,7 +29,7 @@
             <a href="index.html"><img src="/img/icons-logos/back.png" alt="Back Button"></a>
             <div>
                 <h1>Your Cart</h1>
-                <p>Table <span>01</span></p>
+                <p>Table <span id="tableNumber"></span></p>
             </div>
             <img class="hide-balance" src="/img/icons-logos/back.png" alt="Hidden Back Button">
         </header>
@@ -87,7 +87,7 @@
                 </div>
                 <div class="orderFooter mx-4">
                     <h4>Total:</h4>
-                    <h4>$XX.XX<span class="totalPrice"></span></h4>
+                    <h4>$<span id="totalPrice"></span></h4>
                 </div>
                 <button id="btnConfirmOrder" class="d-block my-3 mx-auto" onclick="location.href='checkout.html'">
                     <i class="fa-solid fa-cart-shopping"></i>
