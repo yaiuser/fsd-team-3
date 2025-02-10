@@ -145,5 +145,13 @@ function deleteDish(dishId) {
         alert("Error occurred while trying to delete.");
     });
 }
+	function closeModal() {
+		const modal = bootstrap.Modal.getInstance(document.getElementById("modalSheet"));
+		if (modal) {
+		  modal.hide();
+		  
+		}
+	}
+
 
 fetchDishes();
