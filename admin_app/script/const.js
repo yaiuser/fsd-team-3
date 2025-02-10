@@ -1,5 +1,5 @@
 // Navigation menu titles
-const _DASHBOARD_TITLE = "dashboard";
+const _DASHBOARD_TITLE = "Dashboard";
 const _ORDERS_TITLE = "Order";
 const _DISHES_TITLE = "Dishes";
 const _LOGIN_TITLE = "Login";

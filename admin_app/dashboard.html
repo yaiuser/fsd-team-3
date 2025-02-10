@@ -82,6 +82,175 @@
 				<div class="col-lg-9 col-md-10 col-sm-12 ps-4 pe-4">
 					<div class="h-100 border rounded-4 p-4">
 						<h2>Dashboard</h2>
+						<hr>
+						            <!-- Main Content - adjusted width -->
+									<div class="col-10">
+										<!-- Rest of the content remains the same -->
+
+						
+										<!-- Stats Cards -->
+										<div class="row">
+											<div class="col-md-3">
+												<div class="stats-card">
+													<div class="d-flex justify-content-between">
+														<div>
+															<div class="text-muted">Today's Sales</div>
+															<div class="stats-value">$1,460.00</div>
+														</div>
+														<i class="fas fa-dollar-sign fa-2x text-success"></i>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="stats-card">
+													<div class="d-flex justify-content-between">
+														<div>
+															<div class="text-muted">Orders Today</div>
+															<div class="stats-value">86</div>
+														</div>
+														<i class="fas fa-receipt fa-2x text-primary"></i>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="stats-card">
+													<div class="d-flex justify-content-between">
+														<div>
+															<div class="text-muted">Avg Order Value</div>
+															<div class="stats-value">$15.40</div>
+														</div>
+														<i class="fas fa-chart-line fa-2x text-info"></i>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-3">
+												<div class="stats-card">
+													<div class="d-flex justify-content-between">
+														<div>
+															<div class="text-muted">Processing Time</div>
+															<div class="stats-value">25 min</div>
+														</div>
+														<i class="fas fa-clock fa-2x text-warning"></i>
+													</div>
+												</div>
+											</div>
+										</div>
+						
+										<!-- Charts Row -->
+										<div class="row mt-4">
+											<div class="col-md-8">
+												<div class="chart-container">
+													<h5>Daily Performance - Hourly Sales</h5>
+													<canvas id="singleLineChart"></canvas>
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="chart-container text-center">
+													<h5>Popular Categories</h5>
+													<canvas id="simplePieChart"></canvas>
+												</div>
+											</div>
+										</div>
+						
+										<!-- Orders Table -->
+										<div class="row mt-4">
+											<div class="col-12">
+												<div class="orders-table">
+													<h5>Recent Orders</h5>
+													<table class="table">
+														<thead>
+															<tr>
+																<th>Order #</th>
+																<th>Time</th>
+																<th>Items</th>
+																<th>Total (w/gst)</th>
+																<th>Table</th>
+																<th>Status</th>
+																<th>Actions</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>#1234</td>
+																<td>10:45 AM</td>
+																<td>Amazing Chicken Burger, Hot Latte</td>
+																<td>$15.99</td>
+																<td>Table 4</td>
+																<td><span class="status-badge status-completed">Completed</span></td>
+																<td>
+																	<button class="btn btn-sm btn-outline-primary">Details</button>
+																</td>
+															</tr>
+															<tr>
+																<td>#1235</td>
+																<td>10:52 AM</td>
+																<td>Double Stack Burger, Coke</td>
+																<td>$18.98</td>
+																<td>Table 7</td>
+																<td><span class="status-badge status-preparing">Preparing</span></td>
+																<td>
+																	<button class="btn btn-sm btn-outline-primary">Details</button>
+																</td>
+															</tr>
+															<tr>
+																<td>#1236</td>
+																<td>10:48 AM</td>
+																<td>Pizza, Dasani Mineral Water</td>
+																<td>$15.99</td>
+																<td>Table 4</td>
+																<td><span class="status-badge status-completed">Preparing</span></td>
+																<td>
+																	<button class="btn btn-sm btn-outline-primary">Details</button>
+																</td>
+															</tr>
+															<tr>
+																<td>#1237</td>
+																<td>10:45 AM</td>
+																<td>Amazing Chicken Burger, Hot Latte</td>
+																<td>$15.99</td>
+																<td>Table 1</td>
+																<td><span class="status-badge status-completed">Completed</span></td>
+																<td>
+																	<button class="btn btn-sm btn-outline-primary">Details</button>
+																</td>
+															</tr>
+															<tr>
+																<td>#1238</td>
+																<td>10:52 AM</td>
+																<td>Double Stack Burger, Coke</td>
+																<td>$18.98</td>
+																<td>Table 2</td>
+																<td><span class="status-badge status-preparing">Preparing</span></td>
+																<td>
+																	<button class="btn btn-sm btn-outline-primary">Details</button>
+																</td>
+															</tr>
+															<tr>
+																<td>#1239</td>
+																<td>10:48 AM</td>
+																<td>Pizza, Dasani Mineral Water</td>
+																<td>$15.99</td>
+																<td>Table 3</td>
+																<td><span class="status-badge status-completed">Preparing</span></td>
+																<td>
+																	<button class="btn btn-sm btn-outline-primary">Details</button>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+													<nav>
+														<ul class="pagination justify-content-center">
+															<li class="page-item active"><a class="page-link" href="#">1</a></li>
+															<li class="page-item"><a class="page-link" href="#">2</a></li>
+															<li class="page-item"><a class="page-link" href="#">3</a></li>
+														</ul>
+													</nav>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
 					</div>
 				</div>
 				<!-- End column for content area -->

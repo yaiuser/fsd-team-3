@@ -47,11 +47,24 @@ class SidebarController {
 			
 		}
 
-		const button = document.createElement('button');																// Create a <button> element for the item's title
+		let dashboardLink;
+
+		if(item.title === _DASHBOARD_TITLE){
+			dashboardLink = document.createElement('a');
+			dashboardLink.className = 'link-body-emphasis';
+			dashboardLink.href = _DASHBOARD_URL;  
+		  }
+
+		let button = document.createElement('button');																// Create a <button> element for the item's title
 		button.className = 'btn btn-toggle d-inline-flex align-items-center collapsed';
 		button.setAttribute('data-bs-toggle', 'collapse');
 		button.setAttribute('data-bs-target', `#${item.title.toLowerCase().replace(/\s/g, '-')}-collapse-${index}`);
 		button.textContent = item.title;
+
+		if(item.title === _DASHBOARD_TITLE){
+			dashboardLink.appendChild(button);
+			button = dashboardLink; 
+		  }
 
 		itemContainer.appendChild(button);
 		listItem.appendChild(itemContainer);																					// Append the button to the list item																		// Append the list item to the parent <ul> element
