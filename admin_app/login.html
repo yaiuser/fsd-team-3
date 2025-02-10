@@ -39,13 +39,15 @@
             e.preventDefault();
             const username = document.getElementById("username");                // Create constant variables to capture username
             const pwd = document.getElementById("password");                     // Create constant variables to capture password
-            
+
             const formData = { username: username.value, password: pwd.value };           // JavaScript Object formData stores the form's input values
 
             const loginSuccess = await login(formData);                             // Invoke login() function, and end (return)
 
+            console.log(loginSuccess);
+
             if (!loginSuccess) {
-                Alert("Unable to log in. Try again.");    // If login unsuccessful, provide feeback
+                alert("Unable to log in. Try again.");    // If login unsuccessful, provide feeback
             }
 
         });
@@ -53,7 +55,8 @@
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script/auth.js"></script>
+    <script src="./script/auth.js"></script>
+    <script src="./script/const.js"></script>
 </body>
 
 </html>

@@ -10,9 +10,10 @@ const _LOGOUT_TITLE = "Logout";
 //const _DASHBOARD_URL = "#"; 
 const _ORDERS_URL = "orders.html"; 
 const _DISHES_URL = "dishes.html"; 
-const _USERS_URL = "#"; 
-const _LOGIN_URL = "#"; 
-const _LOGOUT_URL = "#";
+const _USERS_URL = "#";
+const _HOME_URL = "dashboard.html"; 
+const _LOGIN_URL = "login.html"; 
+const _LOGOUT_URL = "login.html";
 
 const SIDEBAR_ITEMS = [
 	{ 

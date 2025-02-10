@@ -17,14 +17,16 @@ async function login(formData = {}){
             const token = result.token;                                                   
             const user = decodeUser(token);                                                 // decode the token for the role 
             
-            window.localStorage.setItem(_USERTOKEN, token);                                 // Store the string in localStorage with the key 'usertoken'
+            window.localStorage.setItem("usertoken", token);                                 // Store the string in localStorage with the key 'usertoken'
             
             const adminStatus = user.roles.some(role => role.authority === 'ADMIN');        // !! Find "ADMIN" authority from token's roles
             
             if(adminStatus)                                                                 // !! This example only look for "ADMIN" authority
-                window.location = index.html;                                               // Redirect the user to adminpage
+                window.location = "dashboard.html";                                               // Redirect the user to adminpage
             else                                                                            // !! Other authority will be deemed as user
-                window.location = index.html;                                               // Redirect the user to homepage
+                window.location = "dashboard.html";                                               // Redirect the user to homepage
+
+            return true;
         }
         
         return;                                                                             // Else return false
@@ -38,37 +40,17 @@ async function login(formData = {}){
 
 // Function to logout
 function logout(logout){
-    window.localStorage.removeItem(_USERTOKEN);                                             // Store the string in localStorage with the key 'token'
-    window.location = _HOME_URL;                                                            // Redirect the user to homepage
+    window.localStorage.removeItem("usertoken");                                             // Store the string in localStorage with the key 'token'
+    window.location = login.html;                                                            // Redirect the user to homepage
 }
 
-async function register(formData = {}){
-
-    if(Object.entries(formData).length == 0)
-        return;
-
-    /* We are are sending 
-        - name
-        - email
-        - password
-        - role (it must be passed only by our web site)
-        - Spring Boot help us take care of CSRF Cross-site Referece Forgery
-    */
-
-    try {
-        
-        const response = await fetch(_ENDPOINT_REGISTER, {
-            method: "POST", 
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(formData)
-        })
-
-        if(response.ok){
-            window.location = _LOGIN_URL;
-        }
-
-    } catch (error) {
-        console.log("Exception error gotten is:", error.message);
-    }
+function decodeUser(token){                                         
+    
+    // Extract authenticated username from the token
+    const arrToken = token.split(".");                              
+    const decodedToken = JSON.parse(window.atob(arrToken[1]));
+    const username = decodedToken.sub;
+    const roles = decodedToken.roles;
+    return {username: username, roles: roles};
 
 }
