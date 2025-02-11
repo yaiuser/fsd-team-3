@@ -102,6 +102,9 @@ function productsByCategory(id = null) {
         const cardPopulation = document.querySelector(".item-cards.row");
         // Create the position container for the card (column layout)
         // Create the column layout for the card
+
+
+
         const cardPos = document.createElement("div");
         cardPos.className = "col-sm-12 col-md-6 col-lg-4";
         cardPos.setAttribute("data-item-id", element.id); // Create orderItem id so can identify the card by clicking on it.
@@ -153,6 +156,8 @@ function productsByCategory(id = null) {
         const cardAddBtn = document.createElement("button");
         cardAddBtn.className = "btn-add";
         cardAddBtn.textContent = "+"; // Add "+" button
+
+        if(!element.quantity_available === 0){
         cardButton.appendChild(cardAddBtn);
 
         //Populating the Modal
@@ -173,7 +178,7 @@ function productsByCategory(id = null) {
           );
           modal.show();
         });
-    
+      }
    
 
       });
