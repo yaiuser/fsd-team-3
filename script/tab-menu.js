@@ -99,11 +99,12 @@ function productsByCategory(id = null) {
       menuHeader.appendChild(cardContainer); 
 
       data.forEach((element) => {
+        
+        if(!element.quantityAvailable == 0){
+          
         const cardPopulation = document.querySelector(".item-cards.row");
         // Create the position container for the card (column layout)
         // Create the column layout for the card
-
-
 
         const cardPos = document.createElement("div");
         cardPos.className = "col-sm-12 col-md-6 col-lg-4";
@@ -157,7 +158,9 @@ function productsByCategory(id = null) {
         cardAddBtn.className = "btn-add";
         cardAddBtn.textContent = "+"; // Add "+" button
 
-        if(!element.quantity_available === 0){
+        console.log(typeof(element.quantityAvailable));
+
+
         cardButton.appendChild(cardAddBtn);
 
         //Populating the Modal
