@@ -94,8 +94,8 @@
 												<div class="stats-card">
 													<div class="d-flex justify-content-between">
 														<div>
-															<div class="text-muted">Today's Sales</div>
-															<div class="stats-value">$1,460.00</div>
+															<div class="text-muted">Total Sales</div>
+															<div class="stats-value"><span id="total-sales"></span></div>
 														</div>
 														<i class="fas fa-dollar-sign fa-2x text-success"></i>
 													</div>
@@ -105,8 +105,8 @@
 												<div class="stats-card">
 													<div class="d-flex justify-content-between">
 														<div>
-															<div class="text-muted">Orders Today</div>
-															<div class="stats-value">86</div>
+															<div class="text-muted">Total Orders</div>
+															<div class="stats-value"><span id="total-quantity"></span></div>
 														</div>
 														<i class="fas fa-receipt fa-2x text-primary"></i>
 													</div>
@@ -117,7 +117,7 @@
 													<div class="d-flex justify-content-between">
 														<div>
 															<div class="text-muted">Avg Order Value</div>
-															<div class="stats-value">$15.40</div>
+															<div class="stats-value"><span id="average-order-value"></span></div>
 														</div>
 														<i class="fas fa-chart-line fa-2x text-info"></i>
 													</div>
@@ -155,96 +155,47 @@
 										<!-- Orders Table -->
 										<div class="row mt-4">
 											<div class="col-12">
-												<div class="orders-table">
-													<h5>Recent Orders</h5>
-													<table class="table">
-														<thead>
-															<tr>
-																<th>Order #</th>
-																<th>Time</th>
-																<th>Items</th>
-																<th>Total (w/gst)</th>
-																<th>Table</th>
-																<th>Status</th>
-																<th>Actions</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<td>#1234</td>
-																<td>10:45 AM</td>
-																<td>Amazing Chicken Burger, Hot Latte</td>
-																<td>$15.99</td>
-																<td>Table 4</td>
-																<td><span class="status-badge status-completed">Completed</span></td>
-																<td>
-																	<button class="btn btn-sm btn-outline-primary">Details</button>
-																</td>
-															</tr>
-															<tr>
-																<td>#1235</td>
-																<td>10:52 AM</td>
-																<td>Double Stack Burger, Coke</td>
-																<td>$18.98</td>
-																<td>Table 7</td>
-																<td><span class="status-badge status-preparing">Preparing</span></td>
-																<td>
-																	<button class="btn btn-sm btn-outline-primary">Details</button>
-																</td>
-															</tr>
-															<tr>
-																<td>#1236</td>
-																<td>10:48 AM</td>
-																<td>Pizza, Dasani Mineral Water</td>
-																<td>$15.99</td>
-																<td>Table 4</td>
-																<td><span class="status-badge status-completed">Preparing</span></td>
-																<td>
-																	<button class="btn btn-sm btn-outline-primary">Details</button>
-																</td>
-															</tr>
-															<tr>
-																<td>#1237</td>
-																<td>10:45 AM</td>
-																<td>Amazing Chicken Burger, Hot Latte</td>
-																<td>$15.99</td>
-																<td>Table 1</td>
-																<td><span class="status-badge status-completed">Completed</span></td>
-																<td>
-																	<button class="btn btn-sm btn-outline-primary">Details</button>
-																</td>
-															</tr>
-															<tr>
-																<td>#1238</td>
-																<td>10:52 AM</td>
-																<td>Double Stack Burger, Coke</td>
-																<td>$18.98</td>
-																<td>Table 2</td>
-																<td><span class="status-badge status-preparing">Preparing</span></td>
-																<td>
-																	<button class="btn btn-sm btn-outline-primary">Details</button>
-																</td>
-															</tr>
-															<tr>
-																<td>#1239</td>
-																<td>10:48 AM</td>
-																<td>Pizza, Dasani Mineral Water</td>
-																<td>$15.99</td>
-																<td>Table 3</td>
-																<td><span class="status-badge status-completed">Preparing</span></td>
-																<td>
-																	<button class="btn btn-sm btn-outline-primary">Details</button>
-																</td>
-															</tr>
-														</tbody>
-													</table>
-													<nav>
-														<ul class="pagination justify-content-center">
-															<li class="page-item active"><a class="page-link" href="#">1</a></li>
-															<li class="page-item"><a class="page-link" href="#">2</a></li>
-															<li class="page-item"><a class="page-link" href="#">3</a></li>
-														</ul>
-													</nav>
+												<div id="order-container">
+												<!-- To append Order Items here -->
+												</div>
+											</div>
+										</div>
+
+											<!-- Modal -->
+											<div
+											class="modal fade p-4 py-md-5"
+											tabindex="-1"
+											role="dialog"
+											id="modalSheet"
+										>
+											<div class="modal-dialog modal-dialog-centered" role="document">
+												<div class="modal-content rounded-4 shadow">
+													<div class="modal-header border-bottom-0">
+														<h1 class="modal-title fs-2">
+															<!-- Dish Name Goes Here -->
+														</h1>
+														<button
+															type="button"
+															class="btn-close"
+															data-bs-dismiss="modal"
+														></button>
+													</div>
+													<div class="modal-body py-0">
+														<img alt="" class="img-thumbnail mb-3" id="modalDishImage" />
+														<p id="modal-body-description">
+															<!-- Dish Description Goes Here -->
+														</p>
+													</div>
+													<div
+														class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0"
+													>
+														
+														<button id="btnreciept" type="button" class="upload-btn btn btn-sm p-2 me-3">View Reciept</button>
+														<button id="btndelete" type="button" class="upload-btn btn btn-sm p-2 me-3">Delete</button>
+														<button type="button" class="btn btn-sm p-2 me-3 btn-secondary" data-bs-dismiss="modal">
+															Close
+														</button>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -324,5 +275,6 @@
             }
         };
 		</script>
+		<script src="/admin_app/script/dashboard.js"></script>
 	</body>
 </html>
