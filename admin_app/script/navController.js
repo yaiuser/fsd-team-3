@@ -6,7 +6,7 @@ class NavController {
 		this.dropdownItems = [										// Define the dropdown menu items (title and URL for each item)
 			{ title: _ORDERS_TITLE, url: _ORDERS_URL },
 			{ title: _DISHES_TITLE, url: _DISHES_URL },
-			{ title: _LOGIN_TITLE, url: _LOGIN_URL },
+			//{ title: _LOGIN_TITLE, url: _LOGIN_URL },
 			{ title: _LOGOUT_TITLE, url: _LOGOUT_URL },
 		];
 	}
