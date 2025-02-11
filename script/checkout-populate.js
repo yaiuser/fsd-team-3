@@ -184,7 +184,7 @@ fetch(`http://localhost:8080/order/${orderId}/all`)
     document.getElementById("totalPrice").textContent = totalPrice.toFixed(2);
     document.getElementById("subtotal").textContent = subtotal.toFixed(2);
     document.getElementById("servicePrice").textContent = totalService.toFixed(2);
-    document.getElementById("gstPrice").textContent = totalService.toFixed(2);
+    document.getElementById("gstPrice").textContent = totalGst.toFixed(2);
   
     // Return the total price and subtotal if needed
     return { totalPrice, subtotal };
