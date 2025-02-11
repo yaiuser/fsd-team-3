@@ -43,7 +43,7 @@ fetch(`http://localhost:8080/order/${orderId}/all`)
 
    document.getElementById('total').innerText = `${(total).toFixed(2)}`;
    document.getElementById('subtotal').innerText = `${(subtotal).toFixed(2)}`;
-   document.getElementById('serviceAmount').innerText = `${(taxAmount).toFixed(2)}`;
+   document.getElementById('taxAmount').innerText = `${(taxAmount).toFixed(2)}`;
    document.getElementById('gstAmount').innerText = `${(gstAmount).toFixed(2)}`;
 });
 
